@@ -16,6 +16,7 @@ public class CameraGo : MonoBehaviour
     GameObject workgui;
 
     [Header("Camera")]
+    public Camera Camera;
     public float speed = 10.0f;
 
     Vector3 camPos;
@@ -72,7 +73,7 @@ public class CameraGo : MonoBehaviour
         transform.position = camPos;
         camPos = transform.position;
         
-        GetComponent<Camera>().orthographicSize = zoom;
+        Camera.orthographicSize = zoom;
         GameObject.Find("Terr").GetComponent<Text>().text = camPos.x + " " + camPos.y;
 
         //Debug.Log(size.x / (CWX / zoom) + " " + size.y / (CWY / zoom));
@@ -81,12 +82,13 @@ public class CameraGo : MonoBehaviour
 
 
         //Debug.Log(((camPos.y - tmp/2 +(tmp/camSize.rect.height*cursorPos.y)) - (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y))) + " --> " + (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y)));
-        Debug.Log(camSize.rect.width + " " + camSize.rect.height);
+        //Debug.Log(camSize.rect.width + " " + camSize.rect.height);
 
     }
-
+    Vector3 dragPoint = Vector3.zero;
     void Move(RectTransform camSize,Vector3 size)
     {
+        
         if (Input.GetKey(KeyCode.W))
         {
             camPos.y += speed * Time.deltaTime;
@@ -104,29 +106,39 @@ public class CameraGo : MonoBehaviour
             camPos.x += speed * Time.deltaTime;
         }
 
-        Vector3 empty = new Vector3(-1, -1, -1);
+        //Vector3 empty = new Vector3(-1, -1, -1);
+        float planeDistance = Mathf.Abs(workspace.transform.position.z) + Mathf.Abs(Camera.transform.position.z);
+        Vector3 screenPoint  = Camera.ScreenToWorldPoint( new Vector3(
+                                    Input.mousePosition.x,
+                                    Input.mousePosition.y,
+                                    planeDistance));
 
         if (Input.GetMouseButtonDown(0))
         {
-            cursorPos = Input.mousePosition;
-            StartcamPos = camPos;
+            //cursorPos = Input.mousePosition;
+            //StartcamPos = camPos;
+            dragPoint = screenPoint;
         }
         if(Input.GetMouseButtonUp(0))
         {
-            cursorPos = empty;
-            StartcamPos = empty;
+            //cursorPos = empty;
+            //StartcamPos = empty;
+            //camPos += dragPoint - screenPoint;
+            dragPoint = Vector3.zero;
+            //Debug.Log(dragPoint + " " + screenPoint);
         }
-        if(cursorPos != empty && StartcamPos != empty)
+        if(dragPoint != Vector3.zero)
         {
-            float tmp = maxZoom / size.y * zoom;
-            float mousePosY = camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y);
-            float StartPointPosY = camPos.y - tmp / 2 + (tmp / camSize.rect.height * cursorPos.y);
-            float mousePosX = camPos.x - tmp / 2 + (tmp / camSize.rect.width * Input.mousePosition.x);
-            float StartPointPosX = camPos.x - tmp / 2 + (tmp / camSize.rect.width * cursorPos.x);
+            camPos += dragPoint - screenPoint;
+            //float tmp = maxZoom / size.y * zoom;
+            //float mousePosY = camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y);
+            //float StartPointPosY = camPos.y - tmp / 2 + (tmp / camSize.rect.height * cursorPos.y);
+            //float mousePosX = camPos.x - tmp / 2 + (tmp / camSize.rect.width * Input.mousePosition.x);
+            //float StartPointPosX = camPos.x - tmp / 2 + (tmp / camSize.rect.width * cursorPos.x);
 
-            camPos.y = StartcamPos.y + (StartPointPosY - mousePosY) * (size.y / (camSize.rect.height / 23f));
-            camPos.x = StartcamPos.x + (StartPointPosX - mousePosX) * (size.x / (camSize.rect.width / 41f));
-            //Debug.Log(StartcamPos + " " + (StartPointPosY - mousePosY) * 7);
+            //camPos.y = StartcamPos.y + (StartPointPosY - mousePosY) * camSize.rect.height / 173.935126f;
+            //camPos.x = StartcamPos.x + (StartPointPosX - mousePosX) * camSize.rect.width / 173.935126f;
+            //Debug.Log(StartcamPos + " " + (StartPointPosX - mousePosX) * camSize.rect.width / 173.935126f);
         }
     }
 
