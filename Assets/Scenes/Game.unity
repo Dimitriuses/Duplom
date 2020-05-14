@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bb8db0c515ccf4da88c16579d7d8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 374373316}
   speed: 10
   minZoom: 5
   maxZoom: 50
