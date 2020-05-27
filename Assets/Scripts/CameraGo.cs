@@ -11,8 +11,9 @@ using System.Text.RegularExpressions;
 
 public class CameraGo : MonoBehaviour
 {
-
-    GameObject workspace;
+    [Header("WorkSpace Options")]
+    public GameObject workspace;
+    public bool EditMode;
     GameObject workgui;
 
     [Header("Camera")]
@@ -31,7 +32,7 @@ public class CameraGo : MonoBehaviour
 
     void Start()
     {
-        workspace = GameObject.Find("Shem WorkSpace");
+        //workspace = GameObject.Find("Shem WorkSpace");
         workgui = GameObject.Find("Cam");
         //camPos = transform.position;
         camPos = workspace.transform.position;//GetComponent<Vector3>();
@@ -85,6 +86,7 @@ public class CameraGo : MonoBehaviour
         //Debug.Log(camSize.rect.width + " " + camSize.rect.height);
 
     }
+    //bool MBDown = false;
     Vector3 dragPoint = Vector3.zero;
     void Move(RectTransform camSize,Vector3 size)
     {
@@ -113,10 +115,11 @@ public class CameraGo : MonoBehaviour
                                     Input.mousePosition.y,
                                     planeDistance));
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EditMode)
         {
             //cursorPos = Input.mousePosition;
             //StartcamPos = camPos;
+
             dragPoint = screenPoint;
         }
         if(Input.GetMouseButtonUp(0))
@@ -162,6 +165,11 @@ public class CameraGo : MonoBehaviour
             zoom += speed * Time.deltaTime * 10f;
         }
     }
+
+    //private void OnMouseDown()
+    //{
+        
+    //}
 
 
     //string text;
