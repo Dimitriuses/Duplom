@@ -13,8 +13,10 @@ public class CameraGo : MonoBehaviour
 {
     [Header("WorkSpace Options")]
     public GameObject workspace;
+    public bool StopCam;
     public bool EditMode;
     GameObject workgui;
+    public Button EditTrigerButton;
 
     [Header("Camera")]
     public Camera Camera;
@@ -29,6 +31,7 @@ public class CameraGo : MonoBehaviour
     public float maxZoom = 50.0f;
 
     float zoom;
+    bool tempEM;
 
     void Start()
     {
@@ -45,8 +48,77 @@ public class CameraGo : MonoBehaviour
         //Vector3 Wpos = workspace.transform.position;
         //RectTransform camSize = workgui.GetComponent<RectTransform>();
 
+        //////////////////////////////////buttons////////////////////////////
+        Button ETB = EditTrigerButton.GetComponent<Button>();
+        ETB.onClick.AddListener(EditModeTriger);
+        ///////////////////////////////other////////////////////////////////
+        tempEM = EditMode;
 
+    }
 
+    void EditModeTriger()
+    {
+        Button ETB = EditTrigerButton.GetComponent<Button>();
+        
+        if (EditMode)
+        {
+            EditMode = false;
+            ETB.GetComponentInChildren<Text>().text = "E";
+        }
+        else
+        {
+            EditMode = true;
+            ETB.GetComponentInChildren<Text>().text = "U";
+        }
+    }
+    Vector2 openPosPanel = new Vector2(0.0f, -21.2f);
+    Vector2 closePosPanel = new Vector2(57.2f, -21.2f);
+     void OpenEditPanel()
+     {
+        //Debug.Log("Open");
+        float timeOfTravel = 5; //time after object reach a target place 
+         float currentTime = 0; // actual floting time 
+         float normalizedValue;
+         RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
+
+            while (currentTime <= timeOfTravel)
+             {
+                 currentTime += Time.deltaTime;
+                 normalizedValue = currentTime / timeOfTravel; // we normalize our time 
+
+                 rectTransform.anchoredPosition = Vector2.Lerp(closePosPanel, openPosPanel, normalizedValue);
+                // yield return null;
+             }
+
+         //IEnumerator LerpObject()
+         //{
+
+             
+         //}
+     }
+
+    void CloseEditPanel()
+    {
+        //Debug.Log("Close");
+        float timeOfTravel = 5; //time after object reach a target place 
+        float currentTime = 0; // actual floting time 
+        float normalizedValue;
+        RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
+
+        while (currentTime <= timeOfTravel)
+            {
+                currentTime += Time.deltaTime;
+                normalizedValue = currentTime / timeOfTravel; // we normalize our time 
+
+                rectTransform.anchoredPosition = Vector2.Lerp(openPosPanel, closePosPanel, normalizedValue);
+                //yield return null;
+            }
+        
+        //IEnumerator LerpObject()
+        //{
+
+            
+        //}
     }
 
     void Update()
@@ -84,6 +156,21 @@ public class CameraGo : MonoBehaviour
 
         //Debug.Log(((camPos.y - tmp/2 +(tmp/camSize.rect.height*cursorPos.y)) - (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y))) + " --> " + (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y)));
         //Debug.Log(camSize.rect.width + " " + camSize.rect.height);
+        //Debug.Log(GameObject.Find("EditPanel").GetComponent<RectTransform>().anchoredPosition);
+
+        if (tempEM != EditMode)
+        {
+            tempEM = EditMode;
+            //Debug.Log(EditMode);
+            if (EditMode)
+            {
+                OpenEditPanel();
+            }
+            else
+            {
+                CloseEditPanel();
+            }
+        }
 
     }
     //bool MBDown = false;
@@ -115,7 +202,7 @@ public class CameraGo : MonoBehaviour
                                     Input.mousePosition.y,
                                     planeDistance));
 
-        if (Input.GetMouseButtonDown(0) && !EditMode)
+        if (Input.GetMouseButtonDown(0) && !StopCam)
         {
             //cursorPos = Input.mousePosition;
             //StartcamPos = camPos;

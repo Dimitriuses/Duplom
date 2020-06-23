@@ -44,7 +44,12 @@ public class ShemObj : MonoBehaviour
     
     private void OnMouseDown()
     {
-        camera.GetComponent<CameraGo>().EditMode = true;
+        if (camera.GetComponent<CameraGo>().EditMode)
+        {
+            camera.GetComponent<CameraGo>().StopCam = true;
+        }
+
+
         //float planeDistance = Mathf.Abs(transform.position.z) + Mathf.Abs(camera.transform.position.z);
         //Vector3 screenPoint = camera.ScreenToWorldPoint(new Vector3(
         //                            Input.mousePosition.x,
@@ -76,7 +81,11 @@ public class ShemObj : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        camera.GetComponent<CameraGo>().EditMode = false;
+        if (camera.GetComponent<CameraGo>().EditMode)
+        {
+            camera.GetComponent<CameraGo>().StopCam = false;
+        }
+
         //dragPoint = Vector3.zero;
 
     }
