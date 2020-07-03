@@ -5,18 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class StartGame : MonoBehaviour
 {
-    void Start()
-    { 
-    }
-    void Update()
-    {  
-    }
   public void OnStartGameClick()
     {     
         SceneManager.LoadScene("Game");
     }
-    public void OnApplicationQuit()
+    public void ExitPressed()
     {
+        Debug.Log("Exit pressed!");
         Application.Quit();
     }
 }
