@@ -81,6 +81,9 @@ namespace Assets.Scripts.Resources
                 case RID.Network:
                     Rezult += "Mbit";
                     break;
+                case RID.Experience:
+                    Rezult += "Xp";
+                    break;
                 default:
                     break;
             }

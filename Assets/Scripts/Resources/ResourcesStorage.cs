@@ -11,6 +11,7 @@ namespace Assets.Scripts.Resources
         public string NameDefaulMoney = "Money";
         public string NameDefaultElectricity = "Electricity";
         public string NameDefaultNetwork = "Network";
+        public string NameDefaultExperience = "Experience";
         //public string[] NamesTransleteToRID = new string[(int)RID];
         public Dictionary<RID, string> NameToRIDTranslete;
         List<ResourcesItem> Resources;
@@ -18,19 +19,19 @@ namespace Assets.Scripts.Resources
         public ResourcesStorage()
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(0, 0, 0);
+            AddDefaultResources(0, 0, 0, 0);
         }
 
-        public ResourcesStorage(int money = 0, int electrosity = 0, int network = 0)
+        public ResourcesStorage(int money = 0, int electrosity = 0, int network = 0, int experience = 0)
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(money, electrosity, network);
+            AddDefaultResources(money, electrosity, network, experience);
         }
 
-        public ResourcesStorage(List<ResourcesItem> resources, int money = 0, int electrosity = 0, int network = 0)
+        public ResourcesStorage(List<ResourcesItem> resources, int money = 0, int electrosity = 0, int network = 0, int experience = 0)
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(money, electrosity, network);
+            AddDefaultResources(money, electrosity, network, experience);
             foreach (ResourcesItem item in resources)
             {
                 item.FixValue();
@@ -38,17 +39,19 @@ namespace Assets.Scripts.Resources
             }
         }
 
-        void AddDefaultResources(int money, int electrosity, int network)
+        void AddDefaultResources(int money, int electrosity, int network, int experience = 0)
         {
             Resources.Add(new ResourcesItem(RID.Money, NameDefaulMoney, RIType.Acumulation, money));
             Resources.Add(new ResourcesItem(RID.Electricity, NameDefaultElectricity, RIType.Acumulation, electrosity));
             Resources.Add(new ResourcesItem(RID.Network, NameDefaultNetwork, RIType.Acumulation, network));
-            
+            Resources.Add(new ResourcesItem(RID.Experience, NameDefaultExperience, RIType.Acumulation, experience));
+
             NameToRIDTranslete = new Dictionary<RID, string>()
             {
                 {RID.Money, NameDefaulMoney },
                 {RID.Electricity, NameDefaultElectricity },
-                {RID.Network, NameDefaultNetwork }
+                {RID.Network, NameDefaultNetwork },
+                {RID.Experience, NameDefaultExperience }
             };
             //NameToRIDTranslete.Add(RID.Money, NameDefaulMoney);
             //NameToRIDTranslete.Add(RID.Electricity, NameDefaultElectricity);
@@ -69,19 +72,57 @@ namespace Assets.Scripts.Resources
         public List<ResourcesItem> GetDefaultResources()
         {
             List<ResourcesItem> resources = new List<ResourcesItem>();
-            resources.Add(Resources.Find(x => x.Name == NameDefaulMoney));
-            resources.Add(Resources.Find(x => x.Name == NameDefaultElectricity));
-            resources.Add(Resources.Find(x => x.Name == NameDefaultNetwork));
+            foreach (KeyValuePair<RID, string> item in NameToRIDTranslete)
+            {
+                resources.Add(Resources.Find(x => x.Name == item.Value));
+            }
             return resources;
         }
 
         public List<ResourcesItem> GetOtherResources()
         {
             List<ResourcesItem> resources = new List<ResourcesItem>(Resources);
-            resources.Remove(resources.Find(x => x.Name == NameDefaulMoney));
-            resources.Remove(resources.Find(x => x.Name == NameDefaultElectricity));
-            resources.Remove(resources.Find(x => x.Name == NameDefaultNetwork));
+            foreach (KeyValuePair<RID,string> item in NameToRIDTranslete)
+            {
+                resources.Remove(resources.Find(x => x.Name == item.Value));
+            }
             return resources;
+        }
+
+        public List<ResourcesItem> FindByName(string name)
+        {
+            List<ResourcesItem> resources = new List<ResourcesItem>();
+            foreach (ResourcesItem item in Resources)
+            {
+                if (item.Name.Equals(name))
+                {
+                    resources.Add(item);
+                }
+            }
+            return resources;
+        }
+
+        public bool ChangeCountByName(string name,int count)
+        {
+            List<ResourcesItem> resources = FindByName(name);
+            if(resources.Count > 0)
+            {
+                foreach (ResourcesItem item in resources)
+                {
+                    if(item.Type == RIType.Acumulation)
+                    {
+                        ResourcesItem item1 = item;
+                        item1.Count = count;
+                        Resources.Remove(item);
+                        Resources.Add(item1);
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool DeleteResourceByName(string name)
@@ -173,13 +214,14 @@ namespace Assets.Scripts.Resources
 
         public void ToCalculateAll()
         {
-            ResourcesItem Money = Resources.Find(x => x.Name == NameDefaulMoney);
-            ResourcesItem Electricity = Resources.Find(x => x.Name == NameDefaultElectricity);
-            ResourcesItem Network = Resources.Find(x => x.Name == NameDefaultNetwork);
-
-            Money.Count = ToCalculateByRID(Money.Id);
-            Electricity.Count = ToCalculateByRID(Electricity.Id);
-            Network.Count = ToCalculateByRID(Network.Id);
+            //List<ResourcesItem> resources = new List<ResourcesItem>();
+            foreach (KeyValuePair<RID,string> item in NameToRIDTranslete)
+            {
+                ResourcesItem TMP = Resources.Find(x => x.Name == item.Value);
+                Resources.Remove(TMP);
+                TMP.Count = ToCalculateByRID(TMP.Id);
+                Resources.Add(TMP);
+            }
 
             List<ResourcesItem> Trash = SortByType(RIType.Profit);
             Trash.AddRange(SortByType(RIType.Waste));

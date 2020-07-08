@@ -11,7 +11,8 @@ namespace Assets.Scripts.Resources
     {
         Money,
         Electricity,
-        Network
+        Network,
+        Experience
     }
 
 }
