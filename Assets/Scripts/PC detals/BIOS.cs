@@ -8,7 +8,7 @@ namespace Assets.Scripts.PC_detals
 {
     public interface BIOS
     {
-        public bool isWorking();
-        public void Use(Cooling[] coolings, int i = 1);
+        bool isWorking();
+        void Use(Cooling[] coolings, int i = 1);
     }
 }
