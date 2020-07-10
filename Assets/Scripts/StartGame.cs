@@ -14,4 +14,8 @@ public class StartGame : MonoBehaviour
         Debug.Log("Exit pressed!");
         Application.Quit();
     }
+    public void Menu()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
