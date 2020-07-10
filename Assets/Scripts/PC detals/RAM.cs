@@ -46,7 +46,7 @@ namespace Assets.Scripts.PC_detals
                 _Health = (float)randomiser.GetRandomNumber(htemp, _Health);
                 foreach (Cooling item in coolings)
                 {
-                    item.Use();
+                    item.Use(1);
                 }
             }
         }

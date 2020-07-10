@@ -12,7 +12,7 @@ namespace Assets.Scripts.PC_detals
         SSD = 500000,
         M2 =  900000,
     }
-    public class SataStorage: BIOS
+    public class SataStorage: BIOS, PCIExpress
     {
         public int Capacity { get; }
         public SataStorageType Type { get; }
@@ -44,7 +44,7 @@ namespace Assets.Scripts.PC_detals
                 _Health = (float)randomiser.GetRandomNumber(htemp, _Health);
                 foreach (Cooling item in coolings)
                 {
-                    item.Use();
+                    item.Use(1);
                 }
             }
             
@@ -53,6 +53,11 @@ namespace Assets.Scripts.PC_detals
         public bool isWorking()
         {
             return _Health > 0;
+        }
+
+        public bool CanConnectToPCIE()
+        {
+            return Type == SataStorageType.M2;
         }
     }
 }

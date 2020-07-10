@@ -8,7 +8,7 @@ namespace Assets.Scripts.PC_detals
 {
     public enum CoolingType
     {
-        Active = 15,
+        Active = 25,
         Pasive = 50,
     }
     public class Cooling
@@ -34,13 +34,26 @@ namespace Assets.Scripts.PC_detals
             return _Health > 0;
         }
 
-        public void Use( int i = 1)
+        public void Use(float heatInput,int i = 1)
         {
             float tmp = i / 1000;
             if (isWorking() && _Health - tmp > 0) 
             {
-                _HeatWorking = (_HeatWorking / (int)Type) / _Health * (_Health - tmp);
-                _Health -= tmp;
+                float HHP = _HeatWorking / _Health;
+                float HETmp = (_HeatWorking / (int)Type) - heatInput;
+                //_HeatWorking = (_HeatWorking / (int)Type) / _Health * (_Health - tmp);
+                if (HETmp < 0)
+                {
+                    _HeatWorking += HETmp;
+                    _Health -= Math.Abs(HETmp)/HHP;
+                }
+                else
+                {
+                    _HeatWorking -= tmp * HHP;
+                    _Health -= tmp;
+                }
+               
+                
             }
         }
     }
