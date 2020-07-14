@@ -13,9 +13,11 @@ namespace Assets.Scripts
         public string nik;
         public ResourcesStorage ResourcesStorage;
 
-        public Player()
+        public Player(string nik = "Player")
         {
-
+            this.nik = nik;
+            ResourcesStorage = new ResourcesStorage();
         }
+
     }
 }

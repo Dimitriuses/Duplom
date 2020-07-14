@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using System;
 //using System.Diagnostics;
 
 public class CameraGo : MonoBehaviour
@@ -72,14 +73,16 @@ public class CameraGo : MonoBehaviour
         }
     }
     Vector2 openPosPanel = new Vector2(0.0f, -21.2f);
-    Vector2 closePosPanel = new Vector2(57.2f, -21.2f);
+    //Vector2 closePosPanel = new Vector2(57.2f, -21.2f);
      void OpenEditPanel()
      {
         //Debug.Log("Open");
         float timeOfTravel = 5; //time after object reach a target place 
-         float currentTime = 0; // actual floting time 
-         float normalizedValue;
-         RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
+        float currentTime = 0; // actual floting time 
+        float normalizedValue;
+        RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>();//getting reference to this component 
+        //Debug.Log(rectTransform.rect.x);
+        Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x)*2, openPosPanel.y);
 
             while (currentTime <= timeOfTravel)
              {
@@ -104,6 +107,8 @@ public class CameraGo : MonoBehaviour
         float currentTime = 0; // actual floting time 
         float normalizedValue;
         RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
+        Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x)*2, openPosPanel.y);
+
 
         while (currentTime <= timeOfTravel)
             {
