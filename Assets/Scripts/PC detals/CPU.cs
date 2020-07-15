@@ -53,10 +53,11 @@ namespace Assets.Scripts.PC_detals
                 {
                     Randomiser randomiser = new Randomiser();
                     float Htmp = HeatOutput / 100;
-                    Broken = randomiser.GetRandomNumber(HeatOutput - Htmp, Ctmp) < HeatOutput;
+                    float HR = (float)randomiser.GetRandomNumber(HeatOutput - Htmp, Ctmp);
+                    Broken = HR < HeatOutput;
                     foreach (Cooling item in coolings)
                     {
-                        item.Use();
+                        item.Use(HR);
                     }
                 }
             }
