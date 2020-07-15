@@ -7,6 +7,7 @@ public class ShemObj : MonoBehaviour
 
     public GameObject LaunchPoint;
     public Camera camera;
+    public Canvas UI;
 
     Vector3 initialPosition;
     Vector2 mousePosition;
@@ -44,9 +45,14 @@ public class ShemObj : MonoBehaviour
     
     private void OnMouseDown()
     {
-        if (camera.GetComponent<CameraGo>().EditMode)
+        if (UI.GetComponent<EditMode>().OnEditMode)
         {
             camera.GetComponent<CameraGo>().StopCam = true;
+            Locked = false;
+        }
+        else
+        {
+            Locked = true;
         }
 
 
@@ -81,7 +87,7 @@ public class ShemObj : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        if (camera.GetComponent<CameraGo>().EditMode)
+        if (UI.GetComponent<EditMode>().OnEditMode)
         {
             camera.GetComponent<CameraGo>().StopCam = false;
         }
