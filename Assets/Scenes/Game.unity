@@ -1541,9 +1541,10 @@ MonoBehaviour:
   Items:
   - {fileID: 11400000, guid: 51de19f3ba551434db892297eae63287, type: 2}
   - {fileID: 11400000, guid: 5dff363b321f1b54db570963a7d0e54a, type: 2}
-  _inventoryCellTemplate: {fileID: 8812391830285075890, guid: 3437592c30739c044837cb572253d378,
+  _inventoryCellTemplate: {fileID: 5762352058027566542, guid: 5fbc349795c940b43850c946bbcf85d2,
     type: 3}
   _container: {fileID: 1872479985}
+  _layoutContainer: {fileID: 1872479986}
   _draggingParent: {fileID: 1616837133}
 --- !u!1 &1621111733
 GameObject:
@@ -1818,7 +1819,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
 --- !u!114 &1872479987

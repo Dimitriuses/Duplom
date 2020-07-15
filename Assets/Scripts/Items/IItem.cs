@@ -11,5 +11,8 @@ namespace Assets.Scripts.Items
     {
         string Name { get; }
         Sprite UIIcon { get; }
+
+        float Height { get; }
+        float Width { get; }
     }
 }

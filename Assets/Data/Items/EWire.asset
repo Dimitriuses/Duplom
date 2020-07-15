@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Electrical Wire
   _uiItem: {fileID: -6384463445773428931, guid: bc55da96313d7144199720be8e9cded1,
     type: 3}
+  _height: 82.297554
+  _width: 100

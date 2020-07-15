@@ -14,6 +14,9 @@ namespace Assets.Scripts
     {
         [SerializeField] private Text _nameField;
         [SerializeField] private Image _iconField;
+        private float _prHeight;
+        private float _prWidth;
+        private RectTransform _rectTransform;
 
         private Transform _draggingParent;
         private Transform _originalParent;
@@ -22,11 +25,55 @@ namespace Assets.Scripts
         {
             _draggingParent = draggingParent;
             _originalParent = transform.parent;
+            //RectTransform rt = GetComponent<RectTransform>();
+            //Debug.Log(rt.sizeDelta);
+            //rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.width);
+            //Debug.Log(rt.sizeDelta);
+
         }
         public void Render(IItem item)
         {
             _nameField.text = item.Name;
             _iconField.sprite = item.UIIcon;
+            _prHeight = item.Height;
+            _prWidth = item.Width;
+            //RectTransform rt = GetComponent<RectTransform>();
+            //Debug.Log(rt.sizeDelta);
+            //rt.sizeDelta = new Vector2(46, 46);
+            //Debug.Log(rt.sizeDelta);
+        }
+
+        protected void Awake()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            //ScrollRect scrollRect = GetComponentInParent<ScrollRect>();
+            //if (scrollRect != null)
+            //    _scrollRectRectTransform = scrollRect.GetComponent<RectTransform>();
+        }
+        protected void OnEnable()
+        {
+            UpdateWidth();
+        }
+
+        protected void OnRectTransformDimensionsChange()
+        {
+            UpdateWidth(); // Update every time if parent changed
+        }
+
+        private void UpdateWidth()
+        {
+            //Debug.Log(_rectTransform.sizeDelta);
+            float tmp = _rectTransform.rect.size.x;
+
+            _rectTransform.sizeDelta = new Vector2(tmp, tmp);
+            _iconField.rectTransform.sizeDelta = new Vector2(((tmp / 100) * _prHeight) - 5, ((tmp / 100) * _prWidth) - 5);
+            _nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
+            _nameField.fontSize = (int)((8 / 51.70001) * tmp);
+        }
+
+        void Update()
+        {
+            Debug.Log(_rectTransform.rect.size.x);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
