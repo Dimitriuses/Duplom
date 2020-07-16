@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 85048036}
   - component: {fileID: 85048035}
   - component: {fileID: 85048037}
-  - component: {fileID: 85048038}
   - component: {fileID: 85048039}
   m_Layer: 0
   m_Name: PC_1
@@ -219,21 +218,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.11, y: 1.17, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &85048038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85048034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbce80e119707c4292735aa0e223391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LaunchPoint: {fileID: 0}
-  camera: {fileID: 374373316}
-  UI: {fileID: 1024867239}
 --- !u!114 &85048039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4293b0a9f55fd641ac2a86ac06576d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaunchPoint: {fileID: 335943054}
+  camera: {fileID: 374373316}
+  UI: {fileID: 1024867239}
 --- !u!1 &111709727
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,8 +801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bb8db0c515ccf4da88c16579d7d8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workspace: {fileID: 1621111733}
+  workSpace: {fileID: 1621111733}
+  workGui: {fileID: 1024867236}
   StopCam: 0
+  StopZoom: 0
   Camera: {fileID: 374373316}
   speed: 10
   minZoom: 5
@@ -903,7 +892,6 @@ GameObject:
   - component: {fileID: 621695941}
   - component: {fileID: 621695940}
   - component: {fileID: 621695942}
-  - component: {fileID: 621695943}
   - component: {fileID: 621695944}
   m_Layer: 0
   m_Name: PC_0
@@ -991,21 +979,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.17, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &621695943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621695939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbce80e119707c4292735aa0e223391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LaunchPoint: {fileID: 0}
-  camera: {fileID: 374373316}
-  UI: {fileID: 1024867239}
 --- !u!114 &621695944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1018,6 +991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4293b0a9f55fd641ac2a86ac06576d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LaunchPoint: {fileID: 1799439836}
+  camera: {fileID: 374373316}
+  UI: {fileID: 1024867239}
 --- !u!1 &793835170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1453,7 @@ GameObject:
   - component: {fileID: 1616837133}
   - component: {fileID: 1616837135}
   - component: {fileID: 1616837134}
+  - component: {fileID: 1616837137}
   - component: {fileID: 1616837136}
   m_Layer: 5
   m_Name: EditPanel
@@ -1551,17 +1528,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1616837132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa2eb10dae869f45abe296cb31df520, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d9061040ca542b42baf2e4079fe3a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 11400000, guid: 51de19f3ba551434db892297eae63287, type: 2}
   - {fileID: 11400000, guid: 5dff363b321f1b54db570963a7d0e54a, type: 2}
-  _inventoryCellTemplate: {fileID: 5762352058027566542, guid: 5fbc349795c940b43850c946bbcf85d2,
+  - {fileID: 11400000, guid: 89641008b9f58294fab9e9c7610ad313, type: 2}
+  _inventoryCellTemplate: {fileID: 7976531084180389594, guid: ec12be00e47191e449870efc9bc21079,
     type: 3}
   _container: {fileID: 1872479985}
   _layoutContainer: {fileID: 1872479986}
   _draggingParent: {fileID: 1616837133}
+  Camera: {fileID: 374373318}
+--- !u!61 &1616837137
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616837132}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1621111733
 GameObject:
   m_ObjectHideFlags: 0

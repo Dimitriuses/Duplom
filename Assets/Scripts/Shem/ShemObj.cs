@@ -14,6 +14,8 @@ public class ShemObj : MonoBehaviour
     float detaX, detaY;
     public static bool Locked;
 
+    protected delegate void onEntered();
+
 
     Vector3 dragPoint = Vector3.zero;
 

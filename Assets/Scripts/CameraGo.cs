@@ -8,15 +8,19 @@ using System.Runtime.InteropServices;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using System;
+using UnityEngine.SceneManagement;
 //using System.Diagnostics;
 
 public class CameraGo : MonoBehaviour
 {
     [Header("WorkSpace Options")]
-    public GameObject workspace;
+    public GameObject workSpace;
+    public GameObject workGui;
+
+    [Header("StopFunction")]
     public bool StopCam;
+    public bool StopZoom;
     //public bool EditMode;
-    GameObject workgui;
     //public Button EditTrigerButton;
 
     [Header("Camera")]
@@ -37,9 +41,9 @@ public class CameraGo : MonoBehaviour
     void Start()
     {
         //workspace = GameObject.Find("Shem WorkSpace");
-        workgui = GameObject.Find("Cam");
+        //workgui = GameObject.Find("Cam");
         //camPos = transform.position;
-        camPos = workspace.transform.position;//GetComponent<Vector3>();
+        camPos = workSpace.transform.position;//GetComponent<Vector3>();
         camPos.z = -10;
         cursorPos = new Vector3(-1, -1, -1);
         StartcamPos = cursorPos;
@@ -129,9 +133,9 @@ public class CameraGo : MonoBehaviour
 
     void Update()
     {
-        Vector3 size = workspace.transform.localScale;
-        Vector3 Wpos = workspace.transform.position;
-        RectTransform camSize = workgui.GetComponent<RectTransform>();
+        Vector3 size = workSpace.transform.localScale;
+        Vector3 Wpos = workSpace.transform.position;
+        RectTransform camSize = workGui.GetComponent<RectTransform>();
         float CWX = 0;
         float CWY = 0;
 
@@ -143,8 +147,8 @@ public class CameraGo : MonoBehaviour
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
         
 
-        CWX = workgui.transform.localScale.x * camSize.rect.width;
-        CWY = workgui.transform.localScale.y * camSize.rect.height;
+        CWX = workGui.transform.localScale.x * camSize.rect.width;
+        CWY = workGui.transform.localScale.y * camSize.rect.height;
 
         camPos.x = Mathf.Clamp(camPos.x, Wpos.x - size.x / 2 + CWX / 2, Wpos.x + size.x / 2 - CWX / 2);
         camPos.y = Mathf.Clamp(camPos.y, Wpos.y - size.y / 2 + CWY / 2, Wpos.y + size.y / 2 - CWY / 2);
@@ -158,7 +162,10 @@ public class CameraGo : MonoBehaviour
         //Debug.Log(size.x / (CWX / zoom) + " " + size.y / (CWY / zoom));
         maxZoom = size.y / (CWY / zoom);
 
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            onEsc();
+        }
 
         //Debug.Log(((camPos.y - tmp/2 +(tmp/camSize.rect.height*cursorPos.y)) - (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y))) + " --> " + (camPos.y - tmp / 2 + (tmp / camSize.rect.height * Input.mousePosition.y)));
         //Debug.Log(camSize.rect.width + " " + camSize.rect.height);
@@ -183,26 +190,29 @@ public class CameraGo : MonoBehaviour
     Vector3 dragPoint = Vector3.zero;
     void Move(RectTransform camSize,Vector3 size)
     {
+        if (!StopCam)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                camPos.y += speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                camPos.y -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                camPos.x -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                camPos.x += speed * Time.deltaTime;
+            }
+        }
         
-        if (Input.GetKey(KeyCode.W))
-        {
-            camPos.y += speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            camPos.y -= speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            camPos.x -= speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            camPos.x += speed * Time.deltaTime;
-        }
 
         //Vector3 empty = new Vector3(-1, -1, -1);
-        float planeDistance = Mathf.Abs(workspace.transform.position.z) + Mathf.Abs(Camera.transform.position.z);
+        float planeDistance = Mathf.Abs(workSpace.transform.position.z) + Mathf.Abs(Camera.transform.position.z);
         Vector3 screenPoint  = Camera.ScreenToWorldPoint( new Vector3(
                                     Input.mousePosition.x,
                                     Input.mousePosition.y,
@@ -240,23 +250,34 @@ public class CameraGo : MonoBehaviour
 
     void Zoom()
     {
-        if (Input.GetKey(KeyCode.KeypadMinus))
+        if (!StopZoom)
         {
-            zoom -= speed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.KeypadPlus))
-        {
-            zoom += speed * Time.deltaTime;
-        }
+            if (Input.GetKey(KeyCode.KeypadMinus))
+            {
+                zoom -= speed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.KeypadPlus))
+            {
+                zoom += speed * Time.deltaTime;
+            }
 
-        if (Input.mouseScrollDelta.y > 0)
-        {
-            zoom -= speed * Time.deltaTime * 10f;
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                zoom -= speed * Time.deltaTime * 10f;
+            }
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                zoom += speed * Time.deltaTime * 10f;
+            }
         }
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            zoom += speed * Time.deltaTime * 10f;
-        }
+ 
+    }
+
+    void onEsc()
+    {
+        Debug.Log("InPaused");
+        SceneManager.LoadScene("Pause");
+
     }
 
     //private void OnMouseDown()
