@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.PC_detals
 {
-    public interface PCI
+    public interface PCI : BIOS
     {
 
     }

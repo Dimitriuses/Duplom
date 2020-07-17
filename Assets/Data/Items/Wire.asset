@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wire
   m_EditorClassIdentifier: 
   _name: LAN Wire
-  _uiItem: {fileID: 2221616182191107254, guid: bc55da96313d7144199720be8e9cded1, type: 3}
-  _height: 82.29755
+  _uiItem: {fileID: 1855077376358737452, guid: 7b058d6181ff6174c8f9fc087a61c72f, type: 3}
+  _height: 83.34058
   _width: 100

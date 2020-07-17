@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EWire
   m_EditorClassIdentifier: 
   _name: Electrical Wire
-  _uiItem: {fileID: -6384463445773428931, guid: bc55da96313d7144199720be8e9cded1,
+  _uiItem: {fileID: -2361234419099898894, guid: 7b058d6181ff6174c8f9fc087a61c72f,
     type: 3}
-  _height: 82.29755
+  _height: 79.95139
   _width: 100

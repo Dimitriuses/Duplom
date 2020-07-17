@@ -47,14 +47,14 @@ public class EditPanel : MonoBehaviour
     {
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         RectTransform rect = GetComponent<RectTransform>();
-        Debug.Log(box.size + " " + rect.sizeDelta);
+        //Debug.Log(box.size + " " + rect.sizeDelta);
         //box.size = rect.sizeDelta;
     }
 
     void ReturnTextureName(string name)
     {
         AssetTool Aitem = Items.Find(x => x.Name == name);
-        Debug.Log(Aitem.UIIcon.name);
+        //Debug.Log(Aitem.UIIcon.name);
     }
     
     private void OnMouseEnter()

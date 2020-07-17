@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.PC_detals
-{
+
     public class Randomiser
     {
         Random Random;
@@ -33,4 +32,3 @@ namespace Assets.Scripts.PC_detals
             return (RIType)values.GetValue((int)GetRandomNumber(0, values.Length));
         }
     }
-}

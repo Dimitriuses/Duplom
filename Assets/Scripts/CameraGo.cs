@@ -150,15 +150,15 @@ public class CameraGo : MonoBehaviour
         CWX = workGui.transform.localScale.x * camSize.rect.width;
         CWY = workGui.transform.localScale.y * camSize.rect.height;
 
-        camPos.x = Mathf.Clamp(camPos.x, Wpos.x - size.x / 2 + CWX / 2, Wpos.x + size.x / 2 - CWX / 2);
-        camPos.y = Mathf.Clamp(camPos.y, Wpos.y - size.y / 2 + CWY / 2, Wpos.y + size.y / 2 - CWY / 2);
+        //camPos.x = Mathf.Clamp(camPos.x, Wpos.x - size.x / 2 + CWX / 2, Wpos.x + size.x / 2 - CWX / 2);
+        //camPos.y = Mathf.Clamp(camPos.y, Wpos.y - size.y / 2 + CWY / 2, Wpos.y + size.y / 2 - CWY / 2);
 
-        transform.position = camPos;
+        //transform.position = camPos;
         camPos = transform.position;
         
         Camera.orthographicSize = zoom;
         GameObject.Find("Terr").GetComponent<Text>().text = camPos.x + " " + camPos.y;
-
+        Debug.Log(camPos);
         //Debug.Log(size.x / (CWX / zoom) + " " + size.y / (CWY / zoom));
         maxZoom = size.y / (CWY / zoom);
 
@@ -275,7 +275,7 @@ public class CameraGo : MonoBehaviour
 
     void onEsc()
     {
-        Debug.Log("InPaused");
+        //Debug.Log("InPaused");
         SceneManager.LoadScene("Pause");
 
     }

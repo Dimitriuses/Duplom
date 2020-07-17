@@ -14,15 +14,22 @@ public class ShemObj : MonoBehaviour
     float detaX, detaY;
     public static bool Locked;
 
-    protected delegate void onEntered();
+    protected delegate void OnOperation();
+
+    
+    protected OnOperation _OnMouseDown;
+    protected OnOperation _OnMouseUp;
+    protected OnOperation _OnMouseEnter;
+    protected OnOperation _OnMouseExit;
 
 
     Vector3 dragPoint = Vector3.zero;
 
     // Start is called before the first frame update
-    private void Start()
+    protected void Start()
     {
         initialPosition = transform.position;
+        //Debug.Log("Start SemObj");
     }
 
     void Awake()
@@ -37,12 +44,14 @@ public class ShemObj : MonoBehaviour
     {
         LaunchPoint.SetActive(true);
         //Debug.Log("Enter");
+        _OnMouseEnter();
     }
 
     void OnMouseExit()
     {
         LaunchPoint.SetActive(false);
         //Debug.Log("Exit");
+        //_OnMouseExit();
     }
     
     private void OnMouseDown()
@@ -56,7 +65,7 @@ public class ShemObj : MonoBehaviour
         {
             Locked = true;
         }
-
+        //Debug.Log("MouseClickToSemObj");
 
         //float planeDistance = Mathf.Abs(transform.position.z) + Mathf.Abs(camera.transform.position.z);
         //Vector3 screenPoint = camera.ScreenToWorldPoint(new Vector3(
@@ -78,6 +87,7 @@ public class ShemObj : MonoBehaviour
             detaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             detaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
         }
+        //_OnMouseDown();
     }
     private void OnMouseDrag()
     {
@@ -95,7 +105,7 @@ public class ShemObj : MonoBehaviour
         }
 
         //dragPoint = Vector3.zero;
-
+        //_OnMouseUp();
     }
 
     // Update is called once per frame

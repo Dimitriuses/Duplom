@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.PC_detals
 {
-    public interface PCIExpress
+    public interface PCIExpress : BIOS
     {
         bool CanConnectToPCIE();
     }
