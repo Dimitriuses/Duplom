@@ -51,7 +51,7 @@ public class ShemObj : MonoBehaviour
     {
         LaunchPoint.SetActive(false);
         //Debug.Log("Exit");
-        //_OnMouseExit();
+        _OnMouseExit();
     }
     
     private void OnMouseDown()
@@ -87,7 +87,7 @@ public class ShemObj : MonoBehaviour
             detaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             detaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
         }
-        //_OnMouseDown();
+        _OnMouseDown();
     }
     private void OnMouseDrag()
     {
@@ -105,7 +105,7 @@ public class ShemObj : MonoBehaviour
         }
 
         //dragPoint = Vector3.zero;
-        //_OnMouseUp();
+        _OnMouseUp();
     }
 
     // Update is called once per frame

@@ -36,6 +36,7 @@ public class CameraGo : MonoBehaviour
     public float maxZoom = 50.0f;
 
     float zoom;
+    //RectTransform Wrect;
     //bool tempEM;
 
     void Start()
@@ -47,6 +48,7 @@ public class CameraGo : MonoBehaviour
         camPos.z = -10;
         cursorPos = new Vector3(-1, -1, -1);
         StartcamPos = cursorPos;
+        //Wrect = workGui.GetComponent<RectTransform>();
         //GetComponent<Camera>().orthographicSize = minZoom;
 
         //Vector3 size = workspace.transform.localScale;
@@ -145,20 +147,22 @@ public class CameraGo : MonoBehaviour
 
                 
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-        
 
-        CWX = workGui.transform.localScale.x * camSize.rect.width;
-        CWY = workGui.transform.localScale.y * camSize.rect.height;
 
-        //camPos.x = Mathf.Clamp(camPos.x, Wpos.x - size.x / 2 + CWX / 2, Wpos.x + size.x / 2 - CWX / 2);
-        //camPos.y = Mathf.Clamp(camPos.y, Wpos.y - size.y / 2 + CWY / 2, Wpos.y + size.y / 2 - CWY / 2);
+        CWX = camSize.rect.width * /*Wrect.localScale.x;*/ workGui.transform.localScale.x;
+        CWY = camSize.rect.height * /*Wrect.localScale.y;*/ workGui.transform.localScale.y;
 
-        //transform.position = camPos;
+        //Debug.Log(workGui.transform.localScale.y + " " + camSize.rect.height + " " + CWY);
+        //Debug.Log(" ");
+        camPos.x = Mathf.Clamp(camPos.x, Wpos.x - size.x / 2 + CWX / 2, Wpos.x + size.x / 2 - CWX / 2);
+        camPos.y = Mathf.Clamp(camPos.y, Wpos.y - size.y / 2 + CWY / 2, Wpos.y + size.y / 2 - CWY / 2);
+
+        transform.position = camPos;
         camPos = transform.position;
         
         Camera.orthographicSize = zoom;
         GameObject.Find("Terr").GetComponent<Text>().text = camPos.x + " " + camPos.y;
-        Debug.Log(camPos);
+        //Debug.Log(camPos);
         //Debug.Log(size.x / (CWX / zoom) + " " + size.y / (CWY / zoom));
         maxZoom = size.y / (CWY / zoom);
 

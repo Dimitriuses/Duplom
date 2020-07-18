@@ -12,6 +12,7 @@ public class Computer : ShemObj
     MotherCard MotherCard;
 
     bool isPowerOn;
+    bool isPowerOpen;
 
     int networkSocets;
     int electricalSocets;
@@ -19,6 +20,9 @@ public class Computer : ShemObj
     {
         base.Start();
         base._OnMouseEnter = COnMouseEnter;
+        base._OnMouseDown = OnMD;
+        base._OnMouseExit = OnMExit;
+        base._OnMouseUp = OnMUP;
         //Debug.Log("Start Computer");
         //Debug.Log(Power.GetComponent<Button>().onClick.ToString());
         //Power.GetComponent<Button>().onClick.AddListener(PowerTrigered);
@@ -30,8 +34,8 @@ public class Computer : ShemObj
     public void PowerTrigered()
     {
         isPowerOn = !isPowerOn;
-        Debug.Log("Power" + isPowerOn);
-        //RevizPowerSprite();
+        //Debug.Log("Power" + isPowerOn);
+        RevizPowerSprite();
     }
 
     void RevizPowerSprite()
@@ -49,6 +53,25 @@ public class Computer : ShemObj
     private void COnMouseEnter()
     {
         //Debug.Log("onPCEnter");
+    }
+
+    private void OnMD()
+    {
+        Power.GetComponent<Animator>().SetTrigger("Open");
+        isPowerOpen = true;
+    }
+
+    private void OnMExit()
+    {
+        if (isPowerOpen)
+        {
+            Power.GetComponent<Animator>().SetTrigger("Close");
+        }
+    }
+
+    private void OnMUP()
+    {
+
     }
 
 }
