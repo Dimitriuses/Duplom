@@ -8,6 +8,8 @@ public class Computer : ShemObj
     [Header("PCButtons")]
     public GameObject Power;
     public Sprite[] PowerBMat;
+    public CircleCollider2D UseColiider;
+    public CircleCollider2D EditCollider;
     //bool isMCARD, isCPU, isGPU, isRAM, isSATA;
     MotherCard MotherCard;
 
@@ -57,15 +59,26 @@ public class Computer : ShemObj
 
     private void OnMD()
     {
-        Power.GetComponent<Animator>().SetTrigger("Open");
-        isPowerOpen = true;
+        if (!isPowerOpen)
+        {
+            Power.GetComponent<Animator>().SetBool("isOpen", true);
+            //Power.GetComponent<Animator>();
+            isPowerOpen = true;
+        }
+
     }
 
     private void OnMExit()
     {
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
         if (isPowerOpen)
         {
-            Power.GetComponent<Animator>().SetTrigger("Close");
+            Power.GetComponent<Animator>().SetBool("isOpen", false);
+            isPowerOpen = false;
         }
     }
 
