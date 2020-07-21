@@ -59,7 +59,7 @@ public class Computer : ShemObj
 
     private void OnMD()
     {
-        if (!isPowerOpen)
+        if (!isPowerOpen && Locked)
         {
             Power.GetComponent<Animator>().SetBool("isOpen", true);
             //Power.GetComponent<Animator>();

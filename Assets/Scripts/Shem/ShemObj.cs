@@ -12,7 +12,7 @@ public class ShemObj : MonoBehaviour
     Vector3 initialPosition;
     Vector2 mousePosition;
     float detaX, detaY;
-    public static bool Locked;
+    public bool Locked;
 
     protected delegate void OnOperation();
 
