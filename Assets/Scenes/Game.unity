@@ -236,12 +236,16 @@ MonoBehaviour:
   LaunchPoint: {fileID: 335943054}
   camera: {fileID: 374373316}
   UI: {fileID: 1024867239}
+  Locked: 0
   Power: {fileID: 1158227445}
   PowerBMat:
   - {fileID: 5356437919710737207, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
   - {fileID: -7961288841998221234, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
   UseColiider: {fileID: 0}
   EditCollider: {fileID: 0}
+  PCMaterials:
+  - {fileID: 411557490847500162, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
+  - {fileID: -5778590093982927133, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
 --- !u!1 &111709727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,10 +1239,12 @@ MonoBehaviour:
   LaunchPoint: {fileID: 1799439836}
   camera: {fileID: 374373316}
   UI: {fileID: 1024867239}
+  Locked: 0
   Power: {fileID: 0}
   PowerBMat: []
   UseColiider: {fileID: 0}
   EditCollider: {fileID: 0}
+  PCMaterials: []
 --- !u!1 &767398390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -8, y: 0}
   m_SizeDelta: {x: 4.18, y: 4.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1230966278

@@ -10,11 +10,16 @@ public class Computer : ShemObj
     public Sprite[] PowerBMat;
     public CircleCollider2D UseColiider;
     public CircleCollider2D EditCollider;
+
+    [Header("Computer")]
+    public Sprite[] PCMaterials;
+    
     //bool isMCARD, isCPU, isGPU, isRAM, isSATA;
     MotherCard MotherCard;
 
     bool isPowerOn;
     bool isPowerOpen;
+    bool isButtonLock;
 
     int networkSocets;
     int electricalSocets;
@@ -35,6 +40,7 @@ public class Computer : ShemObj
 
     public void PowerTrigered()
     {
+
         isPowerOn = !isPowerOn;
         //Debug.Log("Power" + isPowerOn);
         RevizPowerSprite();
@@ -45,16 +51,19 @@ public class Computer : ShemObj
         if (isPowerOn)
         {
             Power.GetComponent<SpriteRenderer>().sprite = PowerBMat[0];
+            GetComponent<SpriteRenderer>().sprite = PCMaterials[0];
         }
         else
         {
             Power.GetComponent<SpriteRenderer>().sprite = PowerBMat[1];
+            GetComponent<SpriteRenderer>().sprite = PCMaterials[1];
         }
     }
 
     private void COnMouseEnter()
     {
         //Debug.Log("onPCEnter");
+        isButtonLock = true;
     }
 
     private void OnMD()
@@ -70,12 +79,12 @@ public class Computer : ShemObj
 
     private void OnMExit()
     {
-        
+        isButtonLock = false;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (isPowerOpen)
+        if (isPowerOpen && !isButtonLock)
         {
             Power.GetComponent<Animator>().SetBool("isOpen", false);
             isPowerOpen = false;
