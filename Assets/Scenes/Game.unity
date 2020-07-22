@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 85048035}
   - component: {fileID: 85048037}
   - component: {fileID: 85048039}
+  - component: {fileID: 85048038}
   m_Layer: 0
   m_Name: PC_1
   m_TagString: Untagged
@@ -222,6 +223,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.11, y: 1.17, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &85048038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85048034}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 303053dc764899e4ea875ad7c6060e51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &85048039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,18 +260,19 @@ MonoBehaviour:
   Locked: 0
   Power: {fileID: 1158227445}
   UserB:
-  - {fileID: 1284365813}
-  - {fileID: 119780552}
-  - {fileID: 1230966282}
-  - {fileID: 1795928366}
+  - {fileID: 1284365810}
+  - {fileID: 119780549}
+  - {fileID: 1230966279}
+  - {fileID: 1795928363}
   PowerBMat:
   - {fileID: 5356437919710737207, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
   - {fileID: -7961288841998221234, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
   UseColiider: {fileID: 0}
   EditCollider: {fileID: 0}
   RValue: 180
-  PValue: 100
+  PValue: -45
   Radius: -8
+  OValue: 100
   PCMaterials:
   - {fileID: 411557490847500162, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
   - {fileID: -5778590093982927133, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
@@ -1329,6 +1350,7 @@ MonoBehaviour:
   RValue: 0
   PValue: 0
   Radius: 0
+  OValue: 0
   PCMaterials: []
 --- !u!1 &767398390
 GameObject:
