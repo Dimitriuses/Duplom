@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Resources
 {
-    public struct ResourcesItem
+    //[CreateAssetMenu(menuName = "ResourcesItem")]
+    public class ResourcesItem
     {
         public RID Id;
         public string Name;

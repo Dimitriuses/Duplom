@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Assets.Scripts.PC_detals;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Resources
 {
+    //[CreateAssetMenu(menuName = "ResourcesStorage")]
     public class ResourcesStorage
     {
+
         public string NameDefaulMoney = "Money";
         public string NameDefaultElectricity = "Electricity";
         public string NameDefaultNetwork = "Network";
@@ -231,6 +235,36 @@ namespace Assets.Scripts.Resources
                 Resources.Remove(item);
             }
 
+        }
+
+        public void TestFill(int minimum,int maximum)
+        {
+            Randomiser randomiser = new Randomiser();
+            int Imax = (int)randomiser.GetRandomNumber(minimum, maximum);
+            for (int i = 0; i < Imax; i++)
+            {
+                ResourcesItem item = new ResourcesItem(
+                    randomiser.GetRandomRID(),
+                    "Test" + i,
+                    randomiser.GetRandomRIType(), 
+                    (int)randomiser.GetRandomNumber(1, int.MaxValue)
+                    );
+                
+                if(item.Type == RIType.Acumulation)
+                {
+                    item.Type = RIType.Profit;
+                }
+                item.FixValue();
+                Resources.Add(item);
+            }
+            
+        }
+        public void Show()
+        {
+            Resources.ForEach(item =>
+            {
+                Debug.Log(item.ToString());
+            });
         }
     }
 }

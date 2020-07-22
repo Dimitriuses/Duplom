@@ -10,13 +10,17 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class InventoryCell: MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+    public class InventoryCell: MonoBehaviour//, IDragHandler, IEndDragHandler, IBeginDragHandler
     {
         [SerializeField] private Text _nameField;
         [SerializeField] private Image _iconField;
+        [SerializeField] private Button _buttonField;
         private float _prHeight;
         private float _prWidth;
         private RectTransform _rectTransform;
+
+        public delegate void Run(string name);
+        Run run;
 
         private Transform _draggingParent;
         private Transform _originalParent;
@@ -31,12 +35,14 @@ namespace Assets.Scripts
             //Debug.Log(rt.sizeDelta);
 
         }
-        public void Render(IItem item)
+        public void Render(IItem item, Run run)
         {
             _nameField.text = item.Name;
             _iconField.sprite = item.UIIcon;
             _prHeight = item.Height;
             _prWidth = item.Width;
+            _buttonField.onClick.AddListener(OnClick);
+            this.run = run;
             //RectTransform rt = GetComponent<RectTransform>();
             //Debug.Log(rt.sizeDelta);
             //rt.sizeDelta = new Vector2(46, 46);
@@ -73,35 +79,41 @@ namespace Assets.Scripts
 
         void Update()
         {
-            Debug.Log(_rectTransform.rect.size.x);
+            //Debug.Log(_rectTransform.rect.size.x);
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public void OnClick()
         {
-            transform.parent = _draggingParent;
+            //Debug.Log("Entered " + _nameField.text);
+            run(_nameField.text);
         }
 
-        public void OnDrag(PointerEventData eventData)
-        {
-            transform.position = Input.mousePosition;
-        }
+        //public void OnBeginDrag(PointerEventData eventData)
+        //{
+        //    transform.parent = _draggingParent;
+        //}
 
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            int closestIndex = 0;
+        //public void OnDrag(PointerEventData eventData)
+        //{
+        //    transform.position = Input.mousePosition;
+        //}
 
-            for (int i = 0; i < _originalParent.transform.childCount; i++)
-            {
-                if(Vector3.Distance(transform.position, _originalParent.GetChild(i).position)<
-                    Vector3.Distance(transform.position, _originalParent.GetChild(closestIndex).position))
-                {
-                    closestIndex = i;
-                }
-            }
+        //public void OnEndDrag(PointerEventData eventData)
+        //{
+        //    int closestIndex = 0;
 
-            transform.parent = _originalParent;
-            transform.SetSiblingIndex(closestIndex);
-        }
+        //    for (int i = 0; i < _originalParent.transform.childCount; i++)
+        //    {
+        //        if(Vector3.Distance(transform.position, _originalParent.GetChild(i).position)<
+        //            Vector3.Distance(transform.position, _originalParent.GetChild(closestIndex).position))
+        //        {
+        //            closestIndex = i;
+        //        }
+        //    }
+
+        //    transform.parent = _originalParent;
+        //    transform.SetSiblingIndex(closestIndex);
+        //}
 
     }
 }

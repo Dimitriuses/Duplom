@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2393996daa7e4147a62bd708be62dd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dafa633637b2934a877401ee0481db4, type: 3}
   m_Name: EWire
   m_EditorClassIdentifier: 
   _name: Electrical Wire
-  _uiItem: {fileID: -6384463445773428931, guid: bc55da96313d7144199720be8e9cded1,
+  _uiItem: {fileID: -2361234419099898894, guid: 7b058d6181ff6174c8f9fc087a61c72f,
     type: 3}
-  _height: 82.297554
+  _height: 79.95139
   _width: 100
