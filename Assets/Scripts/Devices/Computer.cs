@@ -1,15 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Computer : ShemObj
 {
     [Header("PCButtons")]
     public GameObject Power;
+    public UnityEngine.UI.Button[] UserB;
     public Sprite[] PowerBMat;
     public CircleCollider2D UseColiider;
     public CircleCollider2D EditCollider;
+    public int RValue;
+    public float PValue;
+    public float Radius;
 
     [Header("Computer")]
     public Sprite[] PCMaterials;
@@ -96,4 +103,27 @@ public class Computer : ShemObj
 
     }
 
+    void ButtonPosChange(UnityEngine.UI.Button button, float rotateVaule)
+    {
+        float ammount = (PValue / 100) * rotateVaule / RValue;
+        float BRV = ammount * 360;
+        button.GetComponent<RectTransform>().position = new Vector3((float)Math.Cos(BRV)*Radius, (float)Math.Sin(BRV)*Radius, 0);
+        Debug.Log(BRV + " cos=" + Math.Cos(BRV) + "; sin=" + ConvertRadiansToDegrees(Math.Sin(BRV)));
+    }
+
+    private void Update()
+    {
+        int max = UserB.Length; 
+        for (int i = 0; i < max; i++)
+        {
+            ButtonPosChange(UserB[i], RValue / max * (i+1));
+        }
+    }
+
+
+    public static double ConvertRadiansToDegrees(double radians)
+    {
+        double degrees = (180 / Math.PI) * radians;
+        return (degrees);
+    }
 }
