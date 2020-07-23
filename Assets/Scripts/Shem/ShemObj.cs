@@ -12,7 +12,8 @@ public class ShemObj : MonoBehaviour
     Vector3 initialPosition;
     Vector2 mousePosition;
     float detaX, detaY;
-    public bool Locked;
+    public bool Locked; //{ get { return Locked; } set { Locked = value; _OnLockChange(); } }
+    
 
     protected delegate void OnOperation();
 
@@ -21,6 +22,7 @@ public class ShemObj : MonoBehaviour
     protected OnOperation _OnMouseUp;
     protected OnOperation _OnMouseEnter;
     protected OnOperation _OnMouseExit;
+    //protected OnOperation _OnLockChange;
 
 
     Vector3 dragPoint = Vector3.zero;
@@ -60,10 +62,12 @@ public class ShemObj : MonoBehaviour
         {
             camera.GetComponent<CameraGo>().StopCam = true;
             Locked = false;
+            //_OnLockChange();
         }
         else
         {
             Locked = true;
+            //_OnLockChange();
         }
         //Debug.Log("MouseClickToSemObj");
 
