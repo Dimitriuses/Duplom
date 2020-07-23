@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 85048035}
   - component: {fileID: 85048037}
   - component: {fileID: 85048039}
-  - component: {fileID: 85048038}
   m_Layer: 0
   m_Name: PC_1
   m_TagString: Untagged
@@ -223,25 +222,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.11, y: 1.17, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &85048038
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85048034}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 303053dc764899e4ea875ad7c6060e51, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &85048039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,21 +238,7 @@ MonoBehaviour:
   camera: {fileID: 374373316}
   UI: {fileID: 1024867239}
   Locked: 0
-  UserB:
-  - {fileID: 1158227450}
-  - {fileID: 1284365813}
-  - {fileID: 119780552}
-  - {fileID: 1230966282}
-  - {fileID: 1795928366}
-  PowerBMat:
-  - {fileID: 5356437919710737207, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
-  - {fileID: -7961288841998221234, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
-  UseColiider: {fileID: 0}
-  EditCollider: {fileID: 0}
-  RValue: 430
-  PValue: -45
-  Radius: -8
-  OValue: 100
+  UseMode: {fileID: 767398393}
   PCMaterials:
   - {fileID: 411557490847500162, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
   - {fileID: -5778590093982927133, guid: 7b1bf88f6054b9f419e3cb29f97b569a, type: 3}
@@ -444,8 +410,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 85048039}
-        m_MethodName: PowerTrigered
+      - m_Target: {fileID: 767398393}
+        m_MethodName: onButtonsTrigered
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1322,14 +1288,7 @@ MonoBehaviour:
   camera: {fileID: 374373316}
   UI: {fileID: 1024867239}
   Locked: 0
-  UserB: []
-  PowerBMat: []
-  UseColiider: {fileID: 0}
-  EditCollider: {fileID: 0}
-  RValue: 0
-  PValue: 0
-  Radius: 0
-  OValue: 0
+  UseMode: {fileID: 0}
   PCMaterials: []
 --- !u!1 &767398390
 GameObject:
@@ -1342,6 +1301,7 @@ GameObject:
   - component: {fileID: 767398391}
   - component: {fileID: 767398392}
   - component: {fileID: 767398393}
+  - component: {fileID: 767398394}
   m_Layer: 0
   m_Name: UseMode
   m_TagString: Untagged
@@ -1393,25 +1353,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 767398390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ebb1453f6e496e40b92604152d05ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 85048039}
-          m_MethodName: OnTriggerExit2D
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 767398392}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Collider2D, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  BLocked: 0
+  UserB:
+  - {fileID: 1158227450}
+  - {fileID: 1284365813}
+  - {fileID: 119780552}
+  - {fileID: 1230966282}
+  - {fileID: 1795928366}
+  PowerBMat:
+  - {fileID: 5356437919710737207, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
+  - {fileID: -7961288841998221234, guid: 050ff0ff2d53a404db9357143b94c6f4, type: 3}
+  UseColiider: {fileID: 0}
+  EditCollider: {fileID: 0}
+  RValue: 430
+  PValue: 0
+  Radius: -8
+  OValue: 0
+  isPowerOn: 0
+--- !u!95 &767398394
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767398390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 303053dc764899e4ea875ad7c6060e51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &813862404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1885,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 85048039}
+      - m_Target: {fileID: 767398393}
         m_MethodName: PowerTrigered
         m_Mode: 1
         m_Arguments:
@@ -2055,8 +2035,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 85048039}
-        m_MethodName: PowerTrigered
+      - m_Target: {fileID: 767398393}
+        m_MethodName: onButtonsTrigered
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2237,8 +2217,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 85048039}
-        m_MethodName: PowerTrigered
+      - m_Target: {fileID: 767398393}
+        m_MethodName: onButtonsTrigered
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2897,8 +2877,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 85048039}
-        m_MethodName: PowerTrigered
+      - m_Target: {fileID: 767398393}
+        m_MethodName: onButtonsTrigered
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

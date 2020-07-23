@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-public class Computer : ShemObj
+public class UseMode : MonoBehaviour
 {
     [Header("PCButtons")]
     //public GameObject Power;
+    public bool BLocked;
     public UnityEngine.UI.Button[] UserB;
     public Sprite[] PowerBMat;
     public CircleCollider2D UseColiider;
@@ -19,36 +16,23 @@ public class Computer : ShemObj
     public float PValue;
     public float Radius;
     public float OValue;
-    /// <summary>
-    /// ///////////////////////////////////////////////////////////////////////
-    /// </summary>
+
     RectTransform[] UserBRect;
-
-    [Header("Computer")]
-    public Sprite[] PCMaterials;
-    
-    //bool isMCARD, isCPU, isGPU, isRAM, isSATA;
-    MotherCard MotherCard;
     Animator Animator;
-
-    bool isPowerOn;
+    public bool isPowerOn;
     bool isPowerOpen;
-    bool isButtonLock;
 
-    int networkSocets;
-    int electricalSocets;
+    public delegate void OnOperation();
 
-    //int Aop;
-    //int Acl;
-    //int Ajp;
-    //int Adv;
+    public OnOperation OnPover;
+
     private void Start()
     {
-        base.Start();
-        base._OnMouseEnter = COnMouseEnter;
-        base._OnMouseDown = OnMD;
-        base._OnMouseExit = OnMExit;
-        base._OnMouseUp = OnMUP;
+        //base.Start();
+        //base._OnMouseEnter = COnMouseEnter;
+        //base._OnMouseDown = OnMD;
+        //base._OnMouseExit = OnMExit;
+        //base._OnMouseUp = OnMUP;
         //base._OnLockChange = isLockedChange;
         Animator = GetComponent<Animator>();
         Animator.SetTrigger("Close");
@@ -82,15 +66,9 @@ public class Computer : ShemObj
     {
 
         isPowerOn = !isPowerOn;
-        //UnityEngine.Debug.Log("Power" + isPowerOn);
+        UnityEngine.Debug.Log("Power" + isPowerOn);
         RevizPowerSprite();
-        
-    }
-
-    public void isLockedChange()
-    {
-        //UnityEngine.Debug.Log(Locked);
-       
+        OnPover();
     }
 
     void RevizPowerSprite()
@@ -99,34 +77,34 @@ public class Computer : ShemObj
         {
             //Power.GetComponent<SpriteRenderer>().sprite = PowerBMat[0];
             UserB[0].GetComponent<SpriteRenderer>().sprite = PowerBMat[0];
-            GetComponent<SpriteRenderer>().sprite = PCMaterials[1];
+            //GetComponent<SpriteRenderer>().sprite = PCMaterials[1];
             Animator.SetTrigger("Open");
         }
         else
         {
             //Power.GetComponent<SpriteRenderer>().sprite = PowerBMat[1];
-            UserB[0].GetComponent<SpriteRenderer>().sprite = PowerBMat[0];
-            GetComponent<SpriteRenderer>().sprite = PCMaterials[0];
+            UserB[0].GetComponent<SpriteRenderer>().sprite = PowerBMat[1];
+            //GetComponent<SpriteRenderer>().sprite = PCMaterials[0];
             Animator.SetTrigger("Close");
         }
     }
 
-    private void COnMouseEnter()
+    public void COnMouseEnter()
     {
         //Debug.Log("onPCEnter");
-        isButtonLock = true;
+        //isButtonLock = true;
     }
 
-    private void OnMD()
+    public void OnMD()
     {
-        if (!isPowerOpen && Locked)
+        if (!isPowerOpen && BLocked)
         {
             //Power.GetComponent<Animator>().SetBool("isOpen", true);
             //Power.GetComponent<Animator>();
             isPowerOpen = true;
             Animator.SetTrigger("Jump");
         }
-        else if(isPowerOpen)
+        else if (isPowerOpen)
         {
             //Power.GetComponent<Animator>().SetBool("isOpen", false);
             isPowerOpen = false;
@@ -135,9 +113,9 @@ public class Computer : ShemObj
 
     }
 
-    private void OnMExit()
+    public void OnMExit()
     {
-        isButtonLock = false;
+        //isButtonLock = false;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
@@ -150,7 +128,7 @@ public class Computer : ShemObj
         //}
     }
 
-    private void OnMUP()
+    public void OnMUP()
     {
 
     }
@@ -167,13 +145,13 @@ public class Computer : ShemObj
 
     Vector3 ButtonPosMove(Vector3 vector3, float z)
     {
-        return new Vector3((vector3.x/100)*OValue, (vector3.y/100)*OValue, z);
+        return new Vector3((vector3.x / 100) * OValue, (vector3.y / 100) * OValue, z);
     }
 
     private void Update()
     {
 
-        int max = UserB.Length; 
+        int max = UserB.Length;
         for (int i = 0; i < max; i++)
         {
             //ButtonPosChange(UserB[i], RValue / max * (i+1));
@@ -182,8 +160,8 @@ public class Computer : ShemObj
             UserB[i].GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, (255 / 100) * OValue);
             UserB[i].interactable = (OValue != 0);
         }
-        
-        
+
+
     }
 
 
