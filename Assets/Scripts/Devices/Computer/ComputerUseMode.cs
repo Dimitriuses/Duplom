@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseMode : MonoBehaviour
+public class ComputerUseMode : MonoBehaviour
 {
     [Header("PCButtons")]
     //public GameObject Power;
     public bool BLocked;
     public UnityEngine.UI.Button[] UserB;
     public Sprite[] PowerBMat;
-    public CircleCollider2D UseColiider;
-    public CircleCollider2D EditCollider;
     public int RValue;
     public float PValue;
     public float Radius;

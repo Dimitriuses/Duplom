@@ -10,7 +10,10 @@ using UnityEngine.UIElements;
 public class Computer : ShemObj
 {
     [Header("UseMode")]
-    public UseMode UseMode;
+    public ComputerUseMode UseMode;
+
+    [Header("EditMode")]
+
 
     [Header("Computer")]
     public Sprite[] PCMaterials;
@@ -30,10 +33,10 @@ public class Computer : ShemObj
     private void Start()
     {
         base.Start();
-        base._OnMouseEnter = UseMode.COnMouseEnter;
-        base._OnMouseDown = UseMode.OnMD;
-        base._OnMouseExit = UseMode.OnMExit;
-        base._OnMouseUp = UseMode.OnMUP;
+        base._OnMouseEnter = PCOnMouseEnter;
+        base._OnMouseDown = PCOnMouseDown;
+        base._OnMouseExit = PCOnMouseExit;
+        base._OnMouseUp = PCOnMouseUP;
         base._OnLockChange = isLockedChange;
         UseMode.OnPover = PowerTrigered;
     }
@@ -56,6 +59,36 @@ public class Computer : ShemObj
         }
 
 
+    }
+    private void PCOnMouseDown()
+    {
+        if (Locked)
+        {
+            UseMode.OnMD();
+        }
+    }
+    private void PCOnMouseUP()
+    {
+        if (Locked)
+        {
+            UseMode.OnMUP();
+        }
+    }
+
+    private void PCOnMouseEnter()
+    {
+        if (Locked)
+        {
+            UseMode.COnMouseEnter();
+        }
+    }
+
+    private void PCOnMouseExit()
+    {
+        if (Locked)
+        {
+            UseMode.OnMExit();
+        }
     }
 
 }

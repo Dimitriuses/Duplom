@@ -9,6 +9,9 @@ public class EditMode : MonoBehaviour
 {
     [Header("Options")]
     public bool OnEditMode;
+    public Color UseColor;
+    public Color EditColor;
+    public Camera camera;
 
     [Header("Buttons")]
     public Button EditTrigerButton;
@@ -43,11 +46,13 @@ public class EditMode : MonoBehaviour
         {
             OnEditMode = false;
             ETB.GetComponentInChildren<Text>().text = "E";
+            camera.backgroundColor = UseColor;
         }
         else
         {
             OnEditMode = true;
             ETB.GetComponentInChildren<Text>().text = "U";
+            camera.backgroundColor = EditColor;
         }
         //Resources.TestFill(20,50);
         //Resources.Show();
