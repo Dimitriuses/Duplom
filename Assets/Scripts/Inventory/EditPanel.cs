@@ -45,10 +45,10 @@ public class EditPanel : MonoBehaviour
     }
     void UpdateColiderSize()
     {
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
+        BoxCollider box = GetComponent<BoxCollider>();
         RectTransform rect = GetComponent<RectTransform>();
-        //Debug.Log(box.size + " " + rect.sizeDelta);
-        //box.size = rect.sizeDelta;
+        box.size = new Vector3(rect.rect.width, rect.rect.height, 1);
+        //Debug.Log(box.size + " " + rect.rect);
     }
 
     void ReturnTextureName(string name)

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ShemObj : MonoBehaviour
 {
-
     public GameObject LaunchPoint;
     public Camera camera;
     public Canvas UI;
+
+    PhysicalAdress Address;
 
     Vector3 initialPosition;
     Vector2 mousePosition;
@@ -27,19 +28,25 @@ public class ShemObj : MonoBehaviour
 
     Vector3 dragPoint = Vector3.zero;
 
-    // Start is called before the first frame update
+    public void InitTransform(Vector3 position)
+    {
+        transform.position = position;
+        Start();
+    }
     protected void Start()
     {
+        Address = new PhysicalAdress();
+        Debug.Log(Address.Adress);
         initialPosition = transform.position;
         //Debug.Log("Start SemObj");
     }
 
     void Awake()
     {
-        Transform launchPointTrans = transform.Find("LauncPoint");
-        LaunchPoint = launchPointTrans.gameObject;
+        //Transform launchPointTrans = transform.Find("LauncPoint");
+        //LaunchPoint = launchPointTrans.gameObject;
         LaunchPoint.SetActive(false);
-
+        
     }
 
     void OnMouseEnter()

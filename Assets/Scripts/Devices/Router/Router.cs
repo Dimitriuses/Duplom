@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Router : ShemObj
 {
-    // Start is called before the first frame update
+    [Header("UseMode")]
+    public RouterUseMode UseMode;
     void Start()
     {
         base.Start();
@@ -13,16 +14,18 @@ public class Router : ShemObj
         base._OnMouseUp = ROnMouseUp;
         base._OnMouseEnter = ROnMouseEnter;
         base._OnMouseExit = ROnMouseExit;
+
     }
 
     private void ROnLockedChange()
     {
-        
+        UseMode.BLocked = Locked;
+        //Debug.Log(base.Locked);
     }
 
     private void ROnMouseDown()
     {
-        
+        UseMode.OnMD();
     }
 
     private void ROnMouseUp()

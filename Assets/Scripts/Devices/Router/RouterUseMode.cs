@@ -26,8 +26,11 @@ public class RouterUseMode : MonoBehaviour
     public float IValue;
 
     RectTransform[] UserBRect;
+    SpriteRenderer[] UseBRender;
     RectTransform PowerRect;
+    SpriteRenderer PoverRender;
     RectTransform RebootRect;
+    SpriteRenderer RebootRenderer;
     Animator Animator;
     public bool isPowerOn;
     bool isPowerOpen;
@@ -41,13 +44,77 @@ public class RouterUseMode : MonoBehaviour
         Animator = GetComponent<Animator>();
         //Animator.SetTrigger("Close");
         UserBRect = new RectTransform[UserB.Length];
+        UseBRender = new SpriteRenderer[UserB.Length];
         for (int i = 0; i < UserB.Length; i++)
         {
             UserBRect[i] = UserB[i].GetComponent<RectTransform>();
+            UseBRender[i] = UserB[i].GetComponent<SpriteRenderer>();
         }
         PowerRect = PowerB.GetComponent<RectTransform>();
+        PoverRender = PowerB.GetComponent<SpriteRenderer>();
         RebootRect = RebootB.GetComponent<RectTransform>();
+        RebootRenderer = RebootB.GetComponent<SpriteRenderer>();
         isPowerOn = false;
+    }
+
+    public void onRebootTrigered()
+    {
+        if (!isPowerOn)
+        {
+            PowerTrigered();
+        }
+    }
+
+    public void onButtonsTrigered()
+    {
+        //UnityEngine.Debug.Log("Button Trigered");
+        if (!isPowerOn)
+        {
+            PowerTrigered();
+        }
+    }
+
+    public void PowerTrigered()
+    {
+
+        isPowerOn = !isPowerOn;
+        //UnityEngine.Debug.Log("Power" + isPowerOn);
+        RevizPowerSprite();
+        //OnPover();
+    }
+
+    void RevizPowerSprite()
+    {
+        if (isPowerOn)
+        {
+            PoverRender.sprite = PowerBMat[0];
+            Animator.SetTrigger("Open");
+            Animator.SetBool("isOn", true);
+        }
+        else
+        {
+            PoverRender.sprite = PowerBMat[1];
+            Animator.SetTrigger("Close");
+            Animator.SetBool("isOn", false);
+        }
+    }
+
+    public void OnMD()
+    {
+        if (!isPowerOpen && BLocked)
+        {
+            //Power.GetComponent<Animator>().SetBool("isOpen", true);
+            //Power.GetComponent<Animator>();
+            isPowerOpen = true;
+            Animator.SetTrigger("Jump");
+        }
+        else if (isPowerOpen)
+        {
+            //Power.GetComponent<Animator>().SetBool("isOpen", false);
+            isPowerOpen = false;
+            Animator.SetTrigger("Drive");
+        }
+
     }
 
     // Update is called once per frame
@@ -72,11 +139,15 @@ public class RouterUseMode : MonoBehaviour
         }
         float FinishY = StartY + Haight;
         Vector2 StartV = new Vector2(StartX, FinishY);
+        Color color = new Color(255, 255, 255, (255 / 100) * OValue);
         PowerRect.anchoredPosition = ButtonPosMove(OpenCloseButtons(StartV, new Vector2(StartX, FinishY)));
+        PoverRender.color = color;
         RebootRect.anchoredPosition = ButtonPosMove(OpenCloseButtons(StartV, new Vector2(StartX + RValue, FinishY)));
+        RebootRenderer.color = color;
         for (int i = 0; i < UserBRect.Length; i++)
         {
             UserBRect[i].anchoredPosition = ButtonPosMove(OpenCloseButtons(StartV, new Vector2(StartX - RValue, FinishY + Haight * i)));
+            UseBRender[i].color = color;
         }
     }
 

@@ -64,7 +64,7 @@ public class ComputerUseMode : MonoBehaviour
     {
 
         isPowerOn = !isPowerOn;
-        UnityEngine.Debug.Log("Power" + isPowerOn);
+        //UnityEngine.Debug.Log("Power" + isPowerOn);
         RevizPowerSprite();
         OnPover();
     }
