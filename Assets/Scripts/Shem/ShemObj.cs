@@ -8,7 +8,7 @@ public class ShemObj : MonoBehaviour
     public Camera camera;
     public Canvas UI;
 
-    PhysicalAdress Address;
+    public PhysicalAdress Address;
 
     Vector3 initialPosition;
     Vector2 mousePosition;

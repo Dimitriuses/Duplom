@@ -10,7 +10,7 @@ using UnityEngine.WSA;
 //[CreateAssetMenu(menuName = "Save")]
 public class Saving//: ISerializationCallbackReceiver
 {
-    public Folder Path;// => _path;
+    //public Folder Path;// => _path;
     public string Name;// => _name;
     public DateTime Date;// => _date;
 
