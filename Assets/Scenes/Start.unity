@@ -3032,7 +3032,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 605.17053}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &687867043
 MonoBehaviour:
@@ -3043,9 +3043,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 687867041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecb7e6f9de9a384a9a1bc0813f2b652, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 0
 --- !u!1 &722370232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4775,7 +4788,6 @@ GameObject:
   - component: {fileID: 1233000185}
   - component: {fileID: 1233000184}
   - component: {fileID: 1233000183}
-  - component: {fileID: 1233000182}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -4807,18 +4819,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 256}
   m_SizeDelta: {x: 1500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1233000182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233000180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecb7e6f9de9a384a9a1bc0813f2b652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1233000183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6984,6 +6984,7 @@ GameObject:
   - component: {fileID: 1884430281}
   - component: {fileID: 1884430280}
   - component: {fileID: 1884430279}
+  - component: {fileID: 1884430282}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -7091,6 +7092,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884430277}
   m_CullTransparentMesh: 0
+--- !u!114 &1884430282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884430277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdf3d9ce07a1294890cfa8d0d6dde34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContentPanel: {fileID: 687867042}
+  ListItemPrefab: {fileID: 4568107611469292012, guid: 11d88c2b0d747ba48a1177f91d2cee50,
+    type: 3}
 --- !u!1 &1895979730
 GameObject:
   m_ObjectHideFlags: 0

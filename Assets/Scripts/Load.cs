@@ -1,23 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Load : MonoBehaviour
+public class Load
 {
-    //Start is called before the first frame update
-    void Start()
+    public string Name, Description;
+    public Load(string name, string description)
     {
-        List<string> listOfSaves = new List<string>()
-{
-    "John Doe",
-    "Jane Doe",
-    "Joe Doe"
-};
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Name = name;
+        Description = description;
     }
 }
