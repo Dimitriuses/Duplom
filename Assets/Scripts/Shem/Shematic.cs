@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Shematic: MonoBehaviour
 {
+    public GameObject WorkSpace;
     public RenderNetworkConnections RenderNetworkConnections;
     List<ShemObj> Objects;
     List<NetworkConnection> NetworkConnections;
@@ -15,26 +16,39 @@ public class Shematic: MonoBehaviour
     {
         Objects = new List<ShemObj>();
         NetworkConnections = new List<NetworkConnection>();
-        ShemFill();
-        RenderConnection(NetworkConnections[0]);
+        //Debug.Log("new complete");
+        
     }
 
-    public Shematic(List<ShemObj> objs = null, List<NetworkConnection> connections = null)
+    private void Awake()
     {
-        Objects = (objs != null) ? objs : new List<ShemObj>();
-        NetworkConnections = (connections != null) ? connections : new List<NetworkConnection>();
         ShemFill();
+        Debug.Log("fill complete");
         RenderConnection(NetworkConnections[0]);
+        Debug.Log("Render complete");
     }
+
+    //public Shematic(List<ShemObj> objs = null, List<NetworkConnection> connections = null)
+    //{
+    //    Objects = (objs != null) ? objs : new List<ShemObj>();
+    //    NetworkConnections = (connections != null) ? connections : new List<NetworkConnection>();
+    //    ShemFill();
+    //    RenderConnection(NetworkConnections[0]);
+    //}
 
     public void ShemFill()
     {
-        List<ShemObj> objs = GetComponents<ShemObj>().ToList();
+        Debug.Log("Shem fill start");
+        List<ShemObj> objs = WorkSpace.GetComponentsInChildren<ShemObj>().ToList();
+        Debug.Log("ShemObj to list compete " + objs.Count);
         foreach (ShemObj item in objs)
         {
             Objects.Add(item);
+            Debug.Log(item.Address.Adress);
         }
+        Debug.Log("forech Shem complete");
         NetworkConnections.Add(new NetworkConnection() { FirstAdress = Objects[0].Address, SecondAdress = Objects[1].Address });
+        Debug.Log("Connection Shem complete");
     }
 
     public PhysicalAdress GetNextAddress( PhysicalAdress adress )
