@@ -3714,6 +3714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9969d55eb4f06b4bbe0ab62a2fb05ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorkSpace: {fileID: 878814685}
   RenderNetworkConnections: {fileID: 1968078418}
 --- !u!1 &1677756392
 GameObject:
