@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ShemObj : MonoBehaviour
 {
-
     public GameObject LaunchPoint;
     public Camera camera;
     public Canvas UI;
 
+    public PhysicalAdress Address;
+
     Vector3 initialPosition;
     Vector2 mousePosition;
     float detaX, detaY;
-    public bool Locked;
+    public bool Locked; //{ get { return Locked; } set { Locked = value; _OnLockChange(); } }
+    
 
     protected delegate void OnOperation();
 
@@ -21,23 +23,30 @@ public class ShemObj : MonoBehaviour
     protected OnOperation _OnMouseUp;
     protected OnOperation _OnMouseEnter;
     protected OnOperation _OnMouseExit;
+    protected OnOperation _OnLockChange;
 
 
     Vector3 dragPoint = Vector3.zero;
 
-    // Start is called before the first frame update
+    public void InitTransform(Vector3 position)
+    {
+        transform.position = position;
+        Start();
+    }
     protected void Start()
     {
+        Address = new PhysicalAdress();
+        Debug.Log(Address.Adress);
         initialPosition = transform.position;
         //Debug.Log("Start SemObj");
     }
 
     void Awake()
     {
-        Transform launchPointTrans = transform.Find("LauncPoint");
-        LaunchPoint = launchPointTrans.gameObject;
+        //Transform launchPointTrans = transform.Find("LauncPoint");
+        //LaunchPoint = launchPointTrans.gameObject;
         LaunchPoint.SetActive(false);
-
+        
     }
 
     void OnMouseEnter()
@@ -60,10 +69,12 @@ public class ShemObj : MonoBehaviour
         {
             camera.GetComponent<CameraGo>().StopCam = true;
             Locked = false;
+            _OnLockChange();
         }
         else
         {
             Locked = true;
+            _OnLockChange();
         }
         //Debug.Log("MouseClickToSemObj");
 

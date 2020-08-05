@@ -86,6 +86,7 @@ namespace Assets.Scripts
         {
             //Debug.Log("Entered " + _nameField.text);
             run(_nameField.text);
+            
         }
 
         //public void OnBeginDrag(PointerEventData eventData)
