@@ -24,6 +24,7 @@ public class ShemObj : MonoBehaviour
     protected OnOperation _OnMouseEnter;
     protected OnOperation _OnMouseExit;
     protected OnOperation _OnLockChange;
+    //public OnOperation OnCangeTransform;
 
 
     Vector3 dragPoint = Vector3.zero;
@@ -35,8 +36,8 @@ public class ShemObj : MonoBehaviour
     }
     protected void Start()
     {
-        Address = new PhysicalAdress();
-        Debug.Log(Address.Adress);
+        //Address = new PhysicalAdress();
+        //Debug.Log(Address.Adress);
         initialPosition = transform.position;
         //Debug.Log("Start SemObj");
     }
@@ -119,8 +120,19 @@ public class ShemObj : MonoBehaviour
         _OnMouseUp();
     }
 
+    protected void OnTransformChildrenChanged()
+    {
+        //Debug.Log(transform.position);
+    }
+
+    protected void OnTransformParentChanged()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
+        
     }
 }

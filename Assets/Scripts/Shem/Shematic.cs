@@ -7,34 +7,52 @@ using UnityEngine;
 
 public class Shematic: MonoBehaviour
 {
+    public GameObject WorkSpace;
     public RenderNetworkConnections RenderNetworkConnections;
-    List<ShemObj> Objects;
+    public List<ShemObj> Objects;
     List<NetworkConnection> NetworkConnections;
 
     private void Start()
     {
-        Objects = new List<ShemObj>();
+        //Objects = new List<ShemObj>();
+        //NetworkConnections = new List<NetworkConnection>();
+        //Debug.Log("new complete");
+        
+    }
+
+    private void Awake()
+    {
         NetworkConnections = new List<NetworkConnection>();
         ShemFill();
         RenderConnection(NetworkConnections[0]);
     }
 
-    public Shematic(List<ShemObj> objs = null, List<NetworkConnection> connections = null)
-    {
-        Objects = (objs != null) ? objs : new List<ShemObj>();
-        NetworkConnections = (connections != null) ? connections : new List<NetworkConnection>();
-        ShemFill();
-        RenderConnection(NetworkConnections[0]);
-    }
+    //public Shematic(List<ShemObj> objs = null, List<NetworkConnection> connections = null)
+    //{
+    //    Objects = (objs != null) ? objs : new List<ShemObj>();
+    //    NetworkConnections = (connections != null) ? connections : new List<NetworkConnection>();
+    //    ShemFill();
+    //    RenderConnection(NetworkConnections[0]);
+    //}
 
     public void ShemFill()
     {
-        List<ShemObj> objs = GetComponents<ShemObj>().ToList();
-        foreach (ShemObj item in objs)
+        //Debug.Log("Shem fill start");
+        //List<ShemObj> objs = WorkSpace.GetComponentsInChildren<ShemObj>().ToList();
+        //Debug.Log("ShemObj to list compete " + objs.Count);
+        //foreach (ShemObj item in objs)
+        //{
+        //    Objects.Add(item);
+        //    Debug.Log(item.Address.Adress);
+        //}
+        //Debug.Log("forech Shem complete");
+        foreach (ShemObj item in Objects)
         {
-            Objects.Add(item);
+            item.Address = new PhysicalAdress();
         }
-        NetworkConnections.Add(new NetworkConnection() { FirstAdress = Objects[0].Address, SecondAdress = Objects[1].Address });
+        Debug.Log(Objects[0].Address.Adress + " " + Objects[1].Address.Adress);
+        NetworkConnection tmp = new NetworkConnection(Objects[0].Address, Objects[1].Address);
+        NetworkConnections.Add(tmp);
     }
 
     public PhysicalAdress GetNextAddress( PhysicalAdress adress )
@@ -58,7 +76,6 @@ public class Shematic: MonoBehaviour
             Point1 = new Vector2(transform1.position.x, transform1.position.y),
             Point2 = new Vector2(transform2.position.x, transform2.position.y)
         });
-        Debug.Log("Render");
         RenderNetworkConnections.Render();
     }
 }

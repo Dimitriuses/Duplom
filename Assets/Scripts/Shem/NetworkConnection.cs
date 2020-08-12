@@ -9,6 +9,12 @@ public class NetworkConnection
     public PhysicalAdress FirstAdress;
     public PhysicalAdress SecondAdress;
 
+    public NetworkConnection( PhysicalAdress first, PhysicalAdress second)
+    {
+        FirstAdress = first;
+        SecondAdress = second;
+    }
+
     public bool FindAdress(PhysicalAdress adress)
     {
         return FirstAdress.Equals(adress) || SecondAdress.Equals(adress);
