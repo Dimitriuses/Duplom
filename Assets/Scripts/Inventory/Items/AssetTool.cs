@@ -36,5 +36,12 @@ namespace Assets.Scripts.Items
         {
             throw new NotImplementedException();
         }
+
+        public void onClick()
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }
