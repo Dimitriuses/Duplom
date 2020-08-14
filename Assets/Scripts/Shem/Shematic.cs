@@ -49,10 +49,20 @@ public class Shematic: MonoBehaviour
         foreach (ShemObj item in Objects)
         {
             item.Address = new PhysicalAdress();
+            item.OnCangeTransform = ChangeConnections;
         }
         Debug.Log(Objects[0].Address.Adress + " " + Objects[1].Address.Adress);
         NetworkConnection tmp = new NetworkConnection(Objects[0].Address, Objects[1].Address);
         NetworkConnections.Add(tmp);
+    }
+
+    public void ChangeConnections()
+    {
+        RenderNetworkConnections.Items.Clear();
+        foreach (NetworkConnection item in NetworkConnections)
+        {
+            RenderConnection(item);
+        }
     }
 
     public PhysicalAdress GetNextAddress( PhysicalAdress adress )

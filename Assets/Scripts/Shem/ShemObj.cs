@@ -16,7 +16,7 @@ public class ShemObj : MonoBehaviour
     public bool Locked; //{ get { return Locked; } set { Locked = value; _OnLockChange(); } }
     
 
-    protected delegate void OnOperation();
+    public delegate void OnOperation();
 
     
     protected OnOperation _OnMouseDown;
@@ -24,7 +24,7 @@ public class ShemObj : MonoBehaviour
     protected OnOperation _OnMouseEnter;
     protected OnOperation _OnMouseExit;
     protected OnOperation _OnLockChange;
-    //public OnOperation OnCangeTransform;
+    public OnOperation OnCangeTransform;
 
 
     Vector3 dragPoint = Vector3.zero;
@@ -96,6 +96,7 @@ public class ShemObj : MonoBehaviour
         //Debug.Log(dragPoint + " - " + Input.GetAxis("Mouse X"));
         if (!Locked)
         {
+            
             detaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
             detaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
         }
@@ -105,6 +106,7 @@ public class ShemObj : MonoBehaviour
     {
         if (!Locked)
         {
+            OnCangeTransform();
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(mousePosition.x - detaX, mousePosition.y - detaY, initialPosition.z);
         }
@@ -120,15 +122,7 @@ public class ShemObj : MonoBehaviour
         _OnMouseUp();
     }
 
-    protected void OnTransformChildrenChanged()
-    {
-        //Debug.Log(transform.position);
-    }
-
-    protected void OnTransformParentChanged()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
