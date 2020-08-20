@@ -10,11 +10,20 @@ namespace Assets.Scripts.Resources
     public enum RID
     {
         /// <summary>
-        /// гроші
+        /// Гроші
         /// </summary>
         Money,
+        /// <summary>
+        /// Електроенергія
+        /// </summary>
         Electricity,
+        /// <summary>
+        /// Мережа
+        /// </summary>
         Network,
+        /// <summary>
+        /// Досвід
+        /// </summary>
         Experience
     }
 
