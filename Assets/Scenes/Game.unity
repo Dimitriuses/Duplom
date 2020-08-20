@@ -950,7 +950,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999992
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2802,7 +2802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &878814686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 182948938}
   m_HandleRect: {fileID: 182948937}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

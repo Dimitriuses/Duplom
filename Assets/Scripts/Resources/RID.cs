@@ -9,6 +9,9 @@ namespace Assets.Scripts.Resources
 {
     public enum RID
     {
+        /// <summary>
+        /// гроші
+        /// </summary>
         Money,
         Electricity,
         Network,
