@@ -949,7 +949,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813862406}
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1545,6 +1545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2c53896ffb9484d976bacdd97f2799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Money: {fileID: 444466744}
+  Experience: {fileID: 940093068}
+  Electrosity: {fileID: 1157482082}
 --- !u!1 &374373314
 GameObject:
   m_ObjectHideFlags: 0

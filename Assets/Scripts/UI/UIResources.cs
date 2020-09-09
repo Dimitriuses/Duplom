@@ -11,11 +11,14 @@ public class UIResources : MonoBehaviour
     public Text Electrosity;
     ResourcesStorage Resouces;
 
+
+
     void Start()
     {
         Resouces = new ResourcesStorage(111, 222, 333, 444);
     }
-    void Update()
+
+    void UpdateUpPanel()
     {
         List<ResourcesItem> resources = Resouces.GetDefaultResources();
         foreach (ResourcesItem item in resources)
@@ -24,14 +27,26 @@ public class UIResources : MonoBehaviour
             {
                 Money.text = item.Count.ToString();
             }
-            if (item.Name.Equals(Resouces.NameDefaultExperience))
-            {
-                Experience.text = item.Count.ToString();
-            }
-            if (item.Name.Equals(Resouces.NameDefaultElectricity))
-            {
-                Electrosity.text = item.Count.ToString();
-            }
-        }
+                    if (item.Name.Equals(Resouces.NameDefaultExperience))
+                    {
+                        Experience.text = item.Count.ToString();
+                    }
+                    if (item.Name.Equals(Resouces.NameDefaultElectricity))
+                    {
+                        Electrosity.text = item.Count.ToString();
+                    }
+                }
+    }
+
+    void UpdateStatusPanel()
+    {
+        Resouces.TestFill(10, 100);
+        List<ResourcesItem> resourcesMoney = Resouces.SortByRID(RID.Money);
+
+    }
+    void Update()
+    {
+        UpdateUpPanel();
+        UpdateStatusPanel();
     }
 }
