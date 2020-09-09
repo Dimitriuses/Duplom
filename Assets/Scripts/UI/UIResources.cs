@@ -2,24 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Resources;
+using UnityEngine.UI;
+
 public class UIResources : MonoBehaviour
 {
+    public Text Money;
+    public Text Experience;
+    public Text Electrosity;
     ResourcesStorage Resouces;
-    //public List<ResourcesItem> GetDefaultResources()
-    //{
-    //    List<ResourcesItem> resources = new List<ResourcesItem>();
-    //    foreach (KeyValuePair<RID, string> item in NameToRIDTranslete)
-    //    {
-    //        resources.Add(Resouces.Find(x => x.Name == item.Value));
-    //    }
-    //    return resources;
-    //}
+
     void Start()
     {
-       // Resources = new ResourcesStorage(TESTmoney, TESTelectricity, TESTnetwork, TESTexperience);
+        Resouces = new ResourcesStorage(111, 222, 333, 444);
     }
     void Update()
     {
-        
+        List<ResourcesItem> resources = Resouces.GetDefaultResources();
+        foreach (ResourcesItem item in resources)
+        {
+            if (item.Name.Equals(Resouces.NameDefaulMoney))
+            {
+                Money.text = item.Count.ToString();
+            }
+            if (item.Name.Equals(Resouces.NameDefaultExperience))
+            {
+                Experience.text = item.Count.ToString();
+            }
+            if (item.Name.Equals(Resouces.NameDefaultElectricity))
+            {
+                Electrosity.text = item.Count.ToString();
+            }
+        }
     }
 }
