@@ -11,6 +11,7 @@ namespace Assets.Scripts.Items
     public class AssetTool : ScriptableObject, ITool
     {
         public string Name => _name;
+        public IToolLogik Logik => _logik;
         public Sprite UIIcon => _uiItem;
 
         public float Height => _height;
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Items
         public float Width => _width;
 
         [SerializeField] private string _name;
+        [SerializeField] private IToolLogik _logik;
         [SerializeField] private Sprite _uiItem;
         [SerializeField] private float _height;
         [SerializeField] private float _width;
