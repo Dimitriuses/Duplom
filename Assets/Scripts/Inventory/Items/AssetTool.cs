@@ -39,7 +39,7 @@ namespace Assets.Scripts.Items
 
         public void onClick()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
        

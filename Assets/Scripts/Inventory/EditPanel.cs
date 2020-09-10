@@ -13,12 +13,15 @@ public class EditPanel : MonoBehaviour
     [SerializeField] private VerticalLayoutGroup _layoutContainer;
     [SerializeField] private Transform _draggingParent;
     public CameraGo Camera;
+    public PlayerCursor Cursor;
+    public AssetTool NoneTool;
 
     //delegate void Run(string name);
 
     public void OnEnable()
     {
         Render(Items);
+        Cursor.Tool = NoneTool;
     }
     public void Render(List<AssetTool> items)
     {
@@ -55,6 +58,16 @@ public class EditPanel : MonoBehaviour
     {
         AssetTool Aitem = Items.Find(x => x.Name == name);
         //Debug.Log(Aitem.UIIcon.name);
+        
+        if (Cursor.Tool.Name.Equals(Aitem.Name))
+        {
+            //Debug.Log("NoneTool");
+            Cursor.Tool = NoneTool;
+        }
+        else
+        {
+            Cursor.Tool = Aitem;
+        }
     }
     
     private void OnMouseEnter()
