@@ -85,7 +85,7 @@ public class RouterUseMode : MonoBehaviour
 
     void RevizPowerSprite()
     {
-        if (isPowerOn)
+        if (isPowerOn && isPowerOpen)
         {
             PoverRender.sprite = PowerBMat[0];
             Animator.SetTrigger("Open");
