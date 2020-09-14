@@ -42,6 +42,8 @@ public class UIResources : MonoBehaviour
     {
         Resouces.TestFill(10, 100);
         List<ResourcesItem> resourcesMoney = Resouces.SortByRID(RID.Money);
+        List<ResourcesItem> resourcesExperience = Resouces.SortByRID(RID.Experience);
+        List<ResourcesItem> resourcesElectrosity = Resouces.SortByRID(RID.Electricity);
 
     }
     void Update()
