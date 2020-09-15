@@ -42,6 +42,7 @@ public abstract class AssetTool : ScriptableObject, ITool
 
     public void onCursor()
     {
+        //Debug.Log("onCursorAbstract");
         //throw new NotImplementedException();
     }
 }

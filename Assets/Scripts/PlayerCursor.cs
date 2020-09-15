@@ -7,21 +7,27 @@ using UnityEngine.UI;
 public class PlayerCursor : MonoBehaviour
 {
     public ITool Tool;
-    BoxCollider Collider;
+    BoxCollider2D Collider;
     SpriteRenderer Sprite;
+
+    bool isOnTheShemObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        Collider = GetComponent<BoxCollider>();
+        Collider = GetComponent<BoxCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
+
+        //Collider.
+        isOnTheShemObj = false;
+        OnChangeTool();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -8);
-        
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 89.9f);
+        //Debug.Log(transform.position);
     }
 
     public void OnChangeTool()
@@ -39,9 +45,50 @@ public class PlayerCursor : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
+        if(tmpobj != null)
+        {
+            tmpobj.LaunchPoint.SetActive(true);
+            isOnTheShemObj = true;
+        }
+        //Debug.Log(tmpobj.GetType());
+        //Debug.Log("isTrigered");
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
+        if (isOnTheShemObj && tmpobj != null)
+        {
+            tmpobj.LaunchPoint.SetActive(true);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
+        if (isOnTheShemObj && tmpobj != null)
+        {
+            tmpobj.LaunchPoint.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isOnTheShemObj = false;
+        //LaunchPoint.SetActive(false);
+    }
+
+
+
     private void OnMouseDown()
     {
-        
+        if (isOnTheShemObj)
+        {
+            Debug.Log("Complete");
+        }
 
         //Tool.onClick();
     }
