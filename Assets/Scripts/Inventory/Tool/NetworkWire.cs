@@ -8,6 +8,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "NetworkWire")]
 public class NetworkWire : AssetTool //IToolLogik
 {
+    PhysicalAdress CursorAdress;
+
+    public void onCursor()
+    {
+        CursorAdress = new PhysicalAdress();
+        Debug.Log("Network Tool adress =>" + CursorAdress.Adress);
+    }
     
     public void onClickToShemObj(ShemObj obj)
     {

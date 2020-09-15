@@ -68,6 +68,7 @@ public class EditPanel : MonoBehaviour
         {
             Cursor.Tool = Aitem;
         }
+        Cursor.OnChangeTool();
     }
     
     private void OnMouseEnter()

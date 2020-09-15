@@ -22,17 +22,17 @@ public abstract class AssetTool : ScriptableObject, ITool
 
     public void onEnterToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void onExitToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void onClickToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void onClick()
@@ -40,5 +40,8 @@ public abstract class AssetTool : ScriptableObject, ITool
         //throw new NotImplementedException();
     }
 
-
+    public void onCursor()
+    {
+        //throw new NotImplementedException();
+    }
 }

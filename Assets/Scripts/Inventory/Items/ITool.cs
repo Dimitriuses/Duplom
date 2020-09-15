@@ -9,7 +9,7 @@ namespace Assets.Scripts.Items
 {
     public interface ITool: IItem
     {
-        
+        void onCursor();
         void onClick();
         void onEnterToShemObj(ShemObj obj);
         void onExitToShemObj(ShemObj obj);

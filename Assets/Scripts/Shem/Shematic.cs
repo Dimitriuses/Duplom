@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Shematic: MonoBehaviour
 {
+    public PlayerCursor PlayerCursor;
     public GameObject WorkSpace;
     public RenderNetworkConnections RenderNetworkConnections;
     public List<ShemObj> Objects;

@@ -21,7 +21,12 @@ public class PlayerCursor : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -8);
-        if(Tool.Name.Equals("None"))
+        
+    }
+
+    public void OnChangeTool()
+    {
+        if (Tool.Name.Equals("None"))
         {
             Collider.enabled = false;
             Sprite.sprite = null;
@@ -30,12 +35,17 @@ public class PlayerCursor : MonoBehaviour
         {
             Collider.enabled = true;
             Sprite.sprite = Tool.UIIcon;
+            Tool.onCursor();
         }
     }
 
     private void OnMouseDown()
     {
-        Tool.onClick();
+        
+
+        //Tool.onClick();
     }
+
+
 
 }
