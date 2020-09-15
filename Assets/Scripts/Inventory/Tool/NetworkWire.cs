@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "NetworkWireLogik")]
-public class NetworkWire : IToolLogik
+[CreateAssetMenu(menuName = "NetworkWire")]
+public class NetworkWire : AssetTool //IToolLogik
 {
     
     public void onClickToShemObj(ShemObj obj)

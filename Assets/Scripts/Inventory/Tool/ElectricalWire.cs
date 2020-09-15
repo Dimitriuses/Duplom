@@ -6,11 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class IToolLogik : ScriptableObject
+[CreateAssetMenu(menuName = "ElectricalWire")]
+public class ElectricalWire : AssetTool, ITool
 {
-    public string Name;
-    
-
     public void onClickToShemObj(ShemObj obj)
     {
         throw new NotImplementedException();
@@ -26,4 +24,4 @@ public abstract class IToolLogik : ScriptableObject
         throw new NotImplementedException();
     }
 }
-    
+

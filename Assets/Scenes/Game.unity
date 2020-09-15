@@ -949,8 +949,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813862406}
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
-  m_Value: 0.65384614
-  m_Size: 0.999999
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4850,8 +4850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 11400000, guid: 5dff363b321f1b54db570963a7d0e54a, type: 2}
-  - {fileID: 11400000, guid: 89641008b9f58294fab9e9c7610ad313, type: 2}
+  - {fileID: 11400000, guid: ef9773b0145e1c544938bd1f09b8f344, type: 2}
+  - {fileID: 11400000, guid: 90ba2e1cad9fc0c4aac67d8863367234, type: 2}
   _inventoryCellTemplate: {fileID: 7976531084180389594, guid: ec12be00e47191e449870efc9bc21079,
     type: 3}
   _container: {fileID: 1872479985}
@@ -5648,7 +5648,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 182948938}
   m_HandleRect: {fileID: 182948937}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
