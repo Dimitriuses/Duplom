@@ -13,6 +13,7 @@ public class EditPanel : MonoBehaviour
     [SerializeField] private VerticalLayoutGroup _layoutContainer;
     [SerializeField] private Transform _draggingParent;
     public CameraGo Camera;
+    public int radio;
 
     //delegate void Run(string name);
 
