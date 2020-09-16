@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.PC_detals;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -256,6 +257,7 @@ namespace Assets.Scripts.Resources
                 }
                 item.FixValue();
                 Resources.Add(item);
+                //Debug.Log(item.ToString() + "  " + item.Type);
             }
             
         }
@@ -263,7 +265,7 @@ namespace Assets.Scripts.Resources
         {
             Resources.ForEach(item =>
             {
-                Debug.Log(item.ToString());
+                UnityEngine.Debug.Log(item.ToString() + "  " + item.Type + "  " + item.Id);
             });
         }
     }
