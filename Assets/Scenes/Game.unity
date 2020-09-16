@@ -1023,8 +1023,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813862406}
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999992
+  m_Value: 0
+  m_Size: 0.9999993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   MoneyScrollWiew: {fileID: 2135344444}
   PoverScrollWiew: {fileID: 1357040113}
   NetworkScrollWiew: {fileID: 2032270085}
-  ColorProfit: {r: 0.24513555, g: 0.7264151, b: 0, a: 1}
+  ColorProfit: {r: 0, g: 1, b: 0, a: 1}
   ColorWaste: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &374373314
 GameObject:
@@ -3319,7 +3319,7 @@ GameObject:
   - component: {fileID: 940093069}
   - component: {fileID: 940093068}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3473,6 +3473,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5522,7 +5523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9969d55eb4f06b4bbe0ab62a2fb05ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCursor: {fileID: 0}
+  PlayerCursor: {fileID: 955510256}
   WorkSpace: {fileID: 878814685}
   RenderNetworkConnections: {fileID: 1968078418}
   Objects:

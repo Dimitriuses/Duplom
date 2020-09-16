@@ -59,7 +59,7 @@ namespace Assets.Scripts.Resources
                 {RID.Electricity, NameDefaultElectricity },
                 {RID.Network, NameDefaultNetwork },
                 {RID.Experience, NameDefaultExperience },
-                {RID.Experience, NameDefaultSkillCoin }
+                //{RID.Experience, NameDefaultSkillCoin }
             };
             //NameToRIDTranslete.Add(RID.Money, NameDefaulMoney);
             //NameToRIDTranslete.Add(RID.Electricity, NameDefaultElectricity);

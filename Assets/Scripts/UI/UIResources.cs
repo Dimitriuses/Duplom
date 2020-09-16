@@ -24,7 +24,7 @@ public class UIResources : MonoBehaviour
 
     void Start()
     {
-        Resouces = new ResourcesStorage(111, 222, 333, 444);
+        Resouces = new ResourcesStorage(111, 222, 333, 444,1);
         fillRecourcesTest();
         UpdateStatusPanel();
     }
@@ -38,15 +38,15 @@ public class UIResources : MonoBehaviour
             {
                 Money.text = item.Count.ToString();
             }
-                    if (item.Name.Equals(Resouces.NameDefaultExperience))
-                    {
-                        Experience.text = item.Count.ToString();
-                    }
-                    if (item.Name.Equals(Resouces.NameDefaultElectricity))
-                    {
-                        Electrosity.text = item.Count.ToString();
-                    }
-                }
+            if (item.Name.Equals(Resouces.NameDefaultExperience))
+            {
+                Experience.text = item.Count.ToString();
+            }
+            if (item.Name.Equals(Resouces.NameDefaultElectricity))
+            {
+                Electrosity.text = item.Count.ToString();
+            }
+        }
     }
 
     void fillRecourcesTest()
