@@ -1,47 +1,48 @@
-﻿using System;
+﻿using Assets.Scripts.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Items
+
+//[CreateAssetMenu(menuName ="Tool")]
+public abstract class AssetTool : ScriptableObject, ITool
 {
-    [CreateAssetMenu(menuName ="Tool")]
-    public class AssetTool : ScriptableObject, ITool
+    public string Name => _name;
+    public Sprite UIIcon => _icon;
+    public float Height => _height;
+    public float Width => _with;
+
+    [SerializeField] private string _name;
+    [SerializeField] private Sprite _icon;
+    [SerializeField] private float _height;
+    [SerializeField] private float _with;
+
+    public void onEnterToShemObj(ShemObj obj)
     {
-        public string Name => _name;
-        public Sprite UIIcon => _uiItem;
+        //throw new NotImplementedException();
+    }
 
-        public float Height => _height;
+    public void onExitToShemObj(ShemObj obj)
+    {
+        //throw new NotImplementedException();
+    }
 
-        public float Width => _width;
+    public void onClickToShemObj(ShemObj obj)
+    {
+        //throw new NotImplementedException();
+    }
 
-        [SerializeField] private string _name;
-        [SerializeField] private Sprite _uiItem;
-        [SerializeField] private float _height;
-        [SerializeField] private float _width;
+    public void onClick()
+    {
+        //throw new NotImplementedException();
+    }
 
-        public void onEnterToShemObj(ShemObj obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void onExitToShemObj(ShemObj obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void onClickToShemObj(ShemObj obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void onClick()
-        {
-            throw new NotImplementedException();
-        }
-
-       
+    public void onCursor()
+    {
+        //Debug.Log("onCursorAbstract");
+        //throw new NotImplementedException();
     }
 }

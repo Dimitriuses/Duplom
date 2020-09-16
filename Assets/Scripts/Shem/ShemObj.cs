@@ -50,6 +50,16 @@ public class ShemObj : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        LaunchPoint.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        LaunchPoint.SetActive(false);
+    }
+
     void OnMouseEnter()
     {
         LaunchPoint.SetActive(true);
@@ -127,6 +137,6 @@ public class ShemObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(transform.position);
     }
 }

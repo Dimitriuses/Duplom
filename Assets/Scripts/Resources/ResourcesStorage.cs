@@ -17,6 +17,7 @@ namespace Assets.Scripts.Resources
         public string NameDefaultElectricity = "Electricity";
         public string NameDefaultNetwork = "Network";
         public string NameDefaultExperience = "Experience";
+        public string NameDefaultSkillCoin = "SkillCoins";
         //public string[] NamesTransleteToRID = new string[(int)RID];
         public Dictionary<RID, string> NameToRIDTranslete;
         List<ResourcesItem> Resources;
@@ -24,19 +25,19 @@ namespace Assets.Scripts.Resources
         public ResourcesStorage()
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(0, 0, 0, 0);
+            AddDefaultResources(0, 0, 0, 0, 0);
         }
 
-        public ResourcesStorage(int money = 0, int electrosity = 0, int network = 0, int experience = 0)
+        public ResourcesStorage(int money = 0, int electrosity = 0, int network = 0, int experience = 0, int skillcoins = 0)
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(money, electrosity, network, experience);
+            AddDefaultResources(money, electrosity, network, experience, skillcoins);
         }
 
-        public ResourcesStorage(List<ResourcesItem> resources, int money = 0, int electrosity = 0, int network = 0, int experience = 0)
+        public ResourcesStorage(List<ResourcesItem> resources, int money = 0, int electrosity = 0, int network = 0, int experience = 0, int skillcoins = 0)
         {
             Resources = new List<ResourcesItem>();
-            AddDefaultResources(money, electrosity, network, experience);
+            AddDefaultResources(money, electrosity, network, experience, skillcoins);
             foreach (ResourcesItem item in resources)
             {
                 item.FixValue();
@@ -44,19 +45,21 @@ namespace Assets.Scripts.Resources
             }
         }
 
-        void AddDefaultResources(int money, int electrosity, int network, int experience = 0)
+        void AddDefaultResources(int money, int electrosity, int network, int experience = 0, int skillcoin = 0)
         {
             Resources.Add(new ResourcesItem(RID.Money, NameDefaulMoney, RIType.Acumulation, money));
             Resources.Add(new ResourcesItem(RID.Electricity, NameDefaultElectricity, RIType.Acumulation, electrosity));
             Resources.Add(new ResourcesItem(RID.Network, NameDefaultNetwork, RIType.Acumulation, network));
             Resources.Add(new ResourcesItem(RID.Experience, NameDefaultExperience, RIType.Acumulation, experience));
+            Resources.Add(new ResourcesItem(RID.Experience, NameDefaultSkillCoin, RIType.Acumulation, skillcoin));
 
             NameToRIDTranslete = new Dictionary<RID, string>()
             {
                 {RID.Money, NameDefaulMoney },
                 {RID.Electricity, NameDefaultElectricity },
                 {RID.Network, NameDefaultNetwork },
-                {RID.Experience, NameDefaultExperience }
+                {RID.Experience, NameDefaultExperience },
+                {RID.Experience, NameDefaultSkillCoin }
             };
             //NameToRIDTranslete.Add(RID.Money, NameDefaulMoney);
             //NameToRIDTranslete.Add(RID.Electricity, NameDefaultElectricity);
