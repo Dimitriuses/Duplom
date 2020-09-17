@@ -1023,8 +1023,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813862406}
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999993
+  m_Value: 1
+  m_Size: 0.9999992
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3517,14 +3517,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955510254}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5524,6 +5524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCursor: {fileID: 955510256}
+  ToDoService: {fileID: 11400000, guid: 857012ef41112e44492a6c9a1f5a9181, type: 2}
   WorkSpace: {fileID: 878814685}
   RenderNetworkConnections: {fileID: 1968078418}
   Objects:
@@ -7081,7 +7082,7 @@ PrefabInstance:
     - target: {fileID: 1576492375742437629, guid: f10f8482572c73847a112b02b110782e,
         type: 3}
       propertyPath: m_BodyType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2193773697506046285, guid: f10f8482572c73847a112b02b110782e,
         type: 3}
@@ -7175,7 +7176,12 @@ PrefabInstance:
     - target: {fileID: 1797624090512228412, guid: 708ec1e49fffe9e408d2b207faf9d46d,
         type: 3}
       propertyPath: m_BodyType
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797624090512228412, guid: 708ec1e49fffe9e408d2b207faf9d46d,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770714160617081849, guid: 708ec1e49fffe9e408d2b207faf9d46d,
         type: 3}

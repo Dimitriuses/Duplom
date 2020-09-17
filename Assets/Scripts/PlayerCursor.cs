@@ -11,6 +11,8 @@ public class PlayerCursor : MonoBehaviour
     SpriteRenderer Sprite;
 
     bool isOnTheShemObj;
+    Vector3 oldposition;
+    ShemObj TMP_obj;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,9 @@ public class PlayerCursor : MonoBehaviour
         Collider = GetComponent<BoxCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
 
+
         //Collider.
+        oldposition = transform.position;
         isOnTheShemObj = false;
         OnChangeTool();
     }
@@ -28,7 +32,17 @@ public class PlayerCursor : MonoBehaviour
     {
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 89.9f);
         //Debug.Log(transform.position);
+        if (!Tool.Name.Equals("None"))
+        {
+            if (!transform.position.Equals(oldposition))
+            {
+                Tool.CursorCangePosition();
+            }
+        }
+        oldposition = transform.position;
     }
+
+   
 
     public void OnChangeTool()
     {
@@ -50,8 +64,10 @@ public class PlayerCursor : MonoBehaviour
         ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
         if(tmpobj != null)
         {
+            TMP_obj = tmpobj;
             tmpobj.LaunchPoint.SetActive(true);
             isOnTheShemObj = true;
+            Tool.onEnterToShemObj(tmpobj);
         }
         //Debug.Log(tmpobj.GetType());
         //Debug.Log("isTrigered");
@@ -62,8 +78,9 @@ public class PlayerCursor : MonoBehaviour
         ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
         if (isOnTheShemObj && tmpobj != null)
         {
-            tmpobj.LaunchPoint.SetActive(true);
+            //tmpobj.LaunchPoint.SetActive(true);
         }
+        //Debug.Log("Stay");
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -73,23 +90,33 @@ public class PlayerCursor : MonoBehaviour
         {
             tmpobj.LaunchPoint.SetActive(true);
         }
+        //Debug.Log("StayT");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOnTheShemObj = false;
-        //LaunchPoint.SetActive(false);
+        if(TMP_obj != null)
+        {
+            ShemObj tmpobj = collision.gameObject.GetComponent<ShemObj>();
+            isOnTheShemObj = false;
+            //LaunchPoint.SetActive(false);
+            if (tmpobj != null)
+            {
+                Tool.onExitToShemObj(tmpobj);
+            }
+            TMP_obj = null;
+        }
     }
 
 
 
     private void OnMouseDown()
     {
-        if (isOnTheShemObj)
+        if (isOnTheShemObj && TMP_obj != null) 
         {
-            Debug.Log("Complete");
+            Tool.onClickToShemObj(TMP_obj);
+            //Debug.Log("Complete " + TMP_obj.transform.position);
         }
-
         //Tool.onClick();
     }
 

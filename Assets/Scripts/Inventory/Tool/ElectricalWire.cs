@@ -9,19 +9,29 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ElectricalWire")]
 public class ElectricalWire : AssetTool, ITool
 {
+    public void onClick()
+    {
+        //throw new NotImplementedException();
+    }
+
     public void onClickToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    }
+
+    public void onCursor()
+    {
+        //throw new NotImplementedException();
     }
 
     public void onEnterToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void onExitToShemObj(ShemObj obj)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }
 

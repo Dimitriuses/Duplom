@@ -9,6 +9,7 @@ namespace Assets.Scripts.Items
 {
     public interface ITool: IItem
     {
+        void CursorCangePosition();
         void onCursor();
         void onClick();
         void onEnterToShemObj(ShemObj obj);
