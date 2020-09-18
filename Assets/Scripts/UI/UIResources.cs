@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System;
-
 public class UIResources : MonoBehaviour
 {
     public Text Money;
@@ -15,20 +14,17 @@ public class UIResources : MonoBehaviour
     ResourcesStorage Resouces;
     public Text TextPrefab;
     public Transform MoneyScrollWiew;
-    public Transform PoverScrollWiew;
+    public Transform ExperienceScrollWiew;
+    public Transform ElectricityScrollWiew;
     public Transform NetworkScrollWiew;
-
     public Color ColorProfit;
     public Color ColorWaste;
-
-
     void Start()
     {
         Resouces = new ResourcesStorage(111, 222, 333, 444,1);
         fillRecourcesTest();
         UpdateStatusPanel();
     }
-
     void UpdateUpPanel()
     {
         List<ResourcesItem> resources = Resouces.GetDefaultResources();
@@ -48,21 +44,18 @@ public class UIResources : MonoBehaviour
             }
         }
     }
-
     void fillRecourcesTest()
     {
         Resouces.TestFill(10, 100);
         Resouces.Show();
     }
-
     public void UpdateStatusPanel()
     {
         List<ResourcesItem> resourcesMoney = Resouces.SortByRID(RID.Money);
-        List<ResourcesItem> resourcesExperience = Resouces.SortByRID(RID.Experience);
-        List<ResourcesItem> resourcesElectrosity = Resouces.SortByRID(RID.Electricity);
+        List<ResourcesItem> resourcesNetwork = Resouces.SortByRID(RID.Network);
+        List<ResourcesItem> resourcesElectricity = Resouces.SortByRID(RID.Electricity);
         foreach (ResourcesItem item in resourcesMoney)
         {
-
             if (item.Type != RIType.Acumulation)
             {
                 Text tmpMoney = Instantiate(TextPrefab, MoneyScrollWiew) as Text;
@@ -71,11 +64,28 @@ public class UIResources : MonoBehaviour
             }
             //MoneyScrollWiew.transform.SetAsFirstSibling(Text);
         }
+        foreach (ResourcesItem item in resourcesElectricity)
+        {
+            if (item.Type != RIType.Acumulation)
+            {
+                Text tmpElectricity = Instantiate(TextPrefab, ElectricityScrollWiew) as Text;
+                tmpElectricity.color = (item.Type == RIType.Profit) ? ColorProfit : ColorWaste;
+                tmpElectricity.text = item.Count.ToString();
+            }
+        }
+        foreach (ResourcesItem item in resourcesNetwork)
+        {
+            if (item.Type != RIType.Acumulation)
+            {
+                Text tmpNetwork = Instantiate(TextPrefab, NetworkScrollWiew) as Text;
+                tmpNetwork.color = (item.Type == RIType.Profit) ? ColorProfit : ColorWaste;
+                tmpNetwork.text = item.Count.ToString();
+            }
+        }
         //Resouces.Show();
     }
     void Update()
     {
         UpdateUpPanel();
-        
     }
 }
