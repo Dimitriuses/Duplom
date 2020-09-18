@@ -84,10 +84,38 @@ public class Shematic: MonoBehaviour
 
     public void RenderConnection(NetworkConnection connection, PhysicalAdress exclusion = null)
     {
-        Transform transform1 = (connection.FirstAdress.Equals(exclusion)) ? PlayerCursor.transform : Objects.Find(x => x.Address.Equals(connection.FirstAdress)).transform;
-        Transform transform2 = (connection.SecondAdress.Equals(exclusion)) ? PlayerCursor.transform : Objects.Find(x => x.Address.Equals(connection.SecondAdress)).transform;
-        
-        
+        //Debug.Log("Render begin exclusion = " + exclusion);
+        Transform transform1;
+        Transform transform2;
+        //Debug.Log("connection =" + connection.FirstAdress.Adress + " || " + connection.SecondAdress.Adress);
+        //if (exclusion != null && connection.FindAdress(exclusion))
+        //{
+        //    Debug.Log("exclusion Findet = " + exclusion.Adress);
+        //    if (connection.FirstAdress.Equals(exclusion))
+        //    {
+        //        transform1 = PlayerCursor.transform;
+        //        transform2 = Objects.Find(x => x.Address.Equals(connection.SecondAdress)).transform;
+        //        Debug.Log("Cursor is first");
+        //    }
+        //    else
+        //    {
+        //        transform1 = Objects.Find(x => x.Address.Equals(connection.FirstAdress)).transform;
+        //        transform2 = PlayerCursor.transform;
+        //        Debug.Log("Cursor is second");
+        //    }
+
+        //}
+        //else
+        //{
+        //    Debug.Log("Exclusion don`t find");
+        //    transform1 = Objects.Find(x => x.Address.Equals(connection.FirstAdress)).transform;
+        //    transform2 = Objects.Find(x => x.Address.Equals(connection.SecondAdress)).transform;
+        //}
+
+        transform1 = (connection.FirstAdress.Equals(exclusion)) ? PlayerCursor.transform : Objects.Find(x => x.Address.Equals(connection.FirstAdress)).transform;
+        transform2 = (connection.SecondAdress.Equals(exclusion)) ? PlayerCursor.transform : Objects.Find(x => x.Address.Equals(connection.SecondAdress)).transform;
+
+
 
         RenderNetworkConnections.Items.Add(new NRItem
         {
@@ -105,17 +133,17 @@ public class Shematic: MonoBehaviour
             if(item.FindAdress(connection.FirstAdress) || item.FindAdress(connection.SecondAdress))
             {
                 ToDelete = item;
-                Debug.Log("V");
+                //Debug.Log("V");
             }
-            Debug.Log(item.FirstAdress.Adress + " & " + item.SecondAdress.Adress);
+            //Debug.Log(item.FirstAdress.Adress + " & " + item.SecondAdress.Adress);
         }
         if(ToDelete != null)
         {
             NetworkConnections.Remove(ToDelete);
-            Debug.Log("Removed " + ToDelete.FirstAdress.Adress + " X " + ToDelete.SecondAdress.Adress);
+            //Debug.Log("Removed " + ToDelete.FirstAdress.Adress + " X " + ToDelete.SecondAdress.Adress);
         }
         NetworkConnections.Add(connection);
-        RenderConnection(connection);
+        RenderConnection(connection, exclusion);
     }
 }
 

@@ -29,15 +29,15 @@ public class NetworkWire : AssetTool, ITool
         {
             connection = new NetworkConnection(CursorAdress, TMPAdress);
             ShemAdress = TMPAdress;
-            ToDoService.AddNewNetworkConection(connection, CursorAdress);
+            //ToDoService.AddNewNetworkConection(connection, CursorAdress);
         }
         else
         {
-            connection = new NetworkConnection(ShemAdress, TMPAdress);
+            connection = new NetworkConnection(TMPAdress, ShemAdress);
             ShemAdress = null;
-            ToDoService.AddNewNetworkConection(connection);
-            //ToDoService.UpdateConectionsRender();
         }
+        ToDoService.AddNewNetworkConection(connection,CursorAdress);
+        ToDoService.UpdateConectionsRender(CursorAdress);
 
         //throw new NotImplementedException();
     }

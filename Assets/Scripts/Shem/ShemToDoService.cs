@@ -13,9 +13,9 @@ public class ShemToDoService: ScriptableObject
     public delegate void Change(PhysicalAdress exclusion = null);
     public Change UpdateRenderConnections;
 
-    public delegate void DoNetworkConnection(NetworkConnection connection, PhysicalAdress exclusion = null);
+    public delegate void DoNetworkConnection(NetworkConnection connection, PhysicalAdress exclusion);
     public DoNetworkConnection AddNetworkConnection;
-    public void AddNewNetworkConection(NetworkConnection connection, PhysicalAdress exclusion = null)
+    public void AddNewNetworkConection(NetworkConnection connection, PhysicalAdress exclusion)
     {
         AddNetworkConnection(connection, exclusion);
     }
