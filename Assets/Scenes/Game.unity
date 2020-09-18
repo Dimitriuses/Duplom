@@ -3903,7 +3903,7 @@ GameObject:
   - component: {fileID: 1149607928}
   - component: {fileID: 1149607927}
   m_Layer: 5
-  m_Name: PCRedactor
+  m_Name: PCEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
