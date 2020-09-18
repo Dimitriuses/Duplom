@@ -29,7 +29,7 @@ public class Shematic: MonoBehaviour
         ToDoService.UpdateRenderConnections = ChangeConnections;
         
         ShemFill();
-        RenderConnection(NetworkConnections[0]);
+        //RenderConnection(NetworkConnections[0]);
     }
 
     //public Shematic(List<ShemObj> objs = null, List<NetworkConnection> connections = null)
@@ -57,8 +57,8 @@ public class Shematic: MonoBehaviour
             item.OnCangeTransform = ChangeConnections;
         }
         //Debug.Log(Objects[0].Address.Adress + " " + Objects[1].Address.Adress);
-        NetworkConnection tmp = new NetworkConnection(Objects[0].Address, Objects[1].Address);
-        NetworkConnections.Add(tmp);
+        //NetworkConnection tmp = new NetworkConnection(Objects[0].Address, Objects[1].Address);
+        //NetworkConnections.Add(tmp);
     }
 
     public void ChangeConnections(PhysicalAdress exclusion = null)
