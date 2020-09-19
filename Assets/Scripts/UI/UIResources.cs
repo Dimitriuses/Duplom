@@ -10,11 +10,10 @@ public class UIResources : MonoBehaviour
 {
     public Text Money;
     public Text Experience;
-    public Text Electrosity;
+    public Text Electrisity;
     ResourcesStorage Resouces;
     public Text TextPrefab;
     public Transform MoneyScrollWiew;
-    public Transform ExperienceScrollWiew;
     public Transform ElectricityScrollWiew;
     public Transform NetworkScrollWiew;
     public Color ColorProfit;
@@ -40,7 +39,7 @@ public class UIResources : MonoBehaviour
             }
             if (item.Name.Equals(Resouces.NameDefaultElectricity))
             {
-                Electrosity.text = item.Count.ToString();
+                Electrisity.text = item.Count.ToString();
             }
         }
     }

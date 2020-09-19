@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1747,6 +1747,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 316808015}
+        m_TargetAssemblyTypeName: UIResources, Assembly-CSharp
+        m_MethodName: OnStatusPanelEnable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &316808015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,15 +1773,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: {fileID: 444466744}
   Experience: {fileID: 940093068}
-  Electrosity: {fileID: 1157482082}
+  Electrisity: {fileID: 1157482082}
   TextPrefab: {fileID: 1180808284974767925, guid: ea2782ecfa84b0d48ad015dcae4e8ec0,
     type: 3}
   MoneyScrollWiew: {fileID: 2135344444}
-  ExperienceScrollWiew: {fileID: 0}
-  ElectricityScrollWiew: {fileID: 0}
+  ElectricityScrollWiew: {fileID: 1357040113}
   NetworkScrollWiew: {fileID: 2032270085}
   ColorProfit: {r: 0, g: 1, b: 0, a: 1}
   ColorWaste: {r: 1, g: 0, b: 0, a: 1}
+  Camera: {fileID: 374373318}
 --- !u!1 &374373314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,6 +5196,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 316808015}
+        m_TargetAssemblyTypeName: UIResources, Assembly-CSharp
+        m_MethodName: OnStatusPanelDisable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1287540403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,10 +5402,10 @@ RectTransform:
   m_Father: {fileID: 1103024382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: 0, y: -66}
+  m_SizeDelta: {x: 0, y: 117}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1357040114
 MonoBehaviour:
@@ -5403,9 +5427,9 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0

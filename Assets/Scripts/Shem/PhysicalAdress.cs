@@ -5,20 +5,22 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 
 public class PhysicalAdress
 {
     public string Adress => _adress.ToString();
-    GUID _adress;
+    Guid _adress;
     public PhysicalAdress()
     {
-        _adress = GUID.Generate();
+        _adress = Guid.NewGuid();
+        //UnityEngine.Debug.Log(_adress);
+
     }
     public PhysicalAdress(string hexAdress)
     {
-        _adress = new GUID(hexAdress);
+        _adress = new Guid(hexAdress);
     }
     // override object.Equals
     public override bool Equals(object obj)
