@@ -84,6 +84,17 @@ public class UIResources : MonoBehaviour
         }
         //Resouces.Show();
     }
+    public CameraGo Camera;
+    public void OnStatusPanelEnable()
+    {
+        Camera.StopCam = true;
+        Camera.StopZoom = true;
+    }
+    public void OnStatusPanelDisable()
+    {
+        Camera.StopCam = false;
+        Camera.StopZoom = false;
+    }
     void Update()
     {
         UpdateUpPanel();
