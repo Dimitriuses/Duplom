@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerCursor : MonoBehaviour
 {
     public ITool Tool;
+    public IItem Item;
     BoxCollider2D Collider;
     SpriteRenderer Sprite;
 
@@ -30,7 +31,8 @@ public class PlayerCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 89.9f);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,0);
+        //transform.position = Input.mousePosition;
         //Debug.Log(transform.position);
         if (!Tool.Name.Equals("None"))
         {
@@ -56,6 +58,20 @@ public class PlayerCursor : MonoBehaviour
             Collider.enabled = true;
             Sprite.sprite = Tool.UIIcon;
             Tool.onCursor();
+        }
+    }
+
+    public void OnCangeItem()
+    {
+        if(Item.Name.Equals("None"))
+        {
+            Collider.enabled = false;
+            Sprite.sprite = null;
+        }
+        else
+        {
+            Collider.enabled = true;
+            Sprite.sprite = Item.UIIcon;
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.PC_detals
 {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.PC_detals
         DDR3,
         DDR4
     }
-    public class RAM: BIOS
+    public class RAM:ScriptableObject,  BIOS
     {
         const int DefaulMemoryResource = 40000000;
         public MType Type { get; }

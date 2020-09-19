@@ -11,6 +11,12 @@ public class NRItem : MonoBehaviour
         LineRenderer line = GetComponent<LineRenderer>();
         line.SetPosition(0, new Vector3(Point1.x, Point1.y, 0));
         line.SetPosition(1, new Vector3(Point2.x, Point2.y, 0));
+        GradientColorKey colorKey = new GradientColorKey();
+        colorKey.color = new Color(93, 126, 208, 255);
+        line.colorGradient.colorKeys = new GradientColorKey[]
+        {
+            colorKey
+        };
     }
 
     

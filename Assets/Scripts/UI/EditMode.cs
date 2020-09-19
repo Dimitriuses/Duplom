@@ -16,6 +16,9 @@ public class EditMode : MonoBehaviour
     [Header("Buttons")]
     public Button EditTrigerButton;
 
+    [Header("Panels")]
+    public GameObject EditPanel;
+
     bool tempEM;
     //ResourcesStorage Resources;
 
@@ -63,53 +66,60 @@ public class EditMode : MonoBehaviour
     void OpenEditPanel()
     {
         //Debug.Log("Open");
-        float timeOfTravel = 5; //time after object reach a target place 
-        float currentTime = 0; // actual floting time 
-        float normalizedValue;
-        RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>();//getting reference to this component 
+        //float timeOfTravel = 5; //time after object reach a target place 
+        //float currentTime = 0; // actual floting time 
+        //float normalizedValue;
+        //RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>();//getting reference to this component 
+
         //Debug.Log(rectTransform.rect.x);
-        Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x) * 2, openPosPanel.y);
+        //Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x) * 2, openPosPanel.y);
 
-        while (currentTime <= timeOfTravel)
-        {
-            currentTime += Time.deltaTime;
-            normalizedValue = currentTime / timeOfTravel; // we normalize our time 
+        //while (currentTime <= timeOfTravel)
+        //{
+        //    currentTime += Time.deltaTime;
+        //    normalizedValue = currentTime / timeOfTravel; // we normalize our time 
 
-            rectTransform.anchoredPosition = Vector2.Lerp(closePosPanel, openPosPanel, normalizedValue);
-            // yield return null;
-        }
+        //    rectTransform.anchoredPosition = Vector2.Lerp(closePosPanel, openPosPanel, normalizedValue);
+        //    // yield return null;
+        //}
 
         //IEnumerator LerpObject()
         //{
 
 
         //}
+        //GameObject EditPanel = GameObject.Find("EditPanel");
+        EditPanel.SetActive(true);
+
     }
 
     void CloseEditPanel()
     {
         //Debug.Log("Close");
-        float timeOfTravel = 5; //time after object reach a target place 
-        float currentTime = 0; // actual floting time 
-        float normalizedValue;
-        RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
-        Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x) * 2, openPosPanel.y);
+        //float timeOfTravel = 5; //time after object reach a target place 
+        //float currentTime = 0; // actual floting time 
+        //float normalizedValue;
+        //RectTransform rectTransform = GameObject.Find("EditPanel").GetComponent<RectTransform>(); //getting reference to this component 
+        //Vector2 closePosPanel = new Vector2(Math.Abs(rectTransform.rect.x) * 2, openPosPanel.y);
 
 
-        while (currentTime <= timeOfTravel)
-        {
-            currentTime += Time.deltaTime;
-            normalizedValue = currentTime / timeOfTravel; // we normalize our time 
+        //while (currentTime <= timeOfTravel)
+        //{
+        //    currentTime += Time.deltaTime;
+        //    normalizedValue = currentTime / timeOfTravel; // we normalize our time 
 
-            rectTransform.anchoredPosition = Vector2.Lerp(openPosPanel, closePosPanel, normalizedValue);
-            //yield return null;
-        }
+        //    rectTransform.anchoredPosition = Vector2.Lerp(openPosPanel, closePosPanel, normalizedValue);
+        //    //yield return null;
+        //}
 
         //IEnumerator LerpObject()
         //{
 
 
         //}
+
+        //GameObject EditPanel = GameObject.Find("EditPanel");
+        EditPanel.SetActive(false);
     }
 
     void Update()

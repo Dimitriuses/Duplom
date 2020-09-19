@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cabc0937df569d40adf4e1d6f0eb9db, type: 3}
+  m_Name: Mother Card 3
+  m_EditorClassIdentifier: 
+  PCISize: 3
+  PCIExpresSize: 3
+  RAMSize: 4
+  SATASize: 4
+  Socet: 
+  _Health: 100
+  _name: Mother Card Level 3
+  _icon: {fileID: -1390795718543037381, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
+  _height: 100
+  _with: 68.89804

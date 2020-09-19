@@ -10,11 +10,12 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class InventoryCell: MonoBehaviour//, IDragHandler, IEndDragHandler, IBeginDragHandler
+    public class InventoryCell: MonoBehaviour/*, IDragHandler, IEndDragHandler, IBeginDragHandler*/
     {
         [SerializeField] private Text _nameField;
         [SerializeField] private Image _iconField;
         [SerializeField] private Button _buttonField;
+        public PlayerCursor Cursor;
         private float _prHeight;
         private float _prWidth;
         private RectTransform _rectTransform;
@@ -104,7 +105,7 @@ namespace Assets.Scripts
 
         //    for (int i = 0; i < _originalParent.transform.childCount; i++)
         //    {
-        //        if(Vector3.Distance(transform.position, _originalParent.GetChild(i).position)<
+        //        if (Vector3.Distance(transform.position, _originalParent.GetChild(i).position) <
         //            Vector3.Distance(transform.position, _originalParent.GetChild(closestIndex).position))
         //        {
         //            closestIndex = i;
