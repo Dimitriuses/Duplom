@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Items
-{
-    public interface IItem
-    {
-        string Name { get; }
-        Sprite UIIcon { get; }
 
-        float Height { get; }
-        float Width { get; }
-    }
+public interface IItem
+{
+    string Name { get; }
+    Sprite UIIcon { get; }
+
+    float Height { get; }
+    float Width { get; }
 }
+

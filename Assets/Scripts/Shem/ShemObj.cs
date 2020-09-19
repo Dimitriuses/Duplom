@@ -24,7 +24,9 @@ public class ShemObj : MonoBehaviour
     protected OnOperation _OnMouseEnter;
     protected OnOperation _OnMouseExit;
     protected OnOperation _OnLockChange;
-    public OnOperation OnCangeTransform;
+
+    public delegate void Changed(PhysicalAdress exclusion = null);
+    public Changed OnCangeTransform;
 
 
     Vector3 dragPoint = Vector3.zero;

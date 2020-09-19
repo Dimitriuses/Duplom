@@ -52,7 +52,7 @@ public class UIResources : MonoBehaviour
     void fillRecourcesTest()
     {
         Resouces.TestFill(10, 100);
-        Resouces.Show();
+        //Resouces.Show();
     }
 
     public void UpdateStatusPanel()

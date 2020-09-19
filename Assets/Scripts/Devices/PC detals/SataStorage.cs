@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.PC_detals
 {
@@ -12,7 +13,7 @@ namespace Assets.Scripts.PC_detals
         SSD = 500000,
         M2 =  900000,
     }
-    public class SataStorage: BIOS, PCIExpress
+    public class SataStorage:ScriptableObject,  BIOS, PCIExpress
     {
         public int Capacity { get; }
         public SataStorageType Type { get; }

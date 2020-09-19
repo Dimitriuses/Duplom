@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.PC_detals
 {
-    public class CPU: BIOS
+    public class CPU:ScriptableObject, BIOS 
     {
         public char[] Socet { get; }
         public float BaseFerequency { get; }

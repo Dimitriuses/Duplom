@@ -12,7 +12,7 @@ namespace Assets.Scripts.PC_detals
         WLAN = 300 * 1024,
         OLAN = 100 * 1024 * 1024
     }
-    public class NetworkCard : BIOS, PCI, PCIExpress
+    public class NetworkCard :PCI, PCIExpress, BIOS
     {
         const int DefaulNetworkCardResource = 1000000;
         //public int Settings { get; set; }
