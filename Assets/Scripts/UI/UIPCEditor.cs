@@ -27,11 +27,13 @@ public class UIPCEditor : MonoBehaviour
         Render(Devices);
         Camera.StopCam = true;
         Camera.StopZoom = true;
+        Camera.StopUsable = true;
     }
     private void OnDisable()
     {
         Camera.StopCam = false;
         Camera.StopZoom = false;
+        Camera.StopUsable = false;
     }
     // Start is called before the first frame update
     void Start()

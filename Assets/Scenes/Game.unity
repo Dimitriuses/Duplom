@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 813862406}
   m_HandleRect: {fileID: 813862405}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999993
+  m_Value: 1
+  m_Size: 0.9999992
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1882,10 +1882,12 @@ MonoBehaviour:
   workGui: {fileID: 1024867236}
   StopCam: 0
   StopZoom: 0
+  StopUsable: 0
   Camera: {fileID: 374373316}
   speed: 10
   minZoom: 5
   maxZoom: 50
+  zoom: 0
 --- !u!1 &437330422
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +3731,8 @@ GameObject:
   m_Component:
   - component: {fileID: 955510255}
   - component: {fileID: 955510258}
+  - component: {fileID: 955510260}
+  - component: {fileID: 955510261}
   - component: {fileID: 955510257}
   - component: {fileID: 955510259}
   - component: {fileID: 955510256}
@@ -3770,6 +3774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46209aa6f3fe8ff4e88196843434403a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 374373316}
 --- !u!61 &955510257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3840,7 +3845,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 5.52, y: 4.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -3868,6 +3873,44 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!222 &955510260
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955510254}
+  m_CullTransparentMesh: 1
+--- !u!114 &955510261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955510254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &968197100
 GameObject:
   m_ObjectHideFlags: 0

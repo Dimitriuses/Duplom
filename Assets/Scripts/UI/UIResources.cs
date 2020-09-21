@@ -88,11 +88,13 @@ public class UIResources : MonoBehaviour
     {
         Camera.StopCam = true;
         Camera.StopZoom = true;
+        Camera.StopUsable = true;
     }
     public void OnStatusPanelDisable()
     {
         Camera.StopCam = false;
         Camera.StopZoom = false;
+        Camera.StopUsable = false;
     }
     void Update()
     {

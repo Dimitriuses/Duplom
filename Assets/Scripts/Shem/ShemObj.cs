@@ -28,7 +28,7 @@ public class ShemObj : MonoBehaviour
     public delegate void Changed(PhysicalAdress exclusion = null);
     public Changed OnCangeTransform;
 
-
+    CameraGo cameraGo;
     Vector3 dragPoint = Vector3.zero;
 
     public void InitTransform(Vector3 position)
@@ -41,6 +41,7 @@ public class ShemObj : MonoBehaviour
         //Address = new PhysicalAdress();
         //Debug.Log(Address.Adress);
         initialPosition = transform.position;
+        cameraGo = camera.GetComponent<CameraGo>();
         //Debug.Log("Start SemObj");
     }
 
@@ -54,69 +55,88 @@ public class ShemObj : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LaunchPoint.SetActive(true);
+        if (!cameraGo.StopUsable)
+        {
+            LaunchPoint.SetActive(true);
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        LaunchPoint.SetActive(false);
+        if (!cameraGo.StopUsable)
+        {
+            LaunchPoint.SetActive(false);
+        }
+
     }
 
     void OnMouseEnter()
     {
-        LaunchPoint.SetActive(true);
-        //Debug.Log("Enter");
-        _OnMouseEnter();
+        if (!cameraGo.StopUsable)
+        {
+            LaunchPoint.SetActive(true);
+            //Debug.Log("Enter");
+            _OnMouseEnter();
+        }
+
     }
 
     void OnMouseExit()
     {
-        LaunchPoint.SetActive(false);
-        //Debug.Log("Exit");
-        _OnMouseExit();
+        if (!cameraGo.StopUsable)
+        {
+            LaunchPoint.SetActive(false);
+            //Debug.Log("Exit");
+            _OnMouseExit();
+        }
+
     }
     
     private void OnMouseDown()
     {
-        if (UI.GetComponent<EditMode>().OnEditMode)
+        if (!cameraGo.StopUsable)
         {
-            camera.GetComponent<CameraGo>().StopCam = true;
-            Locked = false;
-            _OnLockChange();
-        }
-        else
-        {
-            Locked = true;
-            _OnLockChange();
-        }
-        //Debug.Log("MouseClickToSemObj");
+            if (UI.GetComponent<EditMode>().OnEditMode)
+            {
+                cameraGo.StopCam = true;
+                Locked = false;
+                _OnLockChange();
+            }
+            else
+            {
+                Locked = true;
+                _OnLockChange();
+            }
+            //Debug.Log("MouseClickToSemObj");
 
-        //float planeDistance = Mathf.Abs(transform.position.z) + Mathf.Abs(camera.transform.position.z);
-        //Vector3 screenPoint = camera.ScreenToWorldPoint(new Vector3(
-        //                            Input.mousePosition.x,
-        //                            Input.mousePosition.y,
-        //                            planeDistance));
-        //if (dragPoint == Vector3.zero)
-        //{
-        //    dragPoint = screenPoint;
-        //    //Debug.Log("In");
-        //}
-        //else
-        //{
-        //    transform.position += dragPoint - screenPoint;
-        //}
-        //Debug.Log(dragPoint + " - " + Input.GetAxis("Mouse X"));
-        if (!Locked)
-        {
-            
-            detaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-            detaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+            //float planeDistance = Mathf.Abs(transform.position.z) + Mathf.Abs(camera.transform.position.z);
+            //Vector3 screenPoint = camera.ScreenToWorldPoint(new Vector3(
+            //                            Input.mousePosition.x,
+            //                            Input.mousePosition.y,
+            //                            planeDistance));
+            //if (dragPoint == Vector3.zero)
+            //{
+            //    dragPoint = screenPoint;
+            //    //Debug.Log("In");
+            //}
+            //else
+            //{
+            //    transform.position += dragPoint - screenPoint;
+            //}
+            //Debug.Log(dragPoint + " - " + Input.GetAxis("Mouse X"));
+            if (!Locked)
+            {
+
+                detaX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+                detaY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+            }
+            _OnMouseDown();
         }
-        _OnMouseDown();
     }
     private void OnMouseDrag()
     {
-        if (!Locked)
+        if (!Locked && !cameraGo.StopUsable)
         {
             OnCangeTransform();
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -125,13 +145,16 @@ public class ShemObj : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        if (UI.GetComponent<EditMode>().OnEditMode)
+        if (!cameraGo.StopUsable)
         {
-            camera.GetComponent<CameraGo>().StopCam = false;
-        }
+            if (UI.GetComponent<EditMode>().OnEditMode)
+            {
+                cameraGo.StopCam = false;
+            }
 
-        //dragPoint = Vector3.zero;
-        _OnMouseUp();
+            //dragPoint = Vector3.zero;
+            _OnMouseUp();
+        }
     }
 
     

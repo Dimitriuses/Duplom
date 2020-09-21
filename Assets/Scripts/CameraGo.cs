@@ -20,6 +20,7 @@ public class CameraGo : MonoBehaviour
     [Header("StopFunction")]
     public bool StopCam;
     public bool StopZoom;
+    public bool StopUsable;
     //public bool EditMode;
     //public Button EditTrigerButton;
 
@@ -35,7 +36,7 @@ public class CameraGo : MonoBehaviour
     public float minZoom = 5.0f;
     public float maxZoom = 50.0f;
 
-    float zoom;
+    public float zoom;
     //RectTransform Wrect;
     //bool tempEM;
 
