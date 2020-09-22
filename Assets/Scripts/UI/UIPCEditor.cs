@@ -16,14 +16,14 @@ public class UIPCEditor : MonoBehaviour
 
 
     public PlayerCursor Cursor;
-    public AssetTool NoneItem;
+    //public AssetTool NoneItem;
     public CameraGo Camera;
 
 
 
     private void OnEnable()
     {
-        Cursor.Item = NoneItem;
+        Cursor.ClearToolItems();
         Render(Devices);
         Camera.StopCam = true;
         Camera.StopZoom = true;
@@ -73,7 +73,7 @@ public class UIPCEditor : MonoBehaviour
         if (Cursor.Item.Name.Equals(Aitem.Name))
         {
             //Debug.Log("NoneTool");
-            Cursor.Item = NoneItem;
+            Cursor.ClearToolItems();
         }
         else
         {

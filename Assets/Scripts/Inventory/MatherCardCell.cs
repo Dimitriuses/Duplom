@@ -4,50 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 class MatherCardCell: MonoBehaviour
 {
     public SpriteRenderer MatherSprite;
+    public RectTransform ParentTransform;
+    //public CameraGo Camera;
+
+    public CircleCollider2D Collider2D;
 
     AssetMotherCard AssetMotherCard;
+    bool LockCard;
     private void Start()
     {
-        
+        //Collider2D = GetComponent<CircleCollider2D>();
+        UpdateWidth();
+        LockCard = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
-        AssetMotherCard motherCard = new AssetMotherCard();
-        if(cursor != null)
+        if (!LockCard)
         {
-            if (cursor.Item.GetType().Equals(motherCard.GetType()))
+            PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
+            AssetMotherCard motherCard = new AssetMotherCard();
+            if(cursor != null)
             {
-                motherCard = cursor.Item as AssetMotherCard;
+                if (cursor.Item.GetType().Equals(motherCard.GetType()))
+                {
+                    motherCard = cursor.Item as AssetMotherCard;
+                }
+            }
+            if(!motherCard.Equals(new AssetMotherCard()))
+            {
+                MatherSprite.sprite = motherCard.UIIcon;
+                AssetMotherCard = motherCard;
+                UpdateWidth();
+                //UpdateSpritePosition(cursor.transform.position);
             }
         }
-        if(!motherCard.Equals(new AssetMotherCard()))
-        {
-            MatherSprite.sprite = motherCard.UIIcon;
-            AssetMotherCard = motherCard;
-        }
-        UpdateWidth();
+        
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        
+        PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
+        UpdateSpritePosition(cursor.transform.position);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-       
+        PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
+        if(cursor != null && AssetMotherCard.Equals(cursor.Item) && !LockCard)
+        {
+            UpdateSpritePosition(cursor.transform.position);
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-       
+        if (AssetMotherCard != null)
+        {
+            PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
+            if (cursor != null && AssetMotherCard.Equals(cursor.Item) && !LockCard)
+            {
+                AssetMotherCard = null;
+                MatherSprite.sprite = null;
+            }
+
+        }
+    }
+
+
+    private void UpdateSpritePosition(Vector2 CursorPosition)
+    {
+        //Vector2 RT = new Vector2(transform.position.x - CursorPosition.x, transform.position.y - CursorPosition.y);
+        Vector2 RT = new Vector2(CursorPosition.x - transform.position.x,CursorPosition.y - transform.position.y);
+        Vector2 RT2 = new Vector2(RT.x * 5, RT.y * 5);
+        MatherSprite.transform.position = new Vector3(RT2.x + transform.position.x, RT2.y + transform.position.y, 0);
+        //Debug.Log(transform.position + " " + CursorPosition + " " + RT2 );
     }
 
     protected void OnRectTransformDimensionsChange()
@@ -60,16 +98,36 @@ class MatherCardCell: MonoBehaviour
         if(AssetMotherCard != null)
         {
             //Debug.Log(_rectTransform.sizeDelta);
-            RectTransform BRT = GetComponent<RectTransform>();
-            float tmpX = BRT.rect.x;
-            float tmpY = BRT.rect.y;
-            RectTransform rectmp = MatherSprite.GetComponent<RectTransform>();
+            //RectTransform BRT = GetComponent<RectTransform>();
+            //float HeightParent = GetComponentInParent<RectTransform>().rect.height;
+            float HeightParent =ParentTransform.rect.height;
+            float tmpX = HeightParent;
+            float tmpY = HeightParent;
+            //RectTransform rectmp = MatherSprite.GetComponent<RectTransform>();
+            //Debug.Log(HeightParent);
+            MatherSprite.size = new Vector2(((tmpX / 100) * AssetMotherCard.Height), ((tmpY / 100) * AssetMotherCard.Width));
+            Collider2D.radius = HeightParent / 2;
 
-            rectmp.sizeDelta = new Vector2(((tmpX / 100) * AssetMotherCard.Height) - 5, ((tmpY / 100) * AssetMotherCard.Width) - 5);
             //_nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
             //_nameField.fontSize = (int)((8 / 51.70001) * tmp);
         }
 
+    }
+
+    public void onClick(PlayerCursor cursor)
+    {
+        //Debug.Log("Cursor: " + (cursor != null).ToString());
+        //Debug.Log("AssetCard: " + (AssetMotherCard != null).ToString());
+        if (AssetMotherCard != null)
+        {
+            LockCard = true;
+            cursor.Item = AssetMotherCard;
+        }
+        else
+        {
+            LockCard = false;
+            cursor.ClearToolItems();
+        }
     }
 
 

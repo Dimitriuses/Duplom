@@ -20,5 +20,5 @@ MonoBehaviour:
   _Health: 100
   _name: Mother Card Level 3
   _icon: {fileID: -1390795718543037381, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
-  _height: 100
-  _with: 68.89804
+  _height: 68.89804
+  _with: 100

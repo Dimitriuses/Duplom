@@ -9,6 +9,9 @@ public class PlayerCursor : MonoBehaviour
     public ITool Tool;
     public IItem Item;
     public Camera Camera;
+    public AssetTool NoneItem;
+
+
     BoxCollider2D Collider;
     SpriteRenderer Sprite;
     //Image Image;
@@ -39,6 +42,14 @@ public class PlayerCursor : MonoBehaviour
         oldposition = transform.position;
         isOnTheShemObj = false;
         OnChangeTool();
+    }
+
+    public void ClearToolItems()
+    {
+        Item = NoneItem;
+        Tool = NoneItem;
+        //OnCangeItem();
+        //OnChangeTool();
     }
 
     // Update is called once per frame
