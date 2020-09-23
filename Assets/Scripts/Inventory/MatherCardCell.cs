@@ -9,6 +9,8 @@ using UnityEngine.UI;
 class MatherCardCell: MonoBehaviour
 {
     public SpriteRenderer MatherSprite;
+    public Image MImage;
+    public Button MButton;
     public RectTransform ParentTransform;
     //public CameraGo Camera;
 
@@ -39,6 +41,7 @@ class MatherCardCell: MonoBehaviour
             if(!motherCard.Equals(new AssetMotherCard()))
             {
                 MatherSprite.sprite = motherCard.UIIcon;
+                //MImage.sprite = motherCard.UIIcon;
                 AssetMotherCard = motherCard;
                 UpdateWidth();
                 //UpdateSpritePosition(cursor.transform.position);
@@ -48,11 +51,11 @@ class MatherCardCell: MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
-        UpdateSpritePosition(cursor.transform.position);
-    }
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
+    //    UpdateSpritePosition(cursor.transform.position);
+    //}
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -73,6 +76,7 @@ class MatherCardCell: MonoBehaviour
             {
                 AssetMotherCard = null;
                 MatherSprite.sprite = null;
+                //MImage.sprite = null;
             }
 
         }
@@ -85,6 +89,7 @@ class MatherCardCell: MonoBehaviour
         Vector2 RT = new Vector2(CursorPosition.x - transform.position.x,CursorPosition.y - transform.position.y);
         Vector2 RT2 = new Vector2(RT.x * 5, RT.y * 5);
         MatherSprite.transform.position = new Vector3(RT2.x + transform.position.x, RT2.y + transform.position.y, 0);
+        MImage.transform.position = new Vector3(RT2.x + transform.position.x, RT2.y + transform.position.y, 0);
         //Debug.Log(transform.position + " " + CursorPosition + " " + RT2 );
     }
 
@@ -106,6 +111,7 @@ class MatherCardCell: MonoBehaviour
             //RectTransform rectmp = MatherSprite.GetComponent<RectTransform>();
             //Debug.Log(HeightParent);
             MatherSprite.size = new Vector2(((tmpX / 100) * AssetMotherCard.Height), ((tmpY / 100) * AssetMotherCard.Width));
+            MImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetMotherCard.Height), ((tmpY / 100) * AssetMotherCard.Width));
             Collider2D.radius = HeightParent / 2;
 
             //_nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
@@ -118,16 +124,35 @@ class MatherCardCell: MonoBehaviour
     {
         //Debug.Log("Cursor: " + (cursor != null).ToString());
         //Debug.Log("AssetCard: " + (AssetMotherCard != null).ToString());
-        if (AssetMotherCard != null)
+        if (!LockCard)
         {
             LockCard = true;
-            cursor.Item = AssetMotherCard;
+            cursor.ClearToolItems();
+            MImage.enabled = true;
+            MButton.enabled = true;
+            MatherSprite.enabled = false;
+            MImage.sprite = AssetMotherCard.UIIcon;
+            UpdateSpritePosition(transform.position);
+
+            //OnCollisionStay2D();
+            //MatherSprite.sprite = null;
         }
         else
         {
-            LockCard = false;
-            cursor.ClearToolItems();
+            if (cursor.Item.Name.Equals("None"))
+            {
+                LockCard = false;
+                cursor.Item = AssetMotherCard;
+                MImage.enabled = false;
+                MButton.enabled = false;
+                MatherSprite.enabled = true;
+                MImage.sprite = null;
+            }
+
+
+            //Debug.Log(cursor.Item.Equals(AssetMotherCard));
         }
+        cursor.OnCangeItem();
     }
 
 
