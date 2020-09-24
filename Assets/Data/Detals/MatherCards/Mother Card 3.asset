@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cabc0937df569d40adf4e1d6f0eb9db, type: 3}
-  m_Name: Mother Card 1
+  m_Name: Mother Card 3
   m_EditorClassIdentifier: 
-  PCISize: 2
-  PCIExpresSize: 2
-  RAMSize: 2
-  SATASize: 2
-  Socet: 5700440035003700450046005400560031003100
+  PCISize: 3
+  PCIExpresSize: 3
+  RAMSize: 4
+  SATASize: 4
+  Socet: 
   _Health: 100
-  _name: Mother Card Level 1
-  _icon: {fileID: -701606280490768132, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
-  _height: 100
-  _with: 99.69104
+  CPU: {fileID: 0}
+  _name: Mother Card Level 3
+  _icon: {fileID: -1390795718543037381, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
+  _height: 68.89804
+  _with: 100

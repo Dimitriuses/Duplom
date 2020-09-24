@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Asset Mother Card")]
-public class AssetMotherCard : MotherCard, IDevice
+[CreateAssetMenu(menuName = "Asset CPU")]
+public class AssetCPU : CPU, IDevice
 {
-   
+
     public string Name => _name;
     public Sprite UIIcon => _icon;
     public float Height => _height;
@@ -19,6 +19,4 @@ public class AssetMotherCard : MotherCard, IDevice
     [SerializeField] private Sprite _icon;
     [SerializeField] private float _height;
     [SerializeField] private float _with;
-
-    
 }

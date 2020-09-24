@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.PC_detals
+
+public interface PCIExpress : BIOS
 {
-    public interface PCIExpress : BIOS
-    {
-        bool CanConnectToPCIE();
-    }
+    bool CanConnectToPCIE();
 }

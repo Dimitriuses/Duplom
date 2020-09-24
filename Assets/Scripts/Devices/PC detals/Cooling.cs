@@ -4,57 +4,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.PC_detals
+
+public enum CoolingType
 {
-    public enum CoolingType
+    Active = 25,
+    Pasive = 50,
+}
+public class Cooling
+{
+    public CoolingType Type { get; }
+    float _HeatWorking;
+    float _Health;
+
+    public Cooling(float hworking, CoolingType type)
     {
-        Active = 25,
-        Pasive = 50,
+        Type = type;
+        _HeatWorking = hworking * (int)Type;
+        _Health = 100;
     }
-    public class Cooling
+
+    public float GetHeatWorking()
     {
-        public CoolingType Type { get; }
-        float _HeatWorking;
-        float _Health;
+        return _HeatWorking;
+    }
 
-        public Cooling(float hworking, CoolingType type)
-        {
-            Type = type;
-            _HeatWorking = hworking * (int)Type;
-            _Health = 100;
-        }
+    public bool isWorking()
+    {
+        return _Health > 0;
+    }
 
-        public float GetHeatWorking()
+    public void Use(float heatInput, int i = 1)
+    {
+        float tmp = i / 1000;
+        if (isWorking() && _Health - tmp > 0)
         {
-            return _HeatWorking;
-        }
-
-        public bool isWorking()
-        {
-            return _Health > 0;
-        }
-
-        public void Use(float heatInput,int i = 1)
-        {
-            float tmp = i / 1000;
-            if (isWorking() && _Health - tmp > 0) 
+            float HHP = _HeatWorking / _Health;
+            float HETmp = (_HeatWorking / (int)Type) - heatInput;
+            //_HeatWorking = (_HeatWorking / (int)Type) / _Health * (_Health - tmp);
+            if (HETmp < 0)
             {
-                float HHP = _HeatWorking / _Health;
-                float HETmp = (_HeatWorking / (int)Type) - heatInput;
-                //_HeatWorking = (_HeatWorking / (int)Type) / _Health * (_Health - tmp);
-                if (HETmp < 0)
-                {
-                    _HeatWorking += HETmp;
-                    _Health -= Math.Abs(HETmp)/HHP;
-                }
-                else
-                {
-                    _HeatWorking -= tmp * HHP;
-                    _Health -= tmp;
-                }
-               
-                
+                _HeatWorking += HETmp;
+                _Health -= Math.Abs(HETmp) / HHP;
             }
+            else
+            {
+                _HeatWorking -= tmp * HHP;
+                _Health -= tmp;
+            }
+
+
         }
     }
 }
+

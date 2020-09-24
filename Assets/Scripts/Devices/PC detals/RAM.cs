@@ -5,50 +5,49 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.PC_detals
+
+public enum MType
 {
-    public enum MType
+    DDR1,
+    DDR2,
+    DDR3,
+    DDR4
+}
+public class RAM : ScriptableObject, BIOS
+{
+    [Header("Characteristics")]
+    const int DefaulMemoryResource = 40000000;
+    public MType Type;
+    public int Capacity;
+    public float Speed;
+    [SerializeField] int _UsingResources;
+    [SerializeField] float _Health;
+
+    //public RAM(int capacity, MType type, float speed, float health = 100)
+    //{
+    //    Capacity = capacity;
+    //    Type = type;
+    //    Speed = speed;
+    //    _Health = health;
+    //    _UsingResources = DefaulMemoryResource;
+    //}
+
+    public bool isWorking()
     {
-        DDR1,
-        DDR2,
-        DDR3,
-        DDR4
+        return _Health < 0;
     }
-    public class RAM:ScriptableObject,  BIOS
+
+    public void Use(Cooling[] coolings, int i = 1)
     {
-        const int DefaulMemoryResource = 40000000;
-        public MType Type { get; }
-        public int Capacity { get; }
-        public float Speed { get; }
-        int _UsingResources;
-        float _Health;
-
-        public RAM(int capacity, MType type, float speed, float health = 100)
+        if (_UsingResources - i > 0 && isWorking())
         {
-            Capacity = capacity;
-            Type = type;
-            Speed = speed;
-            _Health = health;
-            _UsingResources = DefaulMemoryResource;
-        }
-
-        public bool isWorking()
-        {
-            return _Health < 0;
-        }
-
-        public void Use(Cooling[] coolings, int i = 1)
-        {
-            if (_UsingResources - i > 0 && isWorking())
+            _UsingResources -= i;
+            Randomiser randomiser = new Randomiser();
+            float htemp = _UsingResources / (DefaulMemoryResource / 100);
+            _Health = (float)randomiser.GetRandomNumber(htemp, _Health);
+            foreach (Cooling item in coolings)
             {
-                _UsingResources -= i;
-                Randomiser randomiser = new Randomiser();
-                float htemp = _UsingResources / (DefaulMemoryResource/100);
-                _Health = (float)randomiser.GetRandomNumber(htemp, _Health);
-                foreach (Cooling item in coolings)
-                {
-                    item.Use(1);
-                }
+                item.Use(1);
             }
         }
     }

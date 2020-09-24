@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts;
-using Assets.Scripts.PC_detals;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,10 +7,12 @@ using UnityEngine;
 
 public class MotherCard :ScriptableObject,  BIOS
 {
-    [SerializeField] int PCISize,PCIExpresSize, RAMSize, SATASize;
+    [Header("Characteristics")]
+    [SerializeField] int PCISize;
+    [SerializeField] int  PCIExpresSize, RAMSize, SATASize;
     [SerializeField] char[] Socet;
     [SerializeField] float _Health;
-    public CPU CPU { get; set; }
+    [SerializeField] public CPU CPU;
     public List<RAM> RAMs { get; set; }
     public List<SataStorage> Satas { get; set; }
     public List<PCI> PCIs { get; set; }
