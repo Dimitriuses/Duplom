@@ -280,7 +280,8 @@ public class CameraGo : MonoBehaviour
     void onEsc()
     {
         //Debug.Log("InPaused");
-        SceneManager.LoadScene("Pause");
+        //SceneManager.LoadScene("Pause");
+        //public GameObject [Main menu].enable = true;
 
     }
 
