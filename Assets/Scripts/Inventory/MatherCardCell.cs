@@ -38,7 +38,7 @@ class MatherCardCell: MonoBehaviour
                     motherCard = cursor.Item as AssetMotherCard;
                 }
             }
-            if(!motherCard.Equals(new AssetMotherCard()))
+            if (motherCard.Name != null) 
             {
                 MatherSprite.sprite = motherCard.UIIcon;
                 //MImage.sprite = motherCard.UIIcon;
@@ -124,35 +124,44 @@ class MatherCardCell: MonoBehaviour
     {
         //Debug.Log("Cursor: " + (cursor != null).ToString());
         //Debug.Log("AssetCard: " + (AssetMotherCard != null).ToString());
-        if (!LockCard)
+        if (AssetMotherCard != null) 
         {
-            LockCard = true;
-            cursor.ClearToolItems();
-            MImage.enabled = true;
-            MButton.enabled = true;
-            MatherSprite.enabled = false;
-            MImage.sprite = AssetMotherCard.UIIcon;
-            UpdateSpritePosition(transform.position);
-
-            //OnCollisionStay2D();
-            //MatherSprite.sprite = null;
-        }
-        else
-        {
-            if (cursor.Item.Name.Equals("None"))
+            //Debug.Log("Asset =" + AssetMotherCard.Name);
+            if (!LockCard)
             {
-                LockCard = false;
-                cursor.Item = AssetMotherCard;
-                MImage.enabled = false;
-                MButton.enabled = false;
-                MatherSprite.enabled = true;
-                MImage.sprite = null;
+                //Debug.Log("Lock " + LockCard.ToString());
+                LockCard = true;
+                cursor.ClearToolItems();
+                MImage.enabled = true;
+                MButton.enabled = true;
+                MatherSprite.enabled = false;
+                MImage.sprite = AssetMotherCard.UIIcon;
+                UpdateSpritePosition(transform.position);
+
+                //OnCollisionStay2D();
+                //MatherSprite.sprite = null;
+                cursor.OnCangeItem();
             }
+            else
+            {
+                if (cursor.Item.Name.Equals("None"))
+                {
+                    //Debug.Log("Asset =" + AssetMotherCard.Name);
+                    LockCard = false;
+                    cursor.Item = AssetMotherCard;
+                    MImage.enabled = false;
+                    MButton.enabled = false;
+                    MatherSprite.enabled = true;
+                    MImage.sprite = null;
+                    cursor.OnCangeItem();
+                }
 
 
-            //Debug.Log(cursor.Item.Equals(AssetMotherCard));
+                //Debug.Log(cursor.Item.Equals(AssetMotherCard));
+            }
         }
-        cursor.OnCangeItem();
+        
+        
     }
 
 
