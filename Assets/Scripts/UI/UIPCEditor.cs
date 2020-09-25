@@ -34,7 +34,7 @@ public class UIPCEditor : MonoBehaviour
 
     private void OnEnable()
     {
-        Cursor.ClearToolItems();
+        //Cursor.ClearToolItems();
         RenderAll();
         
         Camera.StopCam = true;

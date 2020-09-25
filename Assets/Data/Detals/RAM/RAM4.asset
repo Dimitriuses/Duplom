@@ -19,5 +19,5 @@ MonoBehaviour:
   _Health: 100
   _name: RAM4
   _icon: {fileID: -6321606031097824497, guid: f848c761da72eb84ab87612a79d7d4a4, type: 3}
-  _height: 100
-  _with: 67.479675
+  _height: 67.47968
+  _with: 100

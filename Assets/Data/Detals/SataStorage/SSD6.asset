@@ -19,5 +19,5 @@ MonoBehaviour:
   _Health: 100
   _name: SSD6
   _icon: {fileID: -3946292012714314719, guid: 873be067b643bfb42bd5abe5787a0658, type: 3}
-  _height: 100
-  _with: 73.5119
+  _height: 73.5119
+  _with: 100

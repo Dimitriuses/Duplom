@@ -19,5 +19,5 @@ MonoBehaviour:
   _Health: 100
   _name: HDD2
   _icon: {fileID: 1119722585828831733, guid: 873be067b643bfb42bd5abe5787a0658, type: 3}
-  _height: 100
-  _with: 72.36467
+  _height: 72.36467
+  _with: 100

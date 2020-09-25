@@ -16,6 +16,6 @@ MonoBehaviour:
   _HeatWorking: 500
   _Health: 100
   _name: Cooling4
-  _icon: {fileID: 0}
+  _icon: {fileID: 4465452201811239401, guid: d6bd64d459886344295ed8d3db0e9903, type: 3}
   _height: 100
   _with: 100

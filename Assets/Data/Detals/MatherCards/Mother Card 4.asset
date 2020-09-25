@@ -21,5 +21,5 @@ MonoBehaviour:
   CPU: {fileID: 0}
   _name: Mother Card Level 2.5
   _icon: {fileID: -9176764863091496171, guid: d1a7576acaa39a149b2f9b65c6e973bc, type: 3}
-  _height: 99.70119
-  _with: 100
+  _height: 100
+  _with: 99.70119

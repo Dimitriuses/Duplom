@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d32cbb218512fd4cad52907779241a4, type: 3}
   m_Name: GPU3
   m_EditorClassIdentifier: 
-  Type: 0
-  Ferequency: 0
-  GMCapacity: 0
-  CoolingSystem: []
-  HeatOutput: 0
+  Type: 2
+  Ferequency: 2048
+  GMCapacity: 512
+  CoolingSystem:
+  - {fileID: 11400000, guid: ef7c809527b92b34589e2c2d31bd7c97, type: 2}
+  HeatOutput: 200
   Broken: 0
-  _name: 
-  _icon: {fileID: 0}
-  _height: 0
-  _with: 0
+  _name: QUADRO 2x512
+  _icon: {fileID: 5636009188095441537, guid: 748866edc99b0fc4989f0a1b2c337205, type: 3}
+  _height: 100
+  _with: 84.83607

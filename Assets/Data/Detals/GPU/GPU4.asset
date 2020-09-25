@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d32cbb218512fd4cad52907779241a4, type: 3}
   m_Name: GPU4
   m_EditorClassIdentifier: 
-  Type: 0
-  Ferequency: 0
-  GMCapacity: 0
-  CoolingSystem: []
-  HeatOutput: 0
+  Type: 3
+  Ferequency: 4096
+  GMCapacity: 4096
+  CoolingSystem:
+  - {fileID: 11400000, guid: 6e80df53313b8b641b13506fc6e958f1, type: 2}
+  - {fileID: 11400000, guid: 6e80df53313b8b641b13506fc6e958f1, type: 2}
+  HeatOutput: 800
   Broken: 0
-  _name: 
-  _icon: {fileID: 0}
-  _height: 0
-  _with: 0
+  _name: Radeon 4x4096
+  _icon: {fileID: 3929674640814967155, guid: 748866edc99b0fc4989f0a1b2c337205, type: 3}
+  _height: 100
+  _with: 57.82123

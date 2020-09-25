@@ -19,5 +19,5 @@ MonoBehaviour:
   _Health: 100
   _name: M2 1
   _icon: {fileID: 833900349621402400, guid: 873be067b643bfb42bd5abe5787a0658, type: 3}
-  _height: 100
-  _with: 44.871796
+  _height: 44.8718
+  _with: 100
