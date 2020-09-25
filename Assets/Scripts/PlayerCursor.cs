@@ -42,7 +42,7 @@ public class PlayerCursor : MonoBehaviour
         oldposition = transform.position;
         isOnTheShemObj = false;
         ClearToolItems();
-        //OnChangeTool();
+        OnChangeTool();
     }
 
     public void ClearToolItems()
