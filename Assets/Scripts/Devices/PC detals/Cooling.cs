@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine;
 
 public enum CoolingType
 {
     Active = 25,
     Pasive = 50,
 }
-public class Cooling
+public class Cooling : ScriptableObject
 {
-    public CoolingType Type { get; }
-    float _HeatWorking;
-    float _Health;
+    [Header("Characteristics")]
+    public CoolingType Type;
+    [SerializeField] float _HeatWorking;
+    [SerializeField] float _Health;
 
-    public Cooling(float hworking, CoolingType type)
-    {
-        Type = type;
-        _HeatWorking = hworking * (int)Type;
-        _Health = 100;
-    }
+    //public Cooling(float hworking, CoolingType type)
+    //{
+    //    Type = type;
+    //    _HeatWorking = hworking * (int)Type;
+    //    _Health = 100;
+    //}
 
     public float GetHeatWorking()
     {

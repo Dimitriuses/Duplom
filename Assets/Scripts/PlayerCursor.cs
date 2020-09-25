@@ -41,22 +41,25 @@ public class PlayerCursor : MonoBehaviour
         CameraGo = Camera.GetComponent<CameraGo>();
         oldposition = transform.position;
         isOnTheShemObj = false;
-        OnChangeTool();
+        ClearToolItems();
+        //OnChangeTool();
     }
 
     public void ClearToolItems()
     {
+        //Debug.Log("Debug clear");
         Item = NoneItem;
         Tool = NoneItem;
-        //OnCangeItem();
-        //OnChangeTool();
+        //Debug.Log(Item.Name + " " + Tool.Name);
+        OnCangeItem();
+        OnChangeTool();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,0);
-        Sprite.size = new Vector2((CameraGo.zoom / 100 * IW)/2, (CameraGo.zoom / 100 * IH)/2);
+        Sprite.size = new Vector2((CameraGo.zoom / 100 * IH)/2, (CameraGo.zoom / 100 * IW)/2);
         //Rect.sizeDelta = new Vector2(CameraGo.zoom*2+20, CameraGo.zoom*2+20);
         //Image.rectTransform.sizeDelta = new Vector2(CameraGo.zoom, CameraGo.zoom);
         //transform.position = Input.mousePosition;

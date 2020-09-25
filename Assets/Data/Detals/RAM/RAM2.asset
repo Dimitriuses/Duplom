@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd7ddf9353f027418344bfad329060a, type: 3}
-  m_Name: New Asset RAM
+  m_Name: RAM2
   m_EditorClassIdentifier: 
-  Type: 0
-  Capacity: 0
-  Speed: 0
-  _UsingResources: 0
-  _Health: 0
-  _name: 
-  _icon: {fileID: 0}
-  _height: 0
-  _with: 0
+  Type: 1
+  Capacity: 2048
+  Speed: 16384
+  _UsingResources: 1
+  _Health: 100
+  _name: RAM2
+  _icon: {fileID: 680254350390245423, guid: f848c761da72eb84ab87612a79d7d4a4, type: 3}
+  _height: 100
+  _with: 34.95935

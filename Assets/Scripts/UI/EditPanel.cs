@@ -21,7 +21,7 @@ public class EditPanel : MonoBehaviour
     public void OnEnable()
     {
         Render(Items);
-        Cursor.ClearToolItems();
+        //Cursor.ClearToolItems();
     }
     public void Render(List<AssetTool> items)
     {

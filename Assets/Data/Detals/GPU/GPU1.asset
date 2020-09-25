@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d32cbb218512fd4cad52907779241a4, type: 3}
+  m_Name: GPU1
+  m_EditorClassIdentifier: 
+  Type: 0
+  Ferequency: 0
+  GMCapacity: 0
+  CoolingSystem: []
+  HeatOutput: 0
+  Broken: 0
+  _name: 
+  _icon: {fileID: 0}
+  _height: 0
+  _with: 0

@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 5513045923881787498}
   - component: {fileID: 3261114452847383664}
   - component: {fileID: 3384912525683030705}
+  - component: {fileID: 6542718122670638367}
   - component: {fileID: 5805491594987295038}
   - component: {fileID: 5762352058027566542}
   m_Layer: 5
@@ -202,6 +203,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6542718122670638367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945654495236102469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: 10
+  m_PreferredHeight: 10
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &5805491594987295038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 2
 --- !u!114 &5762352058027566542
 MonoBehaviour:
@@ -231,6 +252,8 @@ MonoBehaviour:
   _nameField: {fileID: 7806610186951962127}
   _iconField: {fileID: 3187737418612888022}
   _buttonField: {fileID: 3261114452847383664}
+  Cursor: {fileID: 0}
+  LayoutElement: {fileID: 6542718122670638367}
 --- !u!1 &4819757955499367500
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,20 +14,21 @@ public enum SataStorageType
 }
 public class SataStorage : ScriptableObject, BIOS, PCIExpress
 {
-    public int Capacity { get; }
-    public SataStorageType Type { get; }
-    public float Speed { get; }
-    int _UsingResources;
-    float _Health;
+    [Header("Characteristics")]
+    public int Capacity;
+    public SataStorageType Type;
+    public float Speed;
+    [SerializeField]int _UsingResources;
+    [SerializeField]float _Health;
 
-    public SataStorage(int capacity, SataStorageType type, float speed, float health = 100)
-    {
-        Capacity = capacity;
-        Type = type;
-        Speed = speed;
-        _Health = health;
-        _UsingResources = (int)Type;
-    }
+    //public SataStorage(int capacity, SataStorageType type, float speed, float health = 100)
+    //{
+    //    Capacity = capacity;
+    //    Type = type;
+    //    Speed = speed;
+    //    _Health = health;
+    //    _UsingResources = (int)Type;
+    //}
 
     public float GetUsingResouces()
     {

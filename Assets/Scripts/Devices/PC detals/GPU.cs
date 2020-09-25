@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine;
 
 public enum GCType
 {
@@ -13,27 +13,28 @@ public enum GCType
     Radeon,
     RX
 }
-public class GPU : BIOS, PCIExpress
+public class GPU :ScriptableObject,  BIOS, PCIExpress
 {
-    public GCType Type { get; }
-    public int Ferequency { get; }
-    public int GMCapacity { get; }
-    public List<Cooling> CoolingSystem { get; }
-    public int HeatOutput { get; }
+    [Header("Characteristics")]
+    public GCType Type;
+    public int Ferequency;
+    public int GMCapacity;
+    public List<Cooling> CoolingSystem;
+    public int HeatOutput;
     public bool Broken;
 
-    public GPU(GCType type, int ferequency, int graph_memory_capacit)
-    {
-        Type = type;
-        Ferequency = ferequency;
-        GMCapacity = graph_memory_capacit;
-        CoolingSystem = new List<Cooling>()
-            {
-                new Cooling(HeatOutput,CoolingType.Active),
-                new Cooling(HeatOutput,CoolingType.Active),
-                new Cooling(HeatOutput/2,CoolingType.Pasive)
-            };
-    }
+    //public GPU(GCType type, int ferequency, int graph_memory_capacit)
+    //{
+    //    Type = type;
+    //    Ferequency = ferequency;
+    //    GMCapacity = graph_memory_capacit;
+    //    CoolingSystem = new List<Cooling>()
+    //        {
+    //            new Cooling(HeatOutput,CoolingType.Active),
+    //            new Cooling(HeatOutput,CoolingType.Active),
+    //            new Cooling(HeatOutput/2,CoolingType.Pasive)
+    //        };
+    //}
 
     public bool CanConnectToPCIE()
     {
