@@ -3225,6 +3225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workSpace: {fileID: 1621111733}
   workGui: {fileID: 1024867236}
+  PauseMenu: {fileID: 245113398}
   StopCam: 0
   StopZoom: 0
   Camera: {fileID: 374373316}
@@ -6606,9 +6607,9 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 09e91fc5040b3444390f7216eb9032e3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6995,7 +6996,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1406513548}
   m_HandleRect: {fileID: 954002749}
   m_Direction: 0
-  m_MinValue: -20
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
