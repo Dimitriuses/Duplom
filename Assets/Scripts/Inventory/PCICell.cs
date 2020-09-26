@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CPUCell : MonoBehaviour
+public class PCICell : MonoBehaviour
 {
     public Image AImage;
     //public Button MButton;
     public RectTransform Rect;
-    //public Vector2 CoolingSize;
-    public RectTransform CoolingTransform;
 
     AssetCPU AssetCPU;
     bool LockCard;
@@ -70,8 +68,6 @@ public class CPUCell : MonoBehaviour
             float tmpX = HeightParent;
             float tmpY = HeightParent;
             AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height), ((tmpY / 100) * AssetCPU.Width));
-            CoolingTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height) * 2, ((tmpY / 100) * AssetCPU.Width) * 2);
-            CoolingTransform.position = Rect.position;
         }
 
     }
@@ -92,8 +88,7 @@ public class CPUCell : MonoBehaviour
             cursor.ClearToolItems();
             AssetCPU = cpu;
             AImage.sprite = AssetCPU.UIIcon;
-            AImage.enabled = true;
-            UpdateWidth();
+            
         }
         else
         {
@@ -103,7 +98,6 @@ public class CPUCell : MonoBehaviour
                 cursor.Item = AssetCPU;
                 AssetCPU = null;
                 AImage.sprite = null;
-                AImage.enabled = false;
             }
         }
         cursor.OnCangeItem();

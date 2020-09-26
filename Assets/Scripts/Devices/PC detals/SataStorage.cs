@@ -12,7 +12,7 @@ public enum SataStorageType
     SSD = 500000,
     M2 = 900000,
 }
-public class SataStorage : ScriptableObject, BIOS, PCIExpress
+public class SataStorage :PCIExpress, BIOS 
 {
     [Header("Characteristics")]
     public int Capacity;

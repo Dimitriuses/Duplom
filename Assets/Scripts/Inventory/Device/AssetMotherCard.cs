@@ -20,5 +20,7 @@ public class AssetMotherCard : MotherCard, IDevice
     [SerializeField] private float _height;
     [SerializeField] private float _with;
 
+    public Vector2 ProcesorPosition;
+    public Vector2 ProcesorSize;
     
 }

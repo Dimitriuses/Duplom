@@ -11,7 +11,7 @@ public enum CNType
     WLAN = 300 * 1024,
     OLAN = 100 * 1024 * 1024
 }
-public class NetworkCard : PCI, PCIExpress, BIOS
+public class NetworkCard :   PCI, /*PCIExpress,*/ BIOS
 {
     const int DefaulNetworkCardResource = 1000000;
     //public int Settings { get; set; }

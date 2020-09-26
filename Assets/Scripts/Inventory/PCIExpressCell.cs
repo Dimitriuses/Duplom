@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CPUCell : MonoBehaviour
+public class PCIExpressCell : MonoBehaviour
 {
     public Image AImage;
     //public Button MButton;
     public RectTransform Rect;
-    //public Vector2 CoolingSize;
-    public RectTransform CoolingTransform;
 
-    AssetCPU AssetCPU;
+    IDevice PCIExpressDevice;
     bool LockCard;
     private void Start()
     {
@@ -64,46 +62,43 @@ public class CPUCell : MonoBehaviour
 
     private void UpdateWidth()
     {
-        if (AssetCPU != null)
+        if (PCIExpressDevice != null)
         {
             float HeightParent = Rect.rect.height;
             float tmpX = HeightParent;
             float tmpY = HeightParent;
-            AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height), ((tmpY / 100) * AssetCPU.Width));
-            CoolingTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height) * 2, ((tmpY / 100) * AssetCPU.Width) * 2);
-            CoolingTransform.position = Rect.position;
+            AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * PCIExpressDevice.Height), ((tmpY / 100) * PCIExpressDevice.Width));
         }
 
     }
 
     public void onClick(PlayerCursor cursor)
     {
-        
-        AssetCPU cpu = new AssetCPU();
 
-        if (cursor.Item.GetType().Equals(cpu.GetType()))
+        PCIExpress pciexpress = null;
+        IDevice device = null;
+
+        if (cursor.Item.GetType().Equals(pciexpress.GetType()))
         {
-            cpu = cursor.Item as AssetCPU;
+            device = cursor.Item as IDevice;
         }
 
-        if (!LockCard && cpu.Name != null)
+        if (!LockCard && device != null)
         {
             LockCard = true;
             cursor.ClearToolItems();
-            AssetCPU = cpu;
-            AImage.sprite = AssetCPU.UIIcon;
-            AImage.enabled = true;
-            UpdateWidth();
+            PCIExpressDevice = device;
+            AImage.sprite = device.UIIcon;
+            
         }
         else
         {
-            if (cursor.Item.Name.Equals("None") && AssetCPU != null)
+            if (cursor.Item.Name.Equals("None") && PCIExpressDevice != null)
             {
                 LockCard = false;
-                cursor.Item = AssetCPU;
-                AssetCPU = null;
+                cursor.Item = PCIExpressDevice;
+                PCIExpressDevice = null;
                 AImage.sprite = null;
-                AImage.enabled = false;
             }
         }
         cursor.OnCangeItem();

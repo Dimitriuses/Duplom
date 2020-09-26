@@ -19,7 +19,14 @@ MonoBehaviour:
   Socet: 
   _Health: 100
   CPU: {fileID: 0}
+  RAMs: []
+  Satas: []
+  PCIs: []
+  PCIExpresses: []
+  CoolingSystem: []
   _name: Mother Card Level 2
   _icon: {fileID: 5295752501543144200, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
   _height: 99.701195
   _with: 100
+  ProcesorPosition: {x: 69.82453, y: 31.74292}
+  ProcesorSize: {x: 29.581673, y: 29.67033}

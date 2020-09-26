@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CPUCell : MonoBehaviour
+public class CoolingCell : MonoBehaviour
 {
     public Image AImage;
     //public Button MButton;
     public RectTransform Rect;
-    //public Vector2 CoolingSize;
-    public RectTransform CoolingTransform;
+    public CPUCell CPUCell;
 
-    AssetCPU AssetCPU;
+    AssetCooling AssetCooling;
+
     bool LockCard;
     private void Start()
     {
@@ -64,47 +64,66 @@ public class CPUCell : MonoBehaviour
 
     private void UpdateWidth()
     {
-        if (AssetCPU != null)
+        if (AssetCooling != null)
         {
             float HeightParent = Rect.rect.height;
             float tmpX = HeightParent;
             float tmpY = HeightParent;
-            AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height), ((tmpY / 100) * AssetCPU.Width));
-            CoolingTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCPU.Height) * 2, ((tmpY / 100) * AssetCPU.Width) * 2);
-            CoolingTransform.position = Rect.position;
+            AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetCooling.Height), ((tmpY / 100) * AssetCooling.Width));
         }
 
     }
 
     public void onClick(PlayerCursor cursor)
     {
-        
-        AssetCPU cpu = new AssetCPU();
 
-        if (cursor.Item.GetType().Equals(cpu.GetType()))
+        AssetCooling cooling = new AssetCooling();
+
+        if (cursor.Item.GetType().Equals(cooling.GetType()))
         {
-            cpu = cursor.Item as AssetCPU;
+            //Debug.Log("equals true");
+            cooling = cursor.Item as AssetCooling;
+        }
+        else
+        {
+            if (!cursor.Item.Name.Equals("None"))
+            {
+                CPUCell.onClick(cursor);
+                return;
+            }
+            
         }
 
-        if (!LockCard && cpu.Name != null)
+        //Debug.Log(LockCard);
+        if (!LockCard && cooling.Name != null)
         {
             LockCard = true;
             cursor.ClearToolItems();
-            AssetCPU = cpu;
-            AImage.sprite = AssetCPU.UIIcon;
+            AssetCooling = cooling;
+            AImage.sprite = AssetCooling.UIIcon;
             AImage.enabled = true;
             UpdateWidth();
         }
         else
         {
-            if (cursor.Item.Name.Equals("None") && AssetCPU != null)
+            if(cursor.Item.Name.Equals("None"))
             {
-                LockCard = false;
-                cursor.Item = AssetCPU;
-                AssetCPU = null;
-                AImage.sprite = null;
-                AImage.enabled = false;
+                if (AssetCooling != null)
+                {
+                    LockCard = false;
+                    cursor.Item = AssetCooling;
+                    AssetCooling = null;
+                    AImage.sprite = null;
+                    AImage.enabled = false;
+                }
+                else if(CPUCell != null)
+                {
+                    CPUCell.onClick(cursor);
+                    return;
+                }
             }
+            
+            
         }
         cursor.OnCangeItem();
     }

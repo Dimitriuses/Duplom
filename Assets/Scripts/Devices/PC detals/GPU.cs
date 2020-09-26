@@ -13,7 +13,7 @@ public enum GCType
     Radeon,
     RX
 }
-public class GPU :ScriptableObject,  BIOS, PCIExpress
+public class GPU :PCIExpress, BIOS
 {
     [Header("Characteristics")]
     public GCType Type;

@@ -12,6 +12,7 @@ class MatherCardCell: MonoBehaviour
     public Image MImage;
     public Button MButton;
     public RectTransform ParentTransform;
+    public RectTransform CPUTransform;
     //public CameraGo Camera;
 
     public CircleCollider2D Collider2D;
@@ -38,7 +39,7 @@ class MatherCardCell: MonoBehaviour
                     motherCard = cursor.Item as AssetMotherCard;
                 }
             }
-            if (motherCard.Name != null) 
+            if (motherCard.Name != null && cursor.Item.GetType().Equals(motherCard.GetType())) 
             {
                 MatherSprite.sprite = motherCard.UIIcon;
                 //MImage.sprite = motherCard.UIIcon;
@@ -59,8 +60,9 @@ class MatherCardCell: MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        AssetMotherCard asset = new AssetMotherCard();
         PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
-        if(cursor != null && AssetMotherCard.Equals(cursor.Item) && !LockCard)
+        if(cursor != null && cursor.Item.GetType().Equals(asset.GetType()) && AssetMotherCard.Equals(cursor.Item) && !LockCard)
         {
             UpdateSpritePosition(cursor.transform.position);
         }
@@ -69,10 +71,11 @@ class MatherCardCell: MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        AssetMotherCard asset = new AssetMotherCard();
         if (AssetMotherCard != null)
         {
             PlayerCursor cursor = collision.gameObject.GetComponent<PlayerCursor>();
-            if (cursor != null && AssetMotherCard.Equals(cursor.Item) && !LockCard)
+            if (cursor != null && cursor.Item.GetType().Equals(asset.GetType()) && AssetMotherCard.Equals(cursor.Item) && !LockCard)
             {
                 AssetMotherCard = null;
                 MatherSprite.sprite = null;
@@ -110,9 +113,17 @@ class MatherCardCell: MonoBehaviour
             float tmpY = HeightParent;
             //RectTransform rectmp = MatherSprite.GetComponent<RectTransform>();
             //Debug.Log(HeightParent);
-            MatherSprite.size = new Vector2(((tmpX / 100) * AssetMotherCard.Height), ((tmpY / 100) * AssetMotherCard.Width));
-            MImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetMotherCard.Height), ((tmpY / 100) * AssetMotherCard.Width));
+
+            float tmpIX = (tmpX / 100) * AssetMotherCard.Height;
+            float tmpIY = (tmpY / 100) * AssetMotherCard.Width;
+
+            MatherSprite.size = new Vector2(tmpIX, tmpIY);
+            MImage.rectTransform.sizeDelta = new Vector2(tmpIX, tmpIY);
             Collider2D.radius = HeightParent / 2;
+
+
+            CPUTransform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.ProcesorPosition.x, (tmpIY / 100) * AssetMotherCard.ProcesorPosition.y);
+            CPUTransform.sizeDelta = new Vector2(((tmpIX / 100) * AssetMotherCard.ProcesorSize.x) / 2, ((tmpIY / 100) * AssetMotherCard.ProcesorSize.y) / 2);
 
             //_nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
             //_nameField.fontSize = (int)((8 / 51.70001) * tmp);
