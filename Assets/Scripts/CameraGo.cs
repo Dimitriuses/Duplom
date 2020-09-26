@@ -16,6 +16,7 @@ public class CameraGo : MonoBehaviour
     [Header("WorkSpace Options")]
     public GameObject workSpace;
     public GameObject workGui;
+    public GameObject PauseMenu;
 
     [Header("StopFunction")]
     public bool StopCam;
@@ -280,7 +281,8 @@ public class CameraGo : MonoBehaviour
     void onEsc()
     {
         //Debug.Log("InPaused");
-        SceneManager.LoadScene("Pause");
+        //SceneManager.LoadScene("Pause");
+        PauseMenu.SetActive(true);
 
     }
 

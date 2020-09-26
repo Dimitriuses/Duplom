@@ -59,7 +59,7 @@ public class UIResources : MonoBehaviour
             {
                 Text tmpMoney = Instantiate(TextPrefab, MoneyScrollWiew) as Text;
                 tmpMoney.color = (item.Type == RIType.Profit) ? ColorProfit : ColorWaste;
-                tmpMoney.text = item.Count.ToString();
+                tmpMoney.text = item.Name + " " + item.Count.ToString();
             }
             //MoneyScrollWiew.transform.SetAsFirstSibling(Text);
         }
@@ -69,7 +69,7 @@ public class UIResources : MonoBehaviour
             {
                 Text tmpElectricity = Instantiate(TextPrefab, ElectricityScrollWiew) as Text;
                 tmpElectricity.color = (item.Type == RIType.Profit) ? ColorProfit : ColorWaste;
-                tmpElectricity.text = item.Count.ToString();
+                tmpElectricity.text = item.Name + " " + item.Count.ToString();
             }
         }
         foreach (ResourcesItem item in resourcesNetwork)
@@ -78,7 +78,7 @@ public class UIResources : MonoBehaviour
             {
                 Text tmpNetwork = Instantiate(TextPrefab, NetworkScrollWiew) as Text;
                 tmpNetwork.color = (item.Type == RIType.Profit) ? ColorProfit : ColorWaste;
-                tmpNetwork.text = item.Count.ToString();
+                tmpNetwork.text = item.Name + " " + item.Count.ToString();
             }
         }
         //Resouces.Show();
