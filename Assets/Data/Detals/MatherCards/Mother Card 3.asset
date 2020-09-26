@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cabc0937df569d40adf4e1d6f0eb9db, type: 3}
   m_Name: Mother Card 3
   m_EditorClassIdentifier: 
-  PCISize: 3
-  PCIExpresSize: 3
-  RAMSize: 4
-  SATASize: 4
+  PCICount: 0
+  PCIExpresCount: 0
+  RAMCount: 0
+  SATACount: 0
   Socet: 
   _Health: 100
   CPU: {fileID: 0}
@@ -30,3 +30,9 @@ MonoBehaviour:
   _with: 100
   ProcesorPosition: {x: 40.15175, y: 82.5331}
   ProcesorSize: {x: 50.52317, y: 34.809475}
+  RAMSize: {x: 20.600859, y: 17.30175}
+  RAM1Position: {x: 16.39238, y: 55.19364}
+  RAM2Position: {x: 41.99324, y: 55.19364}
+  SataSize: {x: 28.612303, y: 27.703398}
+  Sata1Position: {x: 23.30236, y: 19.70376}
+  Sata2Position: {x: 56.91466, y: 19.70376}

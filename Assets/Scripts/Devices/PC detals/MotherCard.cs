@@ -8,8 +8,8 @@ using UnityEngine;
 public class MotherCard :ScriptableObject,  BIOS
 {
     [Header("Characteristics")]
-    [SerializeField] int PCISize;
-    [SerializeField] int  PCIExpresSize, RAMSize, SATASize;
+    [SerializeField] int PCICount;
+    [SerializeField] int  PCIExpresCount, RAMCount, SATACount;
     [SerializeField] char[] Socet;
     [SerializeField] float _Health;
     [SerializeField] public CPU CPU;
