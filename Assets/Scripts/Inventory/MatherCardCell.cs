@@ -13,6 +13,10 @@ class MatherCardCell: MonoBehaviour
     public Button MButton;
     public RectTransform ParentTransform;
     public RectTransform CPUTransform;
+    public RectTransform RAM1Transform;
+    public RectTransform RAM2Transform;
+    public RectTransform Sata1Transform;
+    public RectTransform Sata2Transform;
     //public CameraGo Camera;
 
     public CircleCollider2D Collider2D;
@@ -125,6 +129,18 @@ class MatherCardCell: MonoBehaviour
             CPUTransform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.ProcesorPosition.x, (tmpIY / 100) * AssetMotherCard.ProcesorPosition.y);
             CPUTransform.sizeDelta = new Vector2(((tmpIX / 100) * AssetMotherCard.ProcesorSize.x) / 2, ((tmpIY / 100) * AssetMotherCard.ProcesorSize.y) / 2);
 
+            Vector2 RamSize = new Vector2((tmpIX / 100) * AssetMotherCard.RAMSize.x, (tmpIY / 100) * AssetMotherCard.RAMSize.y);
+            Vector2 SataSize = new Vector2((tmpIX / 100) * AssetMotherCard.SataSize.x, (tmpIY / 100) * AssetMotherCard.SataSize.y);
+
+            RAM1Transform.sizeDelta = RamSize;
+            RAM2Transform.sizeDelta = RamSize;
+            Sata1Transform.sizeDelta = SataSize;
+            Sata2Transform.sizeDelta = SataSize;
+
+            RAM1Transform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.RAM1Position.x, (tmpIY / 100) * AssetMotherCard.RAM1Position.y);
+            RAM2Transform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.RAM2Position.x, (tmpIY / 100) * AssetMotherCard.RAM2Position.y);
+            Sata1Transform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.Sata1Position.x, (tmpIY / 100) * AssetMotherCard.Sata1Position.y);
+            Sata2Transform.anchoredPosition = new Vector2((tmpIX / 100) * AssetMotherCard.Sata2Position.x, (tmpIY / 100) * AssetMotherCard.Sata2Position.y);
             //_nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
             //_nameField.fontSize = (int)((8 / 51.70001) * tmp);
         }

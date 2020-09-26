@@ -67,7 +67,7 @@ public class RAMCell : MonoBehaviour
             //float HeightParent = Rect.rect.height;
             //AImage.SetNativeSize();
             float tmpX = Rect.rect.height;
-            float tmpY = Rect.rect.width;
+            float tmpY = Rect.rect.height; //Rect.rect.width;
             AImage.rectTransform.sizeDelta = new Vector2(((tmpX / 100) * AssetRAM.Height), ((tmpY / 100) * AssetRAM.Width));
         }
 
@@ -89,6 +89,7 @@ public class RAMCell : MonoBehaviour
             cursor.ClearToolItems();
             AssetRAM = ram;
             AImage.sprite = AssetRAM.UIIcon;
+            AImage.enabled = true;
             UpdateWidth();
         }
         else
@@ -99,6 +100,7 @@ public class RAMCell : MonoBehaviour
                 cursor.Item = AssetRAM;
                 AssetRAM = null;
                 AImage.sprite = null;
+                AImage.enabled = false;
             }
         }
         cursor.OnCangeItem();

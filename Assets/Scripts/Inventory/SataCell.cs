@@ -88,6 +88,7 @@ public class SataCell : MonoBehaviour
             cursor.ClearToolItems();
             AssetSata = sata;
             AImage.sprite = AssetSata.UIIcon;
+            AImage.enabled = true;
             UpdateWidth();
         }
         else
@@ -98,6 +99,7 @@ public class SataCell : MonoBehaviour
                 cursor.Item = AssetSata;
                 AssetSata = null;
                 AImage.sprite = null;
+                AImage.enabled = false;
             }
         }
         cursor.OnCangeItem();
