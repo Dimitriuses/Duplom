@@ -18,7 +18,6 @@ namespace Assets.Scripts
         public PlayerCursor Cursor;
         private float _prHeight;
         private float _prWidth;
-        public LayoutElement LayoutElement;
         private RectTransform _rectTransform;
 
         public delegate void Run(string name);
@@ -71,14 +70,10 @@ namespace Assets.Scripts
         private void UpdateWidth()
         {
             //Debug.Log(_rectTransform.sizeDelta);
-            float tmpx = _rectTransform.rect.size.x;
-            float tmpy = _rectTransform.rect.size.y;
-            float tmp = (tmpx <= tmpy) ? tmpy : tmpx;
+            float tmp = _rectTransform.rect.size.x;
 
             _rectTransform.sizeDelta = new Vector2(tmp, tmp);
             _iconField.rectTransform.sizeDelta = new Vector2(((tmp / 100) * _prHeight) - 5, ((tmp / 100) * _prWidth) - 5);
-            LayoutElement.preferredWidth = tmp;
-            LayoutElement.preferredHeight = tmp;
             _nameField.rectTransform.sizeDelta = new Vector2(_nameField.rectTransform.rect.height, (float)(10 / 51.70001) * tmp);
             _nameField.fontSize = (int)((8 / 51.70001) * tmp);
         }

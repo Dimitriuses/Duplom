@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33fd40c3b044734eb0a22be0340a64a, type: 3}
-  m_Name: HDD 1
+  m_Script: {fileID: 11500000, guid: 6cabc0937df569d40adf4e1d6f0eb9db, type: 3}
+  m_Name: Mother Card 2
   m_EditorClassIdentifier: 
-  Capacity: 150
-  Type: 100000
-  Speed: 600
-  _UsingResources: 1
+  PCISize: 2
+  PCIExpresSize: 2
+  RAMSize: 4
+  SATASize: 4
+  Socet: 
   _Health: 100
-  _name: HDD1
-  _icon: {fileID: 2916862019336658028, guid: 873be067b643bfb42bd5abe5787a0658, type: 3}
-  _height: 76.5043
+  _name: Mother Card Level 2
+  _icon: {fileID: 5295752501543144200, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
+  _height: 99.701195
   _with: 100

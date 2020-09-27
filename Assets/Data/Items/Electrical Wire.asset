@@ -15,5 +15,5 @@ MonoBehaviour:
   ToDoService: {fileID: 11400000, guid: 857012ef41112e44492a6c9a1f5a9181, type: 2}
   _name: Electricl Wire
   _icon: {fileID: -2361234419099898894, guid: 7b058d6181ff6174c8f9fc087a61c72f, type: 3}
-  _height: 100
-  _with: 79.95139
+  _height: 79.95139
+  _with: 100

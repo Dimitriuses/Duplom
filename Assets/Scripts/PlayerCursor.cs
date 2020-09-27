@@ -8,50 +8,23 @@ public class PlayerCursor : MonoBehaviour
 {
     public ITool Tool;
     public IItem Item;
-    public Camera Camera;
-    public AssetTool NoneItem;
-
-
     BoxCollider2D Collider;
     SpriteRenderer Sprite;
-    //Image Image;
-    RectTransform Rect;
-
-    CameraGo CameraGo;
 
     bool isOnTheShemObj;
     Vector3 oldposition;
     ShemObj TMP_obj;
-
-    float IW;
-    float IH;
 
     // Start is called before the first frame update
     void Start()
     {
         Collider = GetComponent<BoxCollider2D>();
         Sprite = GetComponent<SpriteRenderer>();
-        //Image = GetComponent<Image>();
-        Rect = GetComponent<RectTransform>();
-        IW = 0;
-        IH = 0;
+
 
         //Collider.
-
-        CameraGo = Camera.GetComponent<CameraGo>();
         oldposition = transform.position;
         isOnTheShemObj = false;
-        ClearToolItems();
-        OnChangeTool();
-    }
-
-    public void ClearToolItems()
-    {
-        //Debug.Log("Debug clear");
-        Item = NoneItem;
-        Tool = NoneItem;
-        //Debug.Log(Item.Name + " " + Tool.Name);
-        OnCangeItem();
         OnChangeTool();
     }
 
@@ -59,9 +32,6 @@ public class PlayerCursor : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,0);
-        Sprite.size = new Vector2((CameraGo.zoom / 100 * IH)/2, (CameraGo.zoom / 100 * IW)/2);
-        //Rect.sizeDelta = new Vector2(CameraGo.zoom*2+20, CameraGo.zoom*2+20);
-        //Image.rectTransform.sizeDelta = new Vector2(CameraGo.zoom, CameraGo.zoom);
         //transform.position = Input.mousePosition;
         //Debug.Log(transform.position);
         if (!Tool.Name.Equals("None"))
@@ -82,17 +52,11 @@ public class PlayerCursor : MonoBehaviour
         {
             Collider.enabled = false;
             Sprite.sprite = null;
-            //Image.sprite = null;
-            IW = 0;
-            IH = 0;
         }
         else
         {
             Collider.enabled = true;
             Sprite.sprite = Tool.UIIcon;
-            //Image.sprite = Tool.UIIcon;
-            IW = Tool.Width;
-            IH = Tool.Height;
             Tool.onCursor();
         }
     }
@@ -103,17 +67,11 @@ public class PlayerCursor : MonoBehaviour
         {
             Collider.enabled = false;
             Sprite.sprite = null;
-            //Image.sprite = null;
-            IW = 0;
-            IH = 0;
         }
         else
         {
             Collider.enabled = true;
             Sprite.sprite = Item.UIIcon;
-            //Image.sprite = Item.UIIcon;
-            IW = Item.Width;
-            IH = Item.Height;
         }
     }
 

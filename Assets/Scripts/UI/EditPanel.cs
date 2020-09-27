@@ -14,14 +14,14 @@ public class EditPanel : MonoBehaviour
     [SerializeField] private Transform _draggingParent;
     public CameraGo Camera;
     public PlayerCursor Cursor;
-    //public AssetTool NoneTool;
+    public AssetTool NoneTool;
 
     //delegate void Run(string name);
 
     public void OnEnable()
     {
         Render(Items);
-        //Cursor.ClearToolItems();
+        Cursor.Tool = NoneTool;
     }
     public void Render(List<AssetTool> items)
     {
@@ -62,7 +62,7 @@ public class EditPanel : MonoBehaviour
         if (Cursor.Tool.Name.Equals(Aitem.Name))
         {
             //Debug.Log("NoneTool");
-            Cursor.ClearToolItems();
+            Cursor.Tool = NoneTool;
         }
         else
         {

@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-
-public abstract class PCI : ScriptableObject, BIOS
+namespace Assets.Scripts.PC_detals
 {
-    public bool isWorking()
+    public abstract class PCI : ScriptableObject, BIOS 
     {
-        //throw new NotImplementedException();
-        return false;
-    }
+        public bool isWorking()
+        {
+            //throw new NotImplementedException();
+            return false;
+        }
 
-    public void Use(Cooling[] coolings, int i = 1)
-    {
-        //throw new NotImplementedException();
+        public void Use(Cooling[] coolings, int i = 1)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

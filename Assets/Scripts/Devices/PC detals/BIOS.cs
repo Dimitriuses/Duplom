@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-public interface BIOS
+namespace Assets.Scripts.PC_detals
 {
-    bool isWorking();
-    void Use(Cooling[] coolings, int i = 1);
+    public interface BIOS
+    {
+        bool isWorking();
+        void Use(Cooling[] coolings, int i = 1);
+    }
 }
-
