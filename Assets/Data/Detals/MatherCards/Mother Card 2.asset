@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cabc0937df569d40adf4e1d6f0eb9db, type: 3}
+  m_Name: Mother Card 2
+  m_EditorClassIdentifier: 
+  PCICount: 0
+  PCIExpresCount: 0
+  RAMCount: 0
+  SATACount: 0
+  Socet: 
+  _Health: 100
+  CPU: {fileID: 0}
+  RAMs: []
+  Satas: []
+  PCIs: []
+  PCIExpresses: []
+  CoolingSystem: []
+  _name: Mother Card Level 2
+  _icon: {fileID: 5295752501543144200, guid: 8837516765c0a0b4cb68d990b02dd099, type: 3}
+  _height: 99.701195
+  _with: 100
+  ProcesorPosition: {x: 69.82453, y: 31.74292}
+  ProcesorSize: {x: 29.581673, y: 29.67033}
+  RAMSize: {x: 14.442231, y: 21.478521}
+  RAM1Position: {x: 13.04378, y: 62.58447}
+  RAM2Position: {x: 13.04378, y: 36.10595}
+  SataSize: {x: 17.729084, y: 22.077923}
+  Sata1Position: {x: 37.9094, y: 57.32188}
+  Sata2Position: {x: 60.63848, y: 57.32188}

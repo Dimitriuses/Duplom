@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Assets.Scripts.PC_detals
+public abstract class PCIExpress : ScriptableObject, BIOS
 {
-    public interface PCIExpress : BIOS
+    public bool isWorking()
     {
-        bool CanConnectToPCIE();
+        throw new NotImplementedException();
+    }
+
+    public void Use(Cooling[] coolings, int i = 1)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool CanConnectToPCIE()
+    {
+        throw new NotImplementedException();
     }
 }

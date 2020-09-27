@@ -6,62 +6,62 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.PC_detals
+
+public class CPU : ScriptableObject, BIOS
 {
-    public class CPU:ScriptableObject, BIOS 
+    [Header("Characteristics")]
+    public char[] Socet;
+    public float BaseFerequency;
+    public float MaxFerequency;
+    public int NumberOfCores;
+    public int HeatOutput;
+    public bool withGPU;
+    public bool Broken;
+    //public CPU(char[] socet, float baseF, float maxF, int cores, int heat, bool gpu)
+    //{
+    //    Socet = new char[10];
+    //    if (socet.Length == 10)
+    //    {
+    //        Socet = socet;
+    //    }
+    //    else
+    //    {
+    //        Socet = new char[10] { 'n', 'o', 'n', 'e', ' ', 's', 'o', 'c', 'e', 't' };
+    //    }
+    //    BaseFerequency = baseF;
+    //    MaxFerequency = maxF;
+    //    NumberOfCores = cores;
+    //    HeatOutput = heat;
+    //    withGPU = gpu;
+    //    Broken = false;
+    //}
+
+    public bool isWorking()
     {
-        public char[] Socet { get; }
-        public float BaseFerequency { get; }
-        public float MaxFerequency { get; }
-        public int NumberOfCores { get; }
-        public int HeatOutput { get; }
-        public bool withGPU;
-        public bool Broken;
-        public CPU(char[] socet, float baseF, float maxF, int cores, int heat, bool gpu)
-        {
-            Socet = new char[10];
-            if(socet.Length == 10)
-            {
-                Socet = socet;
-            }
-            else
-            {
-                Socet = new char[10] { 'n', 'o', 'n', 'e', ' ', 's', 'o', 'c', 'e', 't' };
-            }
-            BaseFerequency = baseF;
-            MaxFerequency = maxF;
-            NumberOfCores = cores;
-            HeatOutput = heat;
-            withGPU = gpu;
-            Broken = false;
-        }
+        return !Broken;
+    }
 
-        public bool isWorking()
+    public void Use(Cooling[] coolings, int i = 1)
+    {
+        if (isWorking())
         {
-            return !Broken;
-        }
-
-        public void Use(Cooling[] coolings, int i = 1)
-        {
-            if (isWorking())
+            float Ctmp = 0;
+            foreach (Cooling item in coolings)
             {
-                float Ctmp = 0;
+                Ctmp += item.GetHeatWorking();
+            }
+            if (Ctmp >= HeatOutput)
+            {
+                Randomiser randomiser = new Randomiser();
+                float Htmp = HeatOutput / 100;
+                float HR = (float)randomiser.GetRandomNumber(HeatOutput - Htmp, Ctmp);
+                Broken = HR < HeatOutput;
                 foreach (Cooling item in coolings)
                 {
-                    Ctmp += item.GetHeatWorking();
-                }
-                if (Ctmp >= HeatOutput)
-                {
-                    Randomiser randomiser = new Randomiser();
-                    float Htmp = HeatOutput / 100;
-                    float HR = (float)randomiser.GetRandomNumber(HeatOutput - Htmp, Ctmp);
-                    Broken = HR < HeatOutput;
-                    foreach (Cooling item in coolings)
-                    {
-                        item.Use(HR);
-                    }
+                    item.Use(HR);
                 }
             }
         }
     }
 }
+
