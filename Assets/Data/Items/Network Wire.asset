@@ -15,5 +15,5 @@ MonoBehaviour:
   ToDoService: {fileID: 11400000, guid: 857012ef41112e44492a6c9a1f5a9181, type: 2}
   _name: LAN Wire
   _icon: {fileID: 1855077376358737452, guid: 7b058d6181ff6174c8f9fc087a61c72f, type: 3}
-  _height: 83.34058
-  _with: 100
+  _height: 100
+  _with: 83.34058

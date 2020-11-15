@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.PC_detals;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

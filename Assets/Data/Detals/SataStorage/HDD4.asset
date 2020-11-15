@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33fd40c3b044734eb0a22be0340a64a, type: 3}
+  m_Name: HDD4
+  m_EditorClassIdentifier: 
+  Capacity: 1024
+  Type: 100000
+  Speed: 650
+  _UsingResources: 1
+  _Health: 100
+  _name: HDD4
+  _icon: {fileID: -1714208698864599877, guid: 873be067b643bfb42bd5abe5787a0658, type: 3}
+  _height: 72.57143
+  _with: 100
