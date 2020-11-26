@@ -8,13 +8,11 @@ readme don't finished and to be continued later
 <br />
 <br />
 ### Authors
-[<img style="border-radius: 50%;" align="left" src="https://avatars3.githubusercontent.com/u/35993835?s=96&amp;v=4" alt="@Dimitriuses" width="48" height="48" />][webdevplaylist]
+Author|part of the project
+------|-------------------
+[<img style="border-radius: 50%;" align="left" src="https://avatars3.githubusercontent.com/u/35995268?s=96&amp;v=4" alt="@Saintmember" width="48" height="48" />][webdevplaylist]<a href="https://github.com/Saintmember"/>Saintmember</a>| MainMenu, Pause, and Sound
+[<img style="border-radius: 50%;" align="left" src="https://avatars3.githubusercontent.com/u/35993835?s=96&amp;v=4" alt="@Dimitriuses" width="48" height="48" />][webdevplaylist]<a href="https://github.com/Dimitriuses"/>Dimitriuses</a>| All other
 <br />
-<a href="https://github.com/Dimitriuses"/>Dimitriuses</a>
-<br />
-[<img style="border-radius: 50%;" align="left" src="https://avatars3.githubusercontent.com/u/35995268?s=96&amp;v=4" alt="@Saintmember" width="48" height="48" />][webdevplaylist]
-<br />
-<a href="https://github.com/Saintmember"/>Saintmember</a>
 <br />
 ### First
 This is my first game on Unity and diploma project for ITStep.
