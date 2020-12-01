@@ -26,8 +26,8 @@ The first two buttons linked to game. First button ("new Game") have NewGameMenu
 <img alt="NewGameMenu1" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image009.png" />
 <img alt="NewGameMenu2" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image011.png" />
 Continue button just load game with last save.<br />
-load game have load menu with save table. In that table you can chose save and load it.<br />
-<img alt="SettingsMenu1" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image013.png" />
+load game have load menu with save table. In that table you can chose save and load it or delete.<br />
+<img alt="LoadMenu" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image013.png" />
 Settings button have setting menu with most functions in this main menu.<br />
 <img alt="SettingsMenu1" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image015.png" />
 <img alt="SettingsMenu2" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image017.png" />
