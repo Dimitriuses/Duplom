@@ -19,20 +19,23 @@ Author|part of the project
 This is my first game on Unity and diploma project for ITStep.<br />
 When I created this project I was inspired by the program Cisco Packet Tracer.<br />
 So here's what i was able to do:<br />
-#### MainMenu
-<img alt="MainMenu" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image007.png" />
-main menu have 6 button: newGame, continue, load, settings, authors, exit.<br />
-The first two buttons linked to game. First button ("new Game") have NewGameMenu with chose type game and difficulty
-<img alt="NewGameMenu1" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image009.png" />
-<img alt="NewGameMenu2" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image011.png" />
-Continue button just load game with last save.<br />
-load game have load menu with save table. In that table you can chose save and load it or delete.<br />
-<img alt="LoadMenu" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image013.png" />
-Settings button have setting menu with most functions in this main menu.<br />
-<img alt="SettingsMenu1" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image015.png" />
-<img alt="SettingsMenu2" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image017.png" />
-Settings menu have graphic settings: quality, full screen and graph difficulty; and sound settings have a sound mixer.<br />
-Authors just print text. Exit just exit game. it's simple.<br />
-to be continued...<br />
+#### What's in this project:
+There are computers in this project<br>
+<img alt="" width="100px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/Screenshot_129.png" /><br>
+And you can turn on/off it.<br>
+<img alt="" width="100px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/Screenshot_130.png" /><br>
+Next thing i my project is<Br>
+a Router:<br>
+<img alt="" width="100px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/Screenshot_131.png" /><br>
+And it is WORK<br>
+<img alt="" width="100px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/Screenshot_132.png" /><br>
+You can place computers and routers on a schematic grid<br>
+<img alt="" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/Screenshot_133.png" /><br>
+This project has only 2 schematic objects but the code provides for the addition of any number of such objects, but only in the code.<br>
+Next thing is a Tools:<br>
+<img alt="" width="1000px" src="https://raw.githubusercontent.com/Dimitriuses/Duplom/master/Screenshots/image027.png" /><br>
+Tools are on the right side. Here it is the same as with schematic objects. Has 2 tools but more are provided.<br>
+So we have 2 tools "LAN" and "Electric" wires. Other tools do not have to be "wire".<br>
+Well to be continued...
 
 [webdevplaylist]: https://www.youtube.com
